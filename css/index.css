@@ -1,0 +1,169 @@
+html, body {
+	/*set max width to 100%*/"
+	max-width: 100%;
+	/*remove horizontal scrollbar*/
+	overflow-x: hidden;
+}
+
+body {
+	/*set background color to black*/
+	background: #262626 !important;
+}
+
+body h4 {
+	/*size 4 headings will have white text*/
+	color: white;
+}
+
+body h3 {
+	/*size 3 headings will have white text*/
+	color: white;
+	/*size 3 headings will be centered*/
+	text-align: center;
+}
+
+body button {
+	/*add a margin to buttons*/
+	margin: 3px;
+}
+
+body input {
+	/*add a margin to textboxes*/
+	margin: 3px;
+}
+
+.rating {
+	/*rotate the star rating 180 deg so that the stars fill left to right*/
+	transform: rotateY(180deg);
+	/*set the rating stars to be flexible*/
+	display: flex;
+}
+
+.rating input{
+	/*hide the radio buttons on the rating stars*/
+	display: none;
+}
+
+.rating label {
+	/*display as a block element*/
+	display: block;
+	/*change cursor to a pointer when hovering over rating stars*/
+	cursor: pointer;
+	/*50 pixels between each star (same as font size)*/
+	width: 50px;
+}
+
+/*all stars before the one selected*/
+/*NOTE: It will look like this applies to the stars AFTER the one selected*/
+/*This is because the stars get flipped 180 degrees*/
+.rating label:before {
+	/*content of the label is a star character*/
+	content: "\2605";
+	/*use relative positioning*/
+	position: relative;
+	/*display as a block element*/
+	display: block;
+	/*set font size to 50 pixels*/
+	font-size: 50px;
+	/*set star color to a black that's a bit darker than the background */
+	color: #101010;
+}
+
+/*all stars after the one selected*/
+/*NOTE: It will look like this applies to the stars BEFORE the one selected*/
+/*This is because the stars get flipped 180 degrees*/
+.rating label:after {
+	/*content of the label is a star character*/
+	content: "\2605";
+	/*use absolute positioning*/
+	position: absolute;
+	/*display as a block element*/
+	display: block;
+	/*set font size to 50 pixels*/
+	font-size: 50px;
+	/*set star color to light blue*/
+	color: #1f9cff;
+	/*set blue star 0px from black stars*/
+	top: 0px;
+	/*blue stars completely transparent to start*/
+	opacity: 0;
+	/*blue stars will take .2 seconds to fade in*/
+	transition: .2s;
+	/*add a shadow to the stars*/
+	text-shadow: 0 2px 5px rgba(0, 0, 0, .5);
+}
+
+.rating label:hover:after,
+.rating label:hover ~ label:after,
+.rating input:checked ~ label:after {
+	/*if user is hovering or selected a star,*/
+	/*set the stars after it (visually before) to be opaque*/
+	opacity: 1;
+}
+
+.men label {
+	/*set the "Men's washroom" text to blue*/
+	color: #1f9cff;
+}
+
+.women label {
+	/*set the "Women's washroom" text to red*/
+	color: #ff005d;
+}
+
+.allGenders label {
+	/*set the "All Genders washroom" text to green*/
+	color: #aeff00;
+}
+
+.search button {
+	/*set the margins of the search button*/
+	margin: 30px auto;
+	/*set the height of the search button*/
+	height: 50px;
+}
+
+th {
+	/*set table headings to blue text*/
+	color: #1f9cff;
+}
+
+td {
+	/*set table cells to white text*/
+	color: white;
+}
+
+.searchResults {
+	/*set the padding on search results table*/
+	padding: 50px 50px 50px 50px;
+}
+
+.objImg {
+	/*round the corners on images of bathrooms*/
+	border-radius: 5px;
+	/*set the margins on pictures of bathrooms*/
+	margin: 5px 50px 50px 5px;
+}
+
+.map {
+	/*round the corners on images of maps*/
+	border-radius: 5px;
+	/*set the margins on pictures of maps*/
+	margin: 5px 50px 50px 5px;
+}
+
+label {
+	/*set labels to white text*/
+	color: white;
+}
+
+footer {
+	/*set footer to white text*/
+	color:white;
+	/*set footer height*/
+	height: 100px;
+	/*footer goes at the bottom of the page*/
+	bottom: 0;
+	/*set footer width*/
+	width: 100%;
+}
