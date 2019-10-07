@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- link bootstrap css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- link custom css file -->
+		<link rel="stylesheet" href="css/index.css">
+		<!-- set page title -->
+		<title>Register an Account</title>
+	</head>
+	<body>
+		<!-- navbar header -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
+				<!-- navbar collapse icon -->
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navHeader">
+				<!-- navbar brand that links to homepage -->
+				<a class="navbar-brand" href="index.html">McMaster Restroom Finder</a>
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<!-- navbar item -->
+					<li class="nav-item">
+						<!-- "Search Form" link in navbar -->
+						<a class="nav-link" href="index.html">Search Form</a>
+					</li>
+					<li class="nav-item">
+						<!-- "Results Page" link in navbar -->
+						<a class="nav-link" href="results.html">Results Page</a>
+					</li>
+					<li class="nav-item">
+						<!-- "Individual Object Page" link in navbar -->
+						<a class="nav-link" href="object.html">Individual Object Page</a>
+					</li>
+					<li class="nav-item">
+						<!-- "Object Submission Page" link in navbar -->
+						<a class="nav-link" href="submit.html">Object Submission Page</a>
+					</li>
+					<li class="nav-item active">
+						<!-- "User Registration Page" link in navbar -->
+						<a class="nav-link" href="register.html">User Registration Page</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="wrapper container">
+			<form>
+				<!-- heading text -->
+				<h3>Register an Account</h3>
+				<div class="form-group">
+					<!-- "Username" textbox -->
+					<input type="text" class="form-control" id="username" placeholder="Username">
+				</div>
+				<div class="form-group">
+					<!-- "Password" textbox -->
+					<input type="password" class="form-control" id="password" placeholder="Password">
+				</div>
+				<div class="form-group">
+					<!-- "Confirm Password" textbox -->
+					<input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+				</div>
+				<div class="form-group">
+					<!-- "Email" textbox -->
+					<input type="email" class="form-control" id="email" placeholder="Email">
+				</div>
+				<div class="form-group row">
+					<label for="example-date-input" class="col-2 col-form-label">Date of Birth:</label>
+					<div class="col-10">
+						<!-- "Date of Birth" date selector -->
+						<input class="form-control" type="date" value="2011-08-19" id="example-date-input">
+					</div>
+				</div>
+				<div class="form-check">
+					<!-- "I would like to receive email notifications" checkbox -->
+					<input type="checkbox" class="form-check-input" id="notifications">
+					<label class="form-check-label" for="notifications">I would like to receive email notifications</label>
+				</div>
+				<div class="form-group">
+					<!-- "Submit" button -->
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</form>
+		</div>
+		<!-- footer -->
+		<footer>
+			<div class="row text-center">
+				<!-- footer link to homepage -->
+				<div class="col-md-4">
+					<a href="index.html">McMaster Restroom Finder</a>
+				</div>
+				<!-- footer copyright -->
+				<div class="col-md-4">
+					<p>Copyright © 2019 McMaster Restroom Finder</p>
+				</div>
+				<!-- footer links -->
+				<div class="col-md-4">
+					<div class="row">
+						<!-- footer link to "FAQ" -->
+						<div class="col-md-12">
+							<a href="#">FAQ</a>
+						</div>
+						<!-- footer link to "About Us" -->
+						<div class="col-md-12">
+							<a href="#">About Us</a>
+						</div>
+						<!-- footer link to "Contact" -->
+						<div class="col-md-12">
+							<a href="#">Contact</a>
+						</div>
+						<!-- footer link to "Report a bug" -->
+						<div class="col-md-12">
+							<a href="#">Report a bug</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- link bootstrap javascript -->
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
