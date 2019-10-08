@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- link bootstrap css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- link custom css file -->
+		<link rel="stylesheet" href="css/index.css">
+		<!-- set page title -->
+		<title>Submit a New Location</title>
+	</head>
+	<body>
+		<!-- navbar header -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
+				<!-- navbar collapse icon -->
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navHeader">
+				<!-- navbar brand that links to homepage -->
+				<a class="navbar-brand" href="index.html">McMaster Restroom Finder</a>
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<!-- navbar item -->
+					<li class="nav-item">
+						<!-- "Search Form" link in navbar -->
+						<a class="nav-link" href="search.html">Search Form</a>
+					</li>
+					<li class="nav-item">
+						<!-- "Results Page" link in navbar -->
+						<a class="nav-link" href="results_sample.html">Results Page</a>
+					</li>
+					<li class="nav-item">
+						<!-- "Individual Object Page" link in navbar -->
+						<a class="nav-link" href="individual_sample.html">Individual Object Page</a>
+					</li>
+					<li class="nav-item active">
+						<!-- "Object Submission Page" link in navbar -->
+						<a class="nav-link" href="submission.html">Object Submission Page</a>
+					</li>
+					<li class="nav-item">
+						<!-- "User Registration Page" link in navbar -->
+						<a class="nav-link" href="registration.html">User Registration Page</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="wrapper container">
+			<div class="row">
+				<div class="col-md-12">
+					<!-- heading text -->
+					<h3>Submit a New Location</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<!-- "Building" textbox -->
+								<input type="text" class="form-control" id="building" placeholder="Building">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<!-- "Room #" textbox -->
+								<input type="text" class="form-control" id="roomNum" placeholder="Room #">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<!-- "Longitude" textbox -->
+								<input type="number" class="form-control" id="longitude" placeholder="Longitude">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<!-- "Latitude" textbox -->
+								<input type="number" class="form-control" id="latitude" placeholder="Latitude">
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<!-- "Description" textarea -->
+    						<textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<!-- "Submit" button -->
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-12">
+								<!-- image of object (to be uploaded) -->
+								<img src="placeholder.png" width="90%" class="objImg">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<!-- "Upload an Image" button -->
+							<button type="submit" class="btn btn-primary">Upload an Image</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- footer -->
+		<footer>
+			<div class="row text-center">
+				<!-- footer link to homepage -->
+				<div class="col-md-4">
+					<a href="index.html">McMaster Restroom Finder</a>
+				</div>
+				<!-- footer copyright -->
+				<div class="col-md-4">
+					<p>Copyright &copy; 2019 McMaster Restroom Finder</p>
+				</div>
+				<!-- footer links -->
+				<div class="col-md-4">
+					<div class="row">
+						<!-- footer link to "FAQ" -->
+						<div class="col-md-12">
+							<a href="#">FAQ</a>
+						</div>
+						<!-- footer link to "About Us" -->
+						<div class="col-md-12">
+							<a href="#">About Us</a>
+						</div>
+						<!-- footer link to "Contact" -->
+						<div class="col-md-12">
+							<a href="#">Contact</a>
+						</div>
+						<!-- footer link to "Report a bug" -->
+						<div class="col-md-12">
+							<a href="#">Report a bug</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- link jquery javascript so the collapsed navbar can toggle -->
+		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<!-- link bootstrap javascript -->
+		<script src="js/bootstrap.min.js"></script>
+	</body>
+</html>
