@@ -1,37 +1,142 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-       /* Set the size of the div element that contains the map */
-      #map {
-        height: 400px;  /* The height is 400 pixels */
-        width: 100%;  /* The width is the width of the web page */
-       }
-    </style>
-  </head>
-  <body>
-    <h3>My Google Maps Demo</h3>
-    <!--The div element for the map -->
-    <div id="map"></div>
-    <script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: -25.344, lng: 131.036};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 4, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-    </script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function
-    -->
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM8lbhIZ94WtCL8mPV0161-qIMTOr4Aus&callback=initMap">
-    </script>
-  </body>
+	<head>
+		<!-- set charset -->
+		<meta charset="UTF-8">
+		<!-- link bootstrap css -->
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- link custom css file -->
+		<link rel="stylesheet" href="css/index.css">
+		<!-- set page title -->
+		<title>McMaster Restroom Finder</title>
+		<script src="js/maps.js"></script>
+	</head>
+	<body>
+		<!-- navbar header -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
+				<!-- navbar collapse icon -->
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navHeader">
+				<!-- navbar brand that links to homepage -->
+				<a class="navbar-brand" href="search.html">McMaster Restroom Finder</a>
+				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+					<!-- navbar item -->
+					<li class="nav-item">
+						<!-- "Search Form" link in navbar -->
+						<a class="nav-link" href="search.html">Search Form</a>
+					</li>
+					<li class="nav-item active">
+						<!-- "Results Page" link in navbar -->
+						<a class="nav-link" href="results_sample.html">Results Page</a>
+					</li>
+					<li class="nav-item">
+						<!-- "Individual Object Page" link in navbar -->
+						<a class="nav-link" href="individual_sample.html">Individual Object Page</a>
+					</li>
+					<li class="nav-item">
+						<!-- "Object Submission Page" link in navbar -->
+						<a class="nav-link" href="submission.html">Object Submission Page</a>
+					</li>
+					<li class="nav-item">
+						<!-- "User Registration Page" link in navbar -->
+						<a class="nav-link" href="registration.html">User Registration Page</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<!-- heading text -->
+					<h3>Search Results</h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-6">
+					<div class="searchResults">
+						<!-- live map -->
+						<div id="GoogleMap1"></div>
+					</div>
+				</div>
+  				<div class="col-6">
+  					<div class="searchResults">
+  						<!-- search results table -->
+	  					<table class="table table-striped table-dark">
+	  						<!-- table headers -->
+							<thead>
+								<tr>
+									<th>Room #</th>
+									<th>Rating</th>
+									<th>Distance</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- table row 1 -->
+								<tr>
+									<td>BSB 129</td>
+									<td>5</td>
+									<td>0.3km</td>
+								</tr>
+								<!-- table row 2 -->
+								<tr>
+									<td>ITB 123</td>
+									<td>5</td>
+									<td>2km</td>
+								</tr>
+								<!-- table row 3 -->
+								<tr>
+									<td>MDCL 1101</td>
+									<td>4</td>
+									<td>2.1km</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+  				</div>
+			</div>
+		</div>
+		<!-- footer -->
+		<footer>
+			<div class="row text-center">
+				<!-- footer link to homepage -->
+				<div class="col-md-4">
+					<a href="search.html">McMaster Restroom Finder</a>
+				</div>
+				<!-- footer copyright -->
+				<div class="col-md-4">
+					<p>Copyright &copy; 2019 McMaster Restroom Finder</p>
+				</div>
+				<!-- footer links -->
+				<div class="col-md-4">
+					<div class="row">
+						<!-- footer link to "FAQ" -->
+						<div class="col-md-12">
+							<a href="#">FAQ</a>
+						</div>
+						<!-- footer link to "About Us" -->
+						<div class="col-md-12">
+							<a href="#">About Us</a>
+						</div>
+						<!-- footer link to "Contact" -->
+						<div class="col-md-12">
+							<a href="#">Contact</a>
+						</div>
+						<!-- footer link to "Report a bug" -->
+						<div class="col-md-12">
+							<a href="#">Report a bug</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- link jquery javascript so the collapsed navbar can toggle -->
+		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+		<!-- link bootstrap javascript -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- link Google Maps API -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM8lbhIZ94WtCL8mPV0161-qIMTOr4Aus"></script>
+	</body>
 </html>

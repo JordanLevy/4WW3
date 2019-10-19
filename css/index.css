@@ -145,13 +145,6 @@ td {
 	margin: 5px 50px 50px 5px;
 }
 
-.map {
-	/*round the corners on images of maps*/
-	border-radius: 5px;
-	/*set the margins on pictures of maps*/
-	margin: 5px 50px 50px 5px;
-}
-
 label {
 	/*set labels to white text*/
 	color: white;
@@ -166,4 +159,11 @@ footer {
 	bottom: 0;
 	/*set footer width*/
 	width: 100%;
+}
+
+#GoogleMap1 {
+height: 400px;
+/* The height is 400 pixels */
+width: 100%;
+/* The width is the width of the web page */
 }
