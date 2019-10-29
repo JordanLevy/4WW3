@@ -9,6 +9,8 @@
 		<link rel="stylesheet" href="css/index.css">
 		<!-- set page title -->
 		<title>McMaster Restroom Finder</title>
+		<!-- link custom js file to populate Google Maps div -->
+		<script src="js/maps.js"></script>
 	</head>
 	<body>
 		<!-- navbar header -->
@@ -58,9 +60,9 @@
 			<div class="row">
 				<div class="col-md-6">
 					<div class="row">
-						<div class="col-md-12">
-							<!-- map image -->
-							<img src="map.png" alt="Map" width="80%" class="map">
+						<div class="col-md-12" id="GoogleMap1Container">
+							<!-- live map -->
+							<div id="GoogleMap1"></div>
 						</div>
 					</div>
 				</div>
@@ -266,5 +268,7 @@
 		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 		<!-- link bootstrap javascript -->
 		<script src="js/bootstrap.min.js"></script>
+		<!-- link Google Maps API -->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM8lbhIZ94WtCL8mPV0161-qIMTOr4Aus"></script>
 	</body>
 </html>

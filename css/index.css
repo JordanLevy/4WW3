@@ -159,11 +159,22 @@ footer {
 	bottom: 0;
 	/*set footer width*/
 	width: 100%;
+	/*remove scroll on footer alone*/
+	overflow: hidden;
+}
+
+#GoogleMap1Container {
+	/*set results_sample map container height*/
+	height: 400px;
+	/*set results_sample map container width*/
+	width: 100%;
+	/*set results_sample map container padding*/
+	padding: 0px 50px 0px 50px;
 }
 
 #GoogleMap1 {
+	/*set results_sample map height*/
 	height: 400px;
-	/* The height is 400 pixels */
-	width: 400px;
-	/* The width is the width of the web page */
+	/*set results_sample map width*/
+	width: 100%;
 }

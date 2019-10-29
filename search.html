@@ -9,6 +9,8 @@
 		<link rel="stylesheet" href="css/index.css">
 		<!-- set page title -->
 		<title>McMaster Restroom Finder</title>
+		<!-- link custom js file to use geolocation -->
+		<script src="js/geo.js"></script>
 	</head>
 	<body>
 		<!-- navbar header -->
@@ -128,17 +130,16 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-4">
-				</div>
 				<!-- Search button -->
-				<div class="col-md-4">
+				<div class="col-md-6">
 					<div class="search">
-						<form action="results.html">
-							<button type="button" class="btn btn-primary btn-block">Search</button>
-						</form>
+						<button type="button" class="btn btn-primary btn-block" onclick="getLocation();window.location.href='results_sample.html';">Search by Location</button>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-6">
+					<div class="search">
+						<button type="button" class="btn btn-primary btn-block" onclick="window.location.href='results_sample.html'">Search by Criteria</button>
+					</div>
 				</div>
 			</div>
 		</div>
