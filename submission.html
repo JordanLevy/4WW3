@@ -53,70 +53,47 @@
 					<h3>Submit a New Location</h3>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<!-- "Building" textbox -->
-								<input type="text" class="form-control" id="building" placeholder="Building" required>
+			<form>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="row">
+							<!-- "Building" textbox -->
+							<input type="text" class="form-control" id="building" placeholder="Building" required>
+						</div>
+						<div class="row">
+							<!-- "Room #" textbox -->
+							<input type="text" class="form-control" id="roomNum" placeholder="Room #" pattern="[A-Za-z0-9]+" required>
+						</div>
+						<div class="row">
+							<div class="col-md-8">
+								<div class="row">
+									<!-- "Longitude" textbox -->
+									<input type="number" class="form-control" id="longitude" step="any" min="-180" max="180" placeholder="Longitude" required>
+								</div>
+								<div class="row">
+									<!-- "Latitude" textbox -->
+									<input type="number" class="form-control" id="latitude" step="any" min="-90" max="90" placeholder="Latitude" required>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<!-- "Use Current Location" button -->
+								<button type="button" id="currentLocBtn" class="btn btn-secondary" onclick="getLocation('None')">Use Current Location</button>
 							</div>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<!-- "Room #" textbox -->
-								<input type="text" class="form-control" id="roomNum" placeholder="Room #" pattern="[A-Za-z0-9]" required>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<!-- "Longitude" textbox -->
-								<input type="number" class="form-control" id="longitude" placeholder="Longitude" required>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<!-- "Latitude" textbox -->
-								<input type="number" class="form-control" id="latitude" placeholder="Latitude" required>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
+						<div class="row">
 							<!-- "Description" textarea -->
-								<textarea class="form-control" id="description" rows="3" placeholder="Description"></textarea>
+							<textarea class="form-control" id="description" placeholder="Description" required></textarea>
+						</div>
+						<div class="row">
+							<!-- "Submit" button -->
+							<button type="submit" class="btn btn-primary">Submit</button>
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<div class="form-group">
-								<!-- "Submit" button -->
-								<button type="submit" class="btn btn-primary">Submit</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-12">
-								<!-- image of object (to be uploaded) -->
-								<img src="placeholder.png" alt="Bathroom door" width="90%" class="objImg">
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<!-- "Upload an Image" button -->
-							<button type="submit" class="btn btn-primary">Upload an Image</button>
-						</div>
+					<div class="col-md-6">
+						<button class="btn btn-secondary" type="button">Upload an Image</button>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 		<!-- footer -->
 		<footer>
@@ -156,5 +133,7 @@
 		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 		<!-- link bootstrap javascript -->
 		<script src="js/bootstrap.min.js"></script>
+		<!-- link custom js file to use geolocation -->
+		<script src="js/geo.js"></script>
 	</body>
 </html>

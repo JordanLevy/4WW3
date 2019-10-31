@@ -27,11 +27,6 @@ body button {
 	margin: 3px;
 }
 
-body input {
-	/*add a margin to textboxes*/
-	margin: 3px;
-}
-
 .rating {
 	/*rotate the star rating 180 deg so that the stars fill left to right*/
 	transform: rotateY(180deg);
@@ -142,7 +137,7 @@ td {
 	/*round the corners on images of bathrooms*/
 	border-radius: 5px;
 	/*set the margins on pictures of bathrooms*/
-	margin: 5px 50px 50px 5px;
+	margin: 10px 5px 10px 5px;
 }
 
 label {
@@ -177,4 +172,41 @@ footer {
 	height: 400px;
 	/*set results_sample map width*/
 	width: 100%;
+}
+
+#building,
+#roomNum,
+#longitude,
+#latitude,
+#description,
+#uploadImg {
+	margin: 5px 0px 5px 0px;
+}
+
+#uploadImgBtn {
+	margin: 5px 0px 5px 2px;
+}
+
+#building:valid,
+#roomNum:valid,
+#longitude:valid,
+#latitude:valid,
+#description:valid,
+#uploadImg:valid {
+	border: 2px solid lightgreen;
+}
+
+#building:invalid,
+#roomNum:invalid,
+#longitude:invalid,
+#latitude:invalid,
+#description:invalid,
+#uploadImg:invalid {
+	border: 2px solid lightcoral;
+}
+
+#currentLocBtn {
+	margin: 5px 0px 5px 0px;
+	width: 95%;
+	height: 90%;
 }
