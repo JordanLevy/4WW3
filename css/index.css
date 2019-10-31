@@ -187,21 +187,11 @@ footer {
 	margin: 5px 0px 5px 2px;
 }
 
-#building:valid,
-#roomNum:valid,
-#longitude:valid,
-#latitude:valid,
-#description:valid,
-#uploadImg:valid {
+.formVal:valid {
 	border: 2px solid lightgreen;
 }
 
-#building:invalid,
-#roomNum:invalid,
-#longitude:invalid,
-#latitude:invalid,
-#description:invalid,
-#uploadImg:invalid {
+.formVal:invalid {
 	border: 2px solid lightcoral;
 }
 
