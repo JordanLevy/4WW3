@@ -1,3 +1,5 @@
+//handles uploading an image on the object submission  page
+
 window.addEventListener('load', function() {
 	//if the "Upload an Image" button has been clicked"
 	document.querySelector('input[type="file"]').addEventListener('change', function() {

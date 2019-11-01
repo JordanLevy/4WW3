@@ -1,10 +1,16 @@
+//runs the map on the search results page
+
+//map object
 var map;
-var InforObj = [];
-var centerCords = {
+//list of marker info tags
+var markerInfo = [];
+//coordinates to center the map at
+var centerCoords = {
 	lat: 43.2609,
 	lng: -79.9192
 };
-var markersOnMap = [{
+//list of coordinates of search results
+var markers = [{
 		placeName: "BSB B134",
 		LatLng: [{
 			lat: 43.262041,
@@ -27,16 +33,18 @@ var markersOnMap = [{
 	}
 ];
 
+//when the page loads, initialize the map
 window.onload = function () {
 	initMap();
 };
 
+//add the info tags for each marker
 function addMarkerInfo() {
-	for (var i = 0; i < markersOnMap.length; i++) {
-		var contentString = '<div id="content"><h2>' + markersOnMap[i].placeName + '</h2></div>';
+	for (var i = 0; i < markers.length; i++) {
+		var contentString = '<div id="content"><h2>' + markers[i].placeName + '</h2></div>';
 
 		const marker = new google.maps.Marker({
-			position: markersOnMap[i].LatLng[0],
+			position: markers[i].LatLng[0],
 			map: map
 		});
 
@@ -48,36 +56,25 @@ function addMarkerInfo() {
 		marker.addListener('click', function () {
 			closeOtherInfo();
 			infowindow.open(marker.get('map'), marker);
-			InforObj[0] = infowindow;
+			markerInfo[0] = infowindow;
 		});
-		// marker.addListener('mouseover', function () {
-		//     closeOtherInfo();
-		//     infowindow.open(marker.get('map'), marker);
-		//     InforObj[0] = infowindow;
-		// });
-		// marker.addListener('mouseout', function () {
-		//     closeOtherInfo();
-		//     infowindow.close();
-		//     InforObj[0] = infowindow;
-		// });
 	}
 }
 
+//close all other tags
 function closeOtherInfo() {
-	if (InforObj.length > 0) {
-		/* detach the info-window from the marker ... undocumented in the API docs */
-		InforObj[0].set("marker", null);
-		/* and close it */
-		InforObj[0].close();
-		/* blank the array */
-		InforObj.length = 0;
+	if (markerInfo.length > 0) {
+		markerInfo[0].set("marker", null);
+		markerInfo[0].close();
+		markerInfo.length = 0;
 	}
 }
 
+//initialize the map
 function initMap() {
 	map = new google.maps.Map(document.getElementById('GoogleMap1'), {
 		zoom: 15,
-		center: centerCords
+		center: centerCoords
 	});
 	addMarkerInfo();
 }

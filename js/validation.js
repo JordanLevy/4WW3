@@ -1,3 +1,5 @@
+//runs javascript validation on the user registration page
+
 function validate(){
 	//get values from form
 	var username = document.getElementById('username').value;
