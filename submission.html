@@ -26,21 +26,17 @@
 						<!-- "Search Form" link in navbar -->
 						<a class="nav-link" href="search.html">Search Form</a>
 					</li>
-					<li class="nav-item">
-						<!-- "Results Page" link in navbar -->
-						<a class="nav-link" href="results_sample.html">Results Page</a>
-					</li>
-					<li class="nav-item">
-						<!-- "Individual Object Page" link in navbar -->
-						<a class="nav-link" href="individual_sample.html">Individual Object Page</a>
-					</li>
 					<li class="nav-item active">
 						<!-- "Object Submission Page" link in navbar -->
-						<a class="nav-link" href="submission.html">Object Submission Page</a>
+						<a class="nav-link" href="submission.html">Submit a Restroom</a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href="registration.html">User Registration Page</a>
+						<a class="nav-link" href="">Log In</a>
+					</li>
+					<li class="nav-item">
+						<!-- "User Registration Page" link in navbar -->
+						<a class="nav-link" href="registration.html">Register</a>
 					</li>
 				</ul>
 			</div>
@@ -90,7 +86,9 @@
 						</div>
 					</div>
 					<div class="col-md-6">
-						<button class="btn btn-secondary" type="button">Upload an Image</button>
+						<label>Upload an Image:</label>
+						<input class="btn btn-secondary" type="file"/>
+						<img id="myImg" src="#" style="display:none" height="80%" width="80%">
 					</div>
 				</div>
 			</form>
@@ -135,5 +133,7 @@
 		<script src="js/bootstrap.min.js"></script>
 		<!-- link custom js file to use geolocation -->
 		<script src="js/geo.js"></script>
+		<!-- link custom js file to upload image -->
+		<script src="js/upImg.js"></script>
 	</body>
 </html>

@@ -96,17 +96,17 @@ body button {
 	opacity: 1;
 }
 
-.men label {
+.men {
 	/*set the "Men's washroom" text to blue*/
 	color: #1f9cff;
 }
 
-.women label {
+.women {
 	/*set the "Women's washroom" text to red*/
 	color: #ff005d;
 }
 
-.allGenders label {
+.allGenders {
 	/*set the "All Genders washroom" text to green*/
 	color: #aeff00;
 }
@@ -174,17 +174,8 @@ footer {
 	width: 100%;
 }
 
-#building,
-#roomNum,
-#longitude,
-#latitude,
-#description,
-#uploadImg {
+.formVal, .formValReg {
 	margin: 5px 0px 5px 0px;
-}
-
-#uploadImgBtn {
-	margin: 5px 0px 5px 2px;
 }
 
 .formVal:valid {

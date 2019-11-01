@@ -10,20 +10,6 @@ var markersOnMap = [{
 			lat: 43.262041,
 			lng: -79.920158
 		}]
-	},
-	{
-		placeName: "ITB 123",
-		LatLng: [{
-			lat: 43.258917,
-			lng: -79.920859
-		}]
-	},
-	{
-		placeName: "MDCL 1101",
-		LatLng: [{
-			lat: 43.261183,
-			lng: -79.916812
-		}]
 	}
 ];
 
@@ -33,7 +19,7 @@ window.onload = function () {
 
 function addMarkerInfo() {
 	for (var i = 0; i < markersOnMap.length; i++) {
-		var contentString = '<div id="content"><h2>' + markersOnMap[i].placeName + '</h2></div>';
+		var contentString = '<div id="content"><h1>' + markersOnMap[i].placeName + '</h1></div>';
 
 		const marker = new google.maps.Marker({
 			position: markersOnMap[i].LatLng[0],
