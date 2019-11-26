@@ -15,7 +15,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$password=$_POST['password'];
 		$confirmPassword=$_POST['confirmPassword'];
 		$email=$_POST['email'];
-		$birthday=$_POST['birthday'];
+		$birthday=$_POST['dateOfBirth'];
+		$notifications=0;
 
 		//check username
 		if(empty($username)){
@@ -31,12 +32,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if(empty($password)){
 			$isError=true;
 			echo '<span style="color:red;">A password is required</span><br/>';
-		} else {
-			if(!preg_match('/^.*(?=.{8,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/', $password)) {
-				$isError=true;
-				echo '<span style="color:red;">Password: length at least 8, contains at least one digit, lowercase, uppercase, and special character</span><br/>';
-			}
-		}
+		} 
+
+		// else {
+		// 	//if(!preg_match('/^.*(?=.{8,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/', $password)) {
+		// 		//$isError=true;
+		// 		//echo '<span style="color:red;">Password: length at least 8, contains at least one digit, lowercase, uppercase, and special character</span><br/>';
+		// 	//}
+		// }
 		//check confirmPassword
 		if(empty($confirmPassword)){
 			$isError=true;
@@ -58,13 +61,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			}
 		}
 		$password=password_hash($password, PASSWORD_BCRYPT);
+	
+		if(isset($_POST['notifications'])){
+			$notifications=1;
+		}
+
+		echo "username: " . $username . "<br>";
+		echo "password: " . $password . "<br>";
+		echo "email: " . $email . "<br>";
+		echo "birthday: " . $birthday . "<br>";
+
+		if(!$isError) {
+			$params = array($username, $password, $email, $birthday, $notifications);
+			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES (?, ?, ?, ?, ?)";
+			echo "Query: " . $query . "<br>";
+			echo "Params: " . $params . "<br>";
+			echo "Connection: " . $conn . "<br>";
+			//sqlsrv_query( $conn, $query);
+		}
 
 	}
-
-	echo "username: " . $username;
-	echo "password: " . $password;
-	echo "email: " . $email;
-	echo "birthday: " . $birthday;
 }
 
 	// //include the config file
