@@ -1,5 +1,5 @@
 <?php
-echo "config page!"
+echo "config page!";
 
 // //define the sql login credentials
 // define('DB_SERVER', 'localhost');
