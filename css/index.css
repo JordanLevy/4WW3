@@ -8,6 +8,7 @@ html, body {
 body {
 	/*set background color to black*/
 	background: #262626 !important;
+	color: white;
 }
 
 body h4 {

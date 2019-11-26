@@ -15,7 +15,7 @@ function validate(){
 	var usernameRegex = /^[A-Za-z0-9!@#$%&*_.]{6,30}$/;
 	//password must:
 	//be at least 8 characters long
-	//contain at least one digit, lowercase, uppercase, and special charazcter
+	//contain at least one digit, lowercase, uppercase, and special character
 	var passwordRegex = /^.*(?=.{8,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/;
 	//email must be of the form ___@___.___
 	var emailRegex = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}$/;
