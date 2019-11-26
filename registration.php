@@ -93,6 +93,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 	}
 }
 
+
+// try to close the db connection at the end 
+try {
+	sqlsrv_close($conn);
+	echo "database connected closed I think!<br>";
+	var_dump($conn);
+} catch (Exception $e) {
+	$code = $e->getCode();
+	$msg = $e->getMessage();
+	echo $code.": ".$error_message."<br />";
+
+}
+
 	// //include the config file
 	// require_once "config.php";
 

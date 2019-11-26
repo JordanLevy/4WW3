@@ -38,9 +38,9 @@ try {
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
 	echo "database connected I think!<br>";
 	var_dump($conn);
-	sqlsrv_close($conn);
-	echo "database connected closed I think!<br>";
-	var_dump($conn);
+	// sqlsrv_close($conn);
+	// echo "database connected closed I think!<br>";
+	// var_dump($conn);
 } catch (Exception $e) {
 	$code = $e->getCode();
 	$msg = $e->getMessage();
