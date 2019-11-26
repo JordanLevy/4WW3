@@ -77,7 +77,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			echo "Query: " . $query . "<br>";
 			echo "Params: " . $params . "<br>";
 			echo "Connection: " . $conn . "<br>";
-			$result = sqlsrv_query( $conn, $query);
+			var_dump($conn);
+			$result = sqlsrv_query($conn, $query, $params);
 			if( $result === false ) {
 				echo "ERROR<br>";
 				$errors=sqlsrv_errors();
