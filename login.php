@@ -1,6 +1,10 @@
  <?php
 
-echo "hello world!"
+require_once "config.php"
+
+echo "hello world!";
+echo $_POST["username"];
+echo $_POST["password"];
 
 // // Initialize the session
 // session_start();
@@ -33,7 +37,7 @@ echo "hello world!"
 //         $password = trim($_POST["password"]);
 //     }
     
-//     // Validate credentials
+//     //   credentials
 //     if(!$isError){
 //         // Prepare a select statement
 //         $sql = "SELECT id, username, password FROM users WHERE username = ?";
