@@ -3,8 +3,8 @@
 require_once "config.php"
 
 echo "hello world!";
-echo $_POST["username"];
-echo $_POST["password"];
+// echo $_POST["username"];
+// echo $_POST["password"];
 
 // // Initialize the session
 // session_start();
