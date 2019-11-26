@@ -2,7 +2,7 @@
 
 require_once "config.php";
 
-echo "hello world!";
+echo "hello world!<br>";
 // echo $_POST["username"];
 // echo $_POST["password"];
 

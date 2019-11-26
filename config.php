@@ -1,5 +1,5 @@
 <?php
-echo "config page!";
+echo "config page!<br>";
 
 // //define the sql login credentials
 // define('DB_SERVER', 'localhost');
@@ -36,7 +36,11 @@ $serverName = "tcp:4ww3dbserver.database.windows.net,1433";
 
 try {
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
+	echo "database connected I think!<br>";
+	var_dump($conn);
 	sqlsrv_close($conn);
+	echo "database connected closed I think!<br>";
+	var_dump($conn);
 } catch (Exception $e) {
 	$code = $e->getCode();
 	$msg = $e->getMessage();
