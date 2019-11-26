@@ -36,7 +36,7 @@ $serverName = "tcp:4ww3dbserver.database.windows.net,1433";
 
 try {
 	$conn = sqlsrv_connect($serverName, $connectionInfo);
-	$conn.disconnect();
+	$sqlsrv_close($conn);
 } catch (Exception $e) {
 	$code = $e->getCode();
 	$msg = $e->getMessage();
