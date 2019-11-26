@@ -1,80 +1,80 @@
 <?php
-	//include the config file
-	require_once "config.php";
+	// //include the config file
+	// require_once "config.php";
 
-	if(isset($_POST['submit'])){
-		$username=$_POST['username'];
-		$password=$_POST['password'];
-		$confirmPassword=$_POST['confirmPassword'];
-		$email=$_POST['email'];
-		$dateOfBirth=$_POST['dateOfBirth'];
-		$termsOfService=0;
-		$notifications=0;
-		$isError=false;
+	// if(isset($_POST['submit'])){
+	// 	$username=$_POST['username'];
+	// 	$password=$_POST['password'];
+	// 	$confirmPassword=$_POST['confirmPassword'];
+	// 	$email=$_POST['email'];
+	// 	$dateOfBirth=$_POST['dateOfBirth'];
+	// 	$termsOfService=0;
+	// 	$notifications=0;
+	// 	$isError=false;
 
-		if(isset($_POST['termsOfService'])){
-			$termsOfService=1;
-		}
-		if(isset($_POST['notifications'])){
-			$notifications=1;
-		}
+	// 	if(isset($_POST['termsOfService'])){
+	// 		$termsOfService=1;
+	// 	}
+	// 	if(isset($_POST['notifications'])){
+	// 		$notifications=1;
+	// 	}
 
 
-		//check username
-		if(empty($username)){
-			$isError=true;
-			echo '<span style="color:red;">A username is required</span><br/>';
-		} else {
-			if(!preg_match('/^[A-Za-z0-9!@#$%&*_.]{6,30}$/', $username)) {
-				$isError=true;
-				echo '<span style="color:red;">Username: length at least 6, length at most 30, contains only letters, numbers, and special characters</span><br/>';
-			}
-		}
-		//check password
-		if(empty($password)){
-			$isError=true;
-			echo '<span style="color:red;">A password is required</span><br/>';
-		} else {
-			if(!preg_match('/^.*(?=.{8,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/', $password)) {
-				$isError=true;
-				echo '<span style="color:red;">Password: length at least 8, contains at least one digit, lowercase, uppercase, and special character</span><br/>';
-			}
-		}
-		//check confirmPassword
-		if(empty($confirmPassword)){
-			$isError=true;
-			echo '<span style="color:red;">A password confirmation is required</span><br/>';
-		} else {
-			if($password != $confirmPassword) {
-				$isError=true;
-				echo '<span style="color:red;">Password confirmation must match password</span><br/>';
-			}
-		}
-		//check email
-		if(empty($email)){
-			$isError=true;
-			echo '<span style="color:red;">An email is required</span><br/>';
-		} else {
-			if(!preg_match('/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}$/', $email)) {
-				$isError=true;
-				echo '<span style="color:red;">Email must be of the form __@__.com</span><br/>';
-			}
-		}
+	// 	//check username
+	// 	if(empty($username)){
+	// 		$isError=true;
+	// 		echo '<span style="color:red;">A username is required</span><br/>';
+	// 	} else {
+	// 		if(!preg_match('/^[A-Za-z0-9!@#$%&*_.]{6,30}$/', $username)) {
+	// 			$isError=true;
+	// 			echo '<span style="color:red;">Username: length at least 6, length at most 30, contains only letters, numbers, and special characters</span><br/>';
+	// 		}
+	// 	}
+	// 	//check password
+	// 	if(empty($password)){
+	// 		$isError=true;
+	// 		echo '<span style="color:red;">A password is required</span><br/>';
+	// 	} else {
+	// 		if(!preg_match('/^.*(?=.{8,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/', $password)) {
+	// 			$isError=true;
+	// 			echo '<span style="color:red;">Password: length at least 8, contains at least one digit, lowercase, uppercase, and special character</span><br/>';
+	// 		}
+	// 	}
+	// 	//check confirmPassword
+	// 	if(empty($confirmPassword)){
+	// 		$isError=true;
+	// 		echo '<span style="color:red;">A password confirmation is required</span><br/>';
+	// 	} else {
+	// 		if($password != $confirmPassword) {
+	// 			$isError=true;
+	// 			echo '<span style="color:red;">Password confirmation must match password</span><br/>';
+	// 		}
+	// 	}
+	// 	//check email
+	// 	if(empty($email)){
+	// 		$isError=true;
+	// 		echo '<span style="color:red;">An email is required</span><br/>';
+	// 	} else {
+	// 		if(!preg_match('/^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+.[A-Za-z]{2,4}$/', $email)) {
+	// 			$isError=true;
+	// 			echo '<span style="color:red;">Email must be of the form __@__.com</span><br/>';
+	// 		}
+	// 	}
 
-		if($termsOfService!=1){
-			$isError=true;
-			echo '<span style="color:red;">You must agree to the Terms of Service</span><br/>';
-		}
+	// 	if($termsOfService!=1){
+	// 		$isError=true;
+	// 		echo '<span style="color:red;">You must agree to the Terms of Service</span><br/>';
+	// 	}
 
-		$password=password_hash($password, PASSWORD_BCRYPT);
+	// 	$password=password_hash($password, PASSWORD_BCRYPT);
 
-		if(!$isError) {
-			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES ('$username', '$password', '$email', '$dateOfBirth', '$notifications')";
-			if(!mysqli_query($link, $query)){
-				echo mysqli_error($link);
-			}
-		}
-	}
+	// 	if(!$isError) {
+	// 		$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES ('$username', '$password', '$email', '$dateOfBirth', '$notifications')";
+	// 		if(!mysqli_query($link, $query)){
+	// 			echo mysqli_error($link);
+	// 		}
+	// 	}
+	// }
 ?>
 
 <!DOCTYPE html>
