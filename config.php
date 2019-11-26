@@ -1,4 +1,6 @@
 <?php
+echo "config page!"
+
 // //define the sql login credentials
 // define('DB_SERVER', 'localhost');
 // define('DB_USERNAME', 'root');
@@ -29,18 +31,17 @@
 //   echo $code.": ".$error_message."<br />";
 // }
 
-// $connectionInfo = array("UID" => "jordan", "pwd" => "levy2019!", "Database" => "4ww3db", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-// $serverName = "tcp:4ww3dbserver.database.windows.net,1433";
+$connectionInfo = array("UID" => "jordan", "pwd" => "levy2019!", "Database" => "4ww3db", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+$serverName = "tcp:4ww3dbserver.database.windows.net,1433";
 
-// try {
-// 	$conn = sqlsrv_connect($serverName, $connectionInfo);
-// 	$conn.disconnect();
-// } catch (Exception $e) {
-// 	$code = $e->getCode();
-// 	$msg = $e->getMessage();
-// 	echo $code.": ".$error_message."<br />";
+try {
+	$conn = sqlsrv_connect($serverName, $connectionInfo);
+	$conn.disconnect();
+} catch (Exception $e) {
+	$code = $e->getCode();
+	$msg = $e->getMessage();
+	echo $code.": ".$error_message."<br />";
 
-echo "config page!"
-// }
+}
 
 ?>
