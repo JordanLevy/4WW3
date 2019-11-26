@@ -1,4 +1,7 @@
  <?php
+
+echo "hello world!"
+
 // // Initialize the session
 // session_start();
  
