@@ -80,7 +80,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$result = sqlsrv_query( $conn, $query);
 			if( $result === false ) {
 				echo "ERROR<br>";
-				echo sqlsrv_errors();
+				$errors=sqlsrv_errors();
+				var_dump($errors);
+				echo "<br>";
+				print_r($errors);
+				echo "<br>";
 			    die();
 			}
 		}
