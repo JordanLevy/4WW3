@@ -2,7 +2,7 @@
 
 require_once "config.php";
 
-$username = $password = $confirmPassword = $email = $birthday = "";
+$username = $password = $confirmPassword = $email = $dateOfBirth = "";
 $isError = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -13,7 +13,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$password=$_POST['password'];
 		$confirmPassword=$_POST['confirmPassword'];
 		$email=$_POST['email'];
-		$birthday=$_POST['dateOfBirth'];
+		$dateOfBirth=$_POST['dateOfBirth'];
 		$notifications=0;
 
 		//check username
@@ -62,13 +62,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$notifications=1;
 		}
 
-		echo "username: " . $username . "<br>";
-		echo "password: " . $password . "<br>";
-		echo "email: " . $email . "<br>";
-		echo "birthday: " . $birthday . "<br>";
+		$dateOfBirth=date("Y-m-d H:i:s", $dateOfBirth);
 
 		if(!$isError) {
-			$params = array($username, $password, $email, $birthday, $notifications);
+			$params = array($username, $password, $email, $dateOfBirth, $notifications);
 			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES (?, ?, ?, ?, ?)";
 			$result = sqlsrv_query($conn, $query, $params);
 			if( $result === false ) {
