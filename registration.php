@@ -62,11 +62,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$notifications=1;
 		}
 
-		echo $username
-		echo $password
-		echo $email
-		echo $dateOfBirth
-		echo $notifications
+		echo $username;
+		echo $password;
+		echo $email;
+		echo $dateOfBirth;
+		echo $notifications;
 
 		if(!$isError) {
 			$params = array($username, $password, $email, $dateOfBirth, $notifications);
