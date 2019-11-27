@@ -71,7 +71,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 		if(!$isError) {
 			//$params = array($username, $password, $email, $dateOfBirth, $notifications);
-			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES ($username, $password, $email, $dateOfBirth, $notifications)";
+			$query="INSERT INTO users (username, password, email, notifications) VALUES ($username, $password, $email, $notifications);";
 			$result = sqlsrv_query($this->connection, $query);
 			if( $result === false ) {
 				echo "ERROR<br>";
