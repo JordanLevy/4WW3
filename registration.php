@@ -30,14 +30,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if(empty($password)){
 			$isError=true;
 			echo '<span style="color:red;">A password is required</span><br/>';
-		} 
-
-		// else {
-		// 	//if(!preg_match('/^.*(?=.{8,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/', $password)) {
-		// 		//$isError=true;
-		// 		//echo '<span style="color:red;">Password: length at least 8, contains at least one digit, lowercase, uppercase, and special character</span><br/>';
-		// 	//}
-		// }
+		} else {
+			if(!preg_match('/^.*(?=.{8,})(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*? ]).*$/', $password)) {
+				$isError=true;
+				echo '<span style="color:red;">Password: length at least 8, contains at least one digit, lowercase, uppercase, and special character</span><br/>';
+			}
+		}
 		//check confirmPassword
 		if(empty($confirmPassword)){
 			$isError=true;
@@ -72,12 +70,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if(!$isError) {
 			$params = array($username, $password, $email, $birthday, $notifications);
 			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES (?, ?, ?, ?, ?)";
-			var_dump($conn);
 			$result = sqlsrv_query($conn, $query, $params);
 			if( $result === false ) {
 				echo "ERROR<br>";
 				$errors=sqlsrv_errors();
-				var_dump($errors);
 				echo "<br>";
 				print_r($errors);
 				echo "<br>";
@@ -92,7 +88,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 // try to close the db connection at the end 
 try {
 	sqlsrv_close($conn);
-	var_dump($conn);
 } catch (Exception $e) {
 	$code = $e->getCode();
 	$msg = $e->getMessage();

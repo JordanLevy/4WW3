@@ -7,12 +7,10 @@ $conn = false;
 if ($conn != false) {
 	try {
 		$conn = sqlsrv_connect($serverName, $connectionInfo);
-		var_dump($conn);
 	} catch (Exception $e) {
 		$code = $e->getCode();
 		$msg = $e->getMessage();
 		echo $code.": ".$error_message."<br />";
-
 	}
 }
 
