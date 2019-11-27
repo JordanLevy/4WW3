@@ -67,8 +67,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		echo $email . "<br/>";
 		echo $dateOfBirth . "<br/>";
 		echo $notifications . "<br/>";
-		echo $isError . "<br/>";
-		
+		var_dump($isError);
+
 		if(!$isError) {
 			$params = array($username, $password, $email, $dateOfBirth, $notifications);
 			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES (?, ?, ?, ?, ?)";
