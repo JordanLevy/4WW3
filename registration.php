@@ -65,9 +65,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$dateOfBirth=date("Y-m-d H:i:s", $dateOfBirth);
 
 		if(!$isError) {
-			$params = array($username, $password, $email, $dateOfBirth, $notifications);
-			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES (?, ?, ?, ?, ?)";
-			$result = sqlsrv_query($conn, $query, $params);
+			//$params = array($username, $password, $email, $dateOfBirth, $notifications);
+			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES ($username, $password, $email, $dateOfBirth, $notifications)";
+			$result = sqlsrv_query($conn, $query);//, $params);
 			if( $result === false ) {
 				echo "ERROR<br>";
 				$errors=sqlsrv_errors();
