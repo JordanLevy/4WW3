@@ -2,8 +2,6 @@
 
 require_once "config.php";
 
-echo "hello world!<br>";
-
 $username = $password = $confirmPassword = $email = $birthday = "";
 $isError = false;
 
@@ -74,9 +72,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if(!$isError) {
 			$params = array($username, $password, $email, $birthday, $notifications);
 			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES (?, ?, ?, ?, ?)";
-			echo "Query: " . $query . "<br>";
-			echo "Params: " . $params . "<br>";
-			echo "Connection: " . $conn . "<br>";
 			var_dump($conn);
 			$result = sqlsrv_query($conn, $query, $params);
 			if( $result === false ) {
@@ -97,7 +92,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 // try to close the db connection at the end 
 try {
 	sqlsrv_close($conn);
-	echo "database connected closed I think!<br>";
 	var_dump($conn);
 } catch (Exception $e) {
 	$code = $e->getCode();
