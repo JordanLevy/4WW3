@@ -79,7 +79,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				echo "<br>";
 				print_r($errors);
 				echo "<br>";
-			    die();
+			    //die();
 			}
 		}
 
