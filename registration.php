@@ -2,7 +2,13 @@
 
 require_once "config.php";
 
+<<<<<<< HEAD
 $username = $password = $confirmPassword = $email = $dateOfBirth = "";
+=======
+echo "hello world!<br>";
+
+$username = $password = $confirmPassword = $email = $birthday = "";
+>>>>>>> parent of 054765e... Removed more echo commands
 $isError = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -73,6 +79,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if(!$isError) {
 			$params = array($username, $password, $email, $dateOfBirth, $notifications);
 			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES (?, ?, ?, ?, ?)";
+<<<<<<< HEAD
+=======
+			echo "Query: " . $query . "<br>";
+			echo "Params: " . $params . "<br>";
+			echo "Connection: " . $conn . "<br>";
+			var_dump($conn);
+>>>>>>> parent of 054765e... Removed more echo commands
 			$result = sqlsrv_query($conn, $query, $params);
 			if( $result === false ) {
 				echo "ERROR<br>";
@@ -91,6 +104,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 // try to close the db connection at the end 
 try {
 	sqlsrv_close($conn);
+<<<<<<< HEAD
+=======
+	echo "database connected closed I think!<br>";
+	var_dump($conn);
+>>>>>>> parent of 054765e... Removed more echo commands
 } catch (Exception $e) {
 	$code = $e->getCode();
 	$msg = $e->getMessage();
