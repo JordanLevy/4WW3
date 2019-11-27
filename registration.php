@@ -70,9 +70,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		var_dump($isError);
 
 		if(!$isError) {
-			$params = array($username, $password, $email, $dateOfBirth, $notifications);
-			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES (?, ?, ?, ?, ?)";
-			$result = sqlsrv_query($this->connection, $query, $params);
+			//$params = array($username, $password, $email, $dateOfBirth, $notifications);
+			$query="INSERT INTO users (username, password, email, dateOfBirth, notifications) VALUES ($username, $password, $email, $dateOfBirth, $notifications)";
+			$result = sqlsrv_query($this->connection, $query);
 			if( $result === false ) {
 				echo "ERROR<br>";
 				$errors=sqlsrv_errors();
