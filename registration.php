@@ -68,11 +68,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		echo $dateOfBirth . "<br/>";
 		echo $notifications . "<br/>";
 		var_dump($isError);
+		var_dump($conn);
 
 		if(!$isError) {
 			$params = array($username, $password);
 			$query="INSERT INTO test (username, password) VALUES (?, ?)";
-			$result = sqlsrv_query($this->connection, $query, $params);
+			$result = sqlsrv_query($conn, $query, $params);
 			if( $result === false ) {
 				echo "ERROR<br>";
 				$errors=sqlsrv_errors();
