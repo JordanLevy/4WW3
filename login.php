@@ -46,7 +46,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(sqlsrv_stmt_execute($stmt)){
                 // Store result
                 sqlsrv_stmt_store_result($stmt);
-            
+            	echo "here";
                 // Check if username exists, if yes then verify password
                 if(sqlsrv_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
@@ -59,8 +59,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                        	echo "here";
+                            $_SESSION["username"] = $username; 
                             // Redirect user to welcome page
                             header("location: welcome.php");
                         } else{
