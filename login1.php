@@ -3,69 +3,39 @@
 //start session
 session_start();
 
-//if the user is already logged in, redirect them
-if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
-    exit;
-}
-
 require_once "config.php";
 
-$username = $password = "";
-$isError = false;
+//get inpuf from fields
+$user = $_POST['username'];
+$password = $_POST['password'];
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+#checks if the html form is filled
+if(empty($_POST['username']) || empty($_POST['password'])){
+    echo "Fill all the fields!";
+}else{
 
-	if(isset($_POST['login'])){
-		//get input from fields
-		$username = $_POST['username'];
-		$password = $_POST['password'];
+#searches for user and password in the database
+$query = "SELECT id, username, password FROM users WHERE username='{$user}'";
+$result = sqlsrv_query($conn, $query);  //$conn is your connection
 
+#checks if the search was made
+if($result === false){
+     die( print_r( sqlsrv_errors(), true));
+}
 
-		//check username
-		if(empty($username)){
-			$isError=true;
-			echo '<span style="color:red;">A username is required</span><br/>';
-		}
-		//check password
-		if(empty($password)){
-			$isError=true;
-			echo '<span style="color:red;">A password is required</span><br/>';
-		}
-
-		if(!$isError) {
-			//search for user in database
-			$query = "SELECT id, username, password FROM users WHERE username='{$user}'";
-			echo $query;
-			$result = sqlsrv_query($conn, $query);
-			//if the search didn't work
-			if( $result === false ) {
-				echo "ERROR<br>";
-				$errors=sqlsrv_errors();
-				echo "<br>";
-				print_r($errors);
-				echo "<br>";
-			    die();
-			}
-
-			//if it's zero rows
-			if(sqlsrv_has_rows($result) != 1){
-			       echo "Incorrect username or password";
-			}else{
-				#creates sessions
-			    while($row = sqlsrv_fetch_array($result)){
-			    	if(password_verify($password, $row['password']))
-			    	{
-			       		$_SESSION["loggedin"] = true;
-                        $_SESSION["id"] = $row['id'];
-                        $_SESSION["username"] = $username;
-                        header("Location: welcome.php");
-			   		} else {
-			   			echo "Incorrect username or password";
-			   		}
-			    }
-			}
-		}
+#checks if the search brought some row and if it is one only row
+if(sqlsrv_has_rows($result) != 1){
+       echo "User/password not found";
+}else{
+#creates sessions
+    while($row = sqlsrv_fetch_array($result)){
+       $_SESSION['id'] = $row['id'];
+       $_SESSION['name'] = $row['name'];
+       $_SESSION['user'] = $row['user'];
+       $_SESSION['level'] = $row['level'];
+    }
+#redirects user
+    header("Location: welcome.php");
 	}
 }
 
@@ -135,7 +105,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						</div>
 						<div class="row">
 							<!-- "Submit" button -->
-							<button type="submit" name="login" class="btn btn-primary">Log In</button>
+							<input type="submit" class="btn btn-primary" value="Login">
 						</div>
 					</div>
 				</div>
