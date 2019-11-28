@@ -17,7 +17,7 @@ $isError=false;
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 	if(isset($_POST['submit'])){
-
+		echo "1";
 		if(empty(trim($_POST["username"]))){
 			$isError=true;
 			echo "Please enter username.";
@@ -36,7 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if(!$isError){
 			// Prepare a select statement
 			$sql = "SELECT id, username, password FROM users WHERE username = ?";
-			echo "1";
+			
 			if($stmt = sqlsrv_prepare($link, $sql)){
 				echo "2";
 				// Bind variables to the prepared statement as parameters
