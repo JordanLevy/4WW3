@@ -107,8 +107,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						<a class="nav-link" href="submission.php">Submit a Restroom</a>
 					</li>
 					<li class="nav-item active">
-						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href="">Log In</a>
+						<!-- "Login Page" link in navbar -->
+						<a class="nav-link" href="login.php">Log In</a>
+					</li>
+					<li class="nav-item">
+						<!-- "Log Out Page" link in navbar -->
+						<a class="nav-link" href="logout.php">Log Out</a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
