@@ -139,7 +139,7 @@ try {
 						</div>
 						<div class="row">
 							<!-- "Room #" textbox -->
-							<input type="text" class="form-control formValReg" id="roomNum" name="roomNum" placeholder="Room #" pattern="[A-Za-z0-9]+" required>
+							<input type="text" class="form-control formValReg" id="roomNum" name="roomNum" placeholder="Room #" required>
 						</div>
 						<div class="row">
 							<div class="col-md-8">
