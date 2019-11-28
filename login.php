@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 		if(!$isError) {
 			//search for user in database
-			$query = "SELECT id, username, password FROM users WHERE username='Jordan'";
+			$query = "SELECT id, username, password FROM users WHERE username='" . $username . "'";
 			$result = sqlsrv_query($conn, $query);
 			//if the search didn't work
 			if( $result === false ) {
@@ -49,16 +49,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			//if it's zero rows
 			if(sqlsrv_has_rows($result) != 1){
-			       echo "No rows<br/>";
+			       echo "Incorrect username or password";
 			}else{
-				#creates sessions
+				//get the query results
 			    while($row = sqlsrv_fetch_array($result)){
+			    	//if the password is correct
 			    	if(password_verify($password, $row['password']))
 			    	{
+			    		//start the session
 			    		session_start();
 			       		$_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $row['id'];
                         $_SESSION["username"] = $username;
+                        //redirect
                         header("location:welcome.php");
 			   		} else {
 			   			echo "Incorrect username or password";
