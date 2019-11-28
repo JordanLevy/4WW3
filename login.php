@@ -30,7 +30,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
 
-    var_dump($isError);
     //credentials
     if(!$isError){
         // Prepare a select statement
@@ -61,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;                            
-                        
+                        	echo "here";
                             // Redirect user to welcome page
                             header("location: welcome.php");
                         } else{
