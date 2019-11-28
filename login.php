@@ -50,10 +50,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			//if it's zero rows
 			if(sqlsrv_has_rows($result) != 1){
-			       echo "Incorrect username or password";
+			       echo "No rows<br/>";
 			}else{
 				#creates sessions
 			    while($row = sqlsrv_fetch_array($result)){
+			    	echo $row['password'] . "<br/>";
 			    	if(password_verify($password, $row['password']))
 			    	{
 			       		$_SESSION["loggedin"] = true;
