@@ -5,7 +5,7 @@ session_start();
 
 //if the user is already logged in, redirect them
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location: welcome.php");
+    header("location:welcome.php");
     exit;
 }
 
@@ -60,7 +60,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			       		$_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $row['id'];
                         $_SESSION["username"] = $username;
-                        header("Location: welcome.php");
+                        header("location:welcome.php");
 			   		} else {
 			   			echo "Incorrect username or password";
 			   		}
