@@ -4,7 +4,6 @@ session_start();
  
 // Check if the user is already logged in, if yes then redirect him to welcome page
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-	echo "hello";
 	header("location: welcome.php");
 	exit;
 }
@@ -17,8 +16,7 @@ $isError=false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
-	if(isset($_POST['submit'])){
-		echo "1";
+	if(isset($_POST['login'])){
 		if(empty(trim($_POST["username"]))){
 			$isError=true;
 			echo "Please enter username.";
@@ -152,7 +150,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						</div>
 						<div class="row">
 							<!-- "Submit" button -->
-							<button type="submit" value="Login" class="btn btn-primary">Log In</button>
+							<button type="submit" name="submit" class="btn btn-primary">Log In</button>
 						</div>
 					</div>
 				</div>
