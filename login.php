@@ -61,6 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			       		$_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $row['id'];
                         $_SESSION["username"] = $username;
+                        echo $_SESSION["id"] . "<br/>";
                         header("location:welcome.php");
 			   		} else {
 			   			echo "Incorrect username or password";
