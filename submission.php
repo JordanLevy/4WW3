@@ -1,3 +1,84 @@
+<?php
+
+require_once "config.php";
+
+$building = $roomNum = $longitude = $latitude = $description = "";
+$isError = false;
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+	if(isset($_POST['submit'])){
+
+		$building=$_POST['building'];
+		$roomNum=$_POST['roomNum'];
+		$longitude=$_POST['longitude'];
+		$latitude=$_POST['latitude'];
+		$description=$_POST['description'];
+
+		//check building
+		if(empty($building)){
+			$isError=true;
+			echo '<span style="color:red;">A building is required</span><br/>';
+		}
+
+		//check room number
+		if(empty($roomNum)){
+			$isError=true;
+			echo '<span style="color:red;">A room number is required</span><br/>';
+		} else {
+			if(!preg_match('[A-Za-z0-9]+', $roomNum)) {
+				$isError=true;
+				echo '<span style="color:red;">Room number: any length, can contain only numbers and letters</span><br/>';
+			}
+		}
+
+		//check longitude
+		if(empty($longitude)){
+			$isError=true;
+			echo '<span style="color:red;">A longitude is required</span><br/>';
+		}
+
+		//check latitude
+		if(empty($latitude)){
+			$isError=true;
+			echo '<span style="color:red;">A latitude is required</span><br/>';
+		}
+
+		//check description
+		if(empty($description)){
+			$isError=true;
+			echo '<span style="color:red;">A description is required</span><br/>';
+		}
+
+		if(!$isError) {
+			$params = array($building, $roomNum, $longitude, $latitude, $description);
+			$query="INSERT INTO objects (building, roomNum, longitude, latitude, description) VALUES (?, ?, ?, ?, ?)";
+			$result = sqlsrv_query($conn, $query, $params);
+			if( $result === false ) {
+				echo "ERROR<br>";
+				$errors=sqlsrv_errors();
+				echo "<br>";
+				print_r($errors);
+				echo "<br>";
+			    die();
+			}
+		}
+
+	}
+}
+
+
+// try to close the db connection at the end 
+try {
+	sqlsrv_close($conn);
+} catch (Exception $e) {
+	$code = $e->getCode();
+	$msg = $e->getMessage();
+	echo $code.": ".$error_message."<br />";
+
+}
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -49,26 +130,26 @@
 					<h3>Submit a New Location</h3>
 				</div>
 			</div>
-			<form>
+			<form action="#" method="post">
 				<div class="row">
 					<div class="col-md-6">
 						<div class="row">
 							<!-- "Building" textbox -->
-							<input type="text" class="form-control formVal" id="building" placeholder="Building" required>
+							<input type="text" class="form-control" id="building" name="building" placeholder="Building" required>
 						</div>
 						<div class="row">
 							<!-- "Room #" textbox -->
-							<input type="text" class="form-control formVal" id="roomNum" placeholder="Room #" pattern="[A-Za-z0-9]+" required>
+							<input type="text" class="form-control" id="roomNum" name="roomNum" placeholder="Room #" pattern="[A-Za-z0-9]+" required>
 						</div>
 						<div class="row">
 							<div class="col-md-8">
 								<div class="row">
 									<!-- "Longitude" textbox -->
-									<input type="number" class="form-control formVal" id="longitude" step="any" min="-180" max="180" placeholder="Longitude" required>
+									<input type="number" class="form-control" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="Longitude" required>
 								</div>
 								<div class="row">
 									<!-- "Latitude" textbox -->
-									<input type="number" class="form-control formVal" id="latitude" step="any" min="-90" max="90" placeholder="Latitude" required>
+									<input type="number" class="form-control" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="Latitude" required>
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -78,11 +159,11 @@
 						</div>
 						<div class="row">
 							<!-- "Description" textarea -->
-							<textarea class="form-control formVal" id="description" placeholder="Description" required></textarea>
+							<textarea class="form-control" id="description" name="description" placeholder="Description" required></textarea>
 						</div>
 						<div class="row">
 							<!-- "Submit" button -->
-							<button type="submit" class="btn btn-primary">Submit</button>
+							<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 						</div>
 					</div>
 					<div class="col-md-6">

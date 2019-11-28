@@ -56,23 +56,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				echo '<span style="color:red;">Email must be of the form __@__.com</span><br/>';
 			}
 		}
+		
 		$password=password_hash($password, PASSWORD_BCRYPT);
 	
 		if(isset($_POST['notifications'])){
 			$notifications=1;
 		}
 
-		echo $username . "<br/>";
-		echo $password . "<br/>";
-		echo $email . "<br/>";
-		echo $dateOfBirth . "<br/>";
-		echo $notifications . "<br/>";
-		var_dump($isError);
-		var_dump($conn);
-
 		if(!$isError) {
-			$params = array($username, $password, $email, $notifications);
-			$query="INSERT INTO users (username, password, email, notifications) VALUES (?, ?, ?, ?)";
+			$params = array($username, $password, $email, $notifications, $dateOfBirth);
+			$query="INSERT INTO users (username, password, email, notifications, dateOfBirth) VALUES (?, ?, ?, ?, ?)";
 			$result = sqlsrv_query($conn, $query, $params);
 			if( $result === false ) {
 				echo "ERROR<br>";
@@ -150,7 +143,7 @@ try {
 					<h3>Register an Account</h3>
 				</div>
 			</div>
-			<form method="POST" action="#">
+			<form action="#" method="post">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">
