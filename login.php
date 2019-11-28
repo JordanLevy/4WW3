@@ -30,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $password = trim($_POST["password"]);
     }
 
+    var_dump($isError);
     //credentials
     if(!$isError){
         // Prepare a select statement
