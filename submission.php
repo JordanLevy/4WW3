@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			$isError=true;
 			echo '<span style="color:red;">A room number is required</span><br/>';
 		} else {
-			if(!preg_match('[A-Za-z0-9]+', $roomNum)) {
+			if(!preg_match('/[A-Za-z0-9]+/', $roomNum)) {
 				$isError=true;
 				echo '<span style="color:red;">Room number: any length, can contain only numbers and letters</span><br/>';
 			}
