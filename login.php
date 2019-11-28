@@ -34,19 +34,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(!$isError){
         // Prepare a select statement
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
-    
+    	echo "1";
         if($stmt = sqlsrv_prepare($link, $sql)){
+        	echo "2";
             // Bind variables to the prepared statement as parameters
             sqlsrv_stmt_bind_param($stmt, "s", $param_username);
-        
+        	echo "3";
             // Set parameters
             $param_username = $username;
-        
+        	
             // Attempt to execute the prepared statement
             if(sqlsrv_stmt_execute($stmt)){
+            	echo "4";
                 // Store result
                 sqlsrv_stmt_store_result($stmt);
-            	echo "here";
                 // Check if username exists, if yes then verify password
                 if(sqlsrv_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
