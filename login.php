@@ -139,7 +139,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 					<h3>Log In</h3>
 				</div>
 			</div>
-			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 				<div class="row">
 					<div class="col-md-12">
 						<div class="row">
@@ -152,7 +152,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						</div>
 						<div class="row">
 							<!-- "Submit" button -->
-							<button type="submit" name="submit" class="btn btn-primary">Log In</button>
+							<input type="submit" class="btn btn-primary" value="Login">
 						</div>
 					</div>
 				</div>
