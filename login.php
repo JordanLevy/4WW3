@@ -35,23 +35,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Prepare a select statement
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
     
-        if($stmt = mysqli_prepare($link, $sql)){
+        if($stmt = sqlsrv_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
+            sqlsrv_stmt_bind_param($stmt, "s", $param_username);
         
             // Set parameters
             $param_username = $username;
         
             // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
+            if(sqlsrv_stmt_execute($stmt)){
                 // Store result
-                mysqli_stmt_store_result($stmt);
+                sqlsrv_stmt_store_result($stmt);
             
                 // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
+                if(sqlsrv_stmt_num_rows($stmt) == 1){                    
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
+                    sqlsrv_stmt_bind_result($stmt, $id, $username, $hashed_password);
+                    if(sqlsrv_stmt_fetch($stmt)){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
                             session_start();
@@ -76,11 +76,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
     
         // Close statement
-        mysqli_stmt_close($stmt);
+        sqlsrv_stmt_close($stmt);
     }
 
     // Close connection
-    mysqli_close($link);
+    sqlsrv_close($link);
 }
 ?> 
 
