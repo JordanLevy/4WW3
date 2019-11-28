@@ -54,9 +54,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			}else{
 				#creates sessions
 			    while($row = sqlsrv_fetch_array($result)){
-			    	echo $row['password'] . "<br/>";
 			    	if(password_verify($password, $row['password']))
 			    	{
+			    		echo $row['password'] . "<br/>";
 			       		$_SESSION["loggedin"] = true;
                         $_SESSION["id"] = $row['id'];
                         $_SESSION["username"] = $username;
