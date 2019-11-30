@@ -68,7 +68,7 @@ function getLocation(d) {
 function byLoc(position) {
 	//document.getElementById('searchLatitude').value = position.coords.latitude
 	//document.getElementById('searchLongitude').value = position.coords.longitude;
-	document.location = dest \"&long=\" + position.coords.longitude + \"&lat=\" + position.coords.latitude;
+	document.location = dest + \"&long=\" + position.coords.longitude + \"&lat=\" + position.coords.latitude;
 }
 
 //sets the latitude and longitude text boxes
