@@ -162,6 +162,14 @@ try {
 							<textarea class="form-control formValReg" id="description" name="description" placeholder="Description" required></textarea>
 						</div>
 						<div class="row">
+							<!-- "Gender" dropdown -->
+							<select name="gender">
+								<option value="">Select washroom gender...</option>
+								<option value="M">Men's</option>
+								<option value="F">Women's</option>
+								<option value="A">All Genders</option>
+						</div>
+						<div class="row">
 							<!-- "Submit" button -->
 							<button type="submit" name="submit" class="btn btn-primary">Submit</button>
 						</div>
