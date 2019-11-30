@@ -2,14 +2,6 @@
 
 require_once "config.php";
 
-	$searchLongitude = $_POST['searchLongitude'];
-	$searchLatitude = $_POST['searchLatitude'];
-	echo $searchLongitude . " " . $searchLatitude;
-
-	$lat = $_GET['tmp_lat'];
-	$long = $_GET['tmp_long'];
-	echo $lat . " " . $long;
-	var_dump($_POST);
 	var_dump($_GET);
 ?>
 

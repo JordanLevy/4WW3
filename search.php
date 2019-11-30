@@ -57,8 +57,6 @@
 					<!-- "Building name" search bar -->
 					<label class="inputLabel">Building name:
 						<input class="form-control" type="text" placeholder="Search" aria-label="Search">
-						<input class="form-control" type="text" id="searchLongitude" name="searchLongitude">
-						<input class="form-control" type="text" id="searchLatitude" name="searchLatitude">
 					</label>
 				</div>
 				<!-- "Rating" section -->
