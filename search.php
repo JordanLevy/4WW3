@@ -5,67 +5,64 @@ require_once "config.php";
 $menCheckbox = $womenCheckbox = $allGendersCheckbox = $star = $searchTerms = "";
 $isError = false;
 
-if($_SERVER["REQUEST_METHOD"] == "POST"){
+if(isset($_POST['submit'])){
+	//get input from fields
+	$menCheckbox = $_POST['menCheckbox'];
+	$womenCheckbox = $_POST['womenCheckbox'];
+	$allGendersCheckbox = $_POST['allGendersCheckbox'];
+	$star = $_POST['star'];
+	$searchTerms = $_POST['searchTerms'];
 
-	if(isset($_POST['submit'])){
-		//get input from fields
-		$menCheckbox = $_POST['menCheckbox'];
-		$womenCheckbox = $_POST['womenCheckbox'];
-		$allGendersCheckbox = $_POST['allGendersCheckbox'];
-		$star = $_POST['star'];
-		$searchTerms = $_POST['searchTerms'];
+	echo $menCheckbox . "</br>";
+	echo $star;
 
-		var_dump($menCheckbox);
-		var_dump($star);
-
-		/*//check username
-		if(empty($username)){
-			$isError=true;
-			echo '<span style="color:red;">A username is required</span><br/>';
-		}
-		//check password
-		if(empty($password)){
-			$isError=true;
-			echo '<span style="color:red;">A password is required</span><br/>';
-		}
-
-		if(!$isError) {
-			//search for user in database
-			$query = "SELECT id, username, password FROM users WHERE username='" . $username . "'";
-			$result = sqlsrv_query($conn, $query);
-			//if the search didn't work
-			if( $result === false ) {
-				echo "ERROR<br>";
-				$errors=sqlsrv_errors();
-				echo "<br>";
-				print_r($errors);
-				echo "<br>";
-			    die();
-			}
-
-			//if it's zero rows
-			if(sqlsrv_has_rows($result) != 1){
-			       echo "Incorrect username or password";
-			}else{
-				//get the query results
-			    while($row = sqlsrv_fetch_array($result)){
-			    	//if the password is correct
-			    	if(password_verify($password, $row['password']))
-			    	{
-			    		//start the session
-			    		session_start();
-			       		$_SESSION["loggedin"] = true;
-                        $_SESSION["id"] = $row['id'];
-                        $_SESSION["username"] = $username;
-                        //redirect
-                        header("location:welcome.php");
-			   		} else {
-			   			echo "Incorrect username or password";
-			   		}
-			    }
-			}
-		}*/
+	/*//check username
+	if(empty($username)){
+		$isError=true;
+		echo '<span style="color:red;">A username is required</span><br/>';
 	}
+	//check password
+	if(empty($password)){
+		$isError=true;
+		echo '<span style="color:red;">A password is required</span><br/>';
+	}
+
+	if(!$isError) {
+		//search for user in database
+		$query = "SELECT id, username, password FROM users WHERE username='" . $username . "'";
+		$result = sqlsrv_query($conn, $query);
+		//if the search didn't work
+		if( $result === false ) {
+			echo "ERROR<br>";
+			$errors=sqlsrv_errors();
+			echo "<br>";
+			print_r($errors);
+			echo "<br>";
+		    die();
+		}
+
+		//if it's zero rows
+		if(sqlsrv_has_rows($result) != 1){
+		       echo "Incorrect username or password";
+		}else{
+			//get the query results
+		    while($row = sqlsrv_fetch_array($result)){
+		    	//if the password is correct
+		    	if(password_verify($password, $row['password']))
+		    	{
+		    		//start the session
+		    		session_start();
+		       		$_SESSION["loggedin"] = true;
+                    $_SESSION["id"] = $row['id'];
+                    $_SESSION["username"] = $username;
+                    //redirect
+                    header("location:welcome.php");
+		   		} else {
+		   			echo "Incorrect username or password";
+		   		}
+		    }
+		}
+	}*/
 }
 
 ?>
@@ -185,7 +182,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				</div>
 				<div class="row">
 					<!-- Search button -->
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="search">
 							<button type="button" name="submit" class="btn btn-primary btn-block">Search</button>
 						</div>
