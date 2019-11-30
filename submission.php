@@ -165,7 +165,7 @@ try {
 						</div>
 						<div class="row">
 							<!-- "Description" textarea -->
-							<textarea class="form-control formValReg" id="description" name="description" placeholder="Description" value="<?php echo isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '' ?>"></textarea>
+							<textarea class="form-control formValReg" id="description" name="description" placeholder="Description"><?php echo isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '' ?></textarea>
 						</div>
 						<div class="row">
 							<!-- "Gender" dropdown -->
