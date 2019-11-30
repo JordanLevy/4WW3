@@ -10,7 +10,7 @@ if(isset($_POST['submit'])){
 	$menCheckbox = $_POST['menCheckbox'];
 	$womenCheckbox = $_POST['womenCheckbox'];
 	$allGendersCheckbox = $_POST['allGendersCheckbox'];
-	$star = $_POST['star'];
+	$star = $_POST['star1'];
 	$searchTerms = $_POST['searchTerms'];
 
 	echo $menCheckbox . "</br>";
@@ -133,16 +133,16 @@ if(isset($_POST['submit'])){
 					<div class="col-sm-4">
 						<!-- Rating stars selector -->
 						<label class="inputLabel">Rating:
-							<div class="rating">
-								<input type="radio" name="star" id="star1"><label for="star1">
+							<div class="rating" name="star">
+								<input type="radio" name="star1" id="star1"><label for="star1">
 								</label>
-								<input type="radio" name="star" id="star2"><label for="star2">
+								<input type="radio" name="star2" id="star2"><label for="star2">
 								</label>
-								<input type="radio" name="star" id="star3"><label for="star3">
+								<input type="radio" name="star3" id="star3"><label for="star3">
 								</label>
-								<input type="radio" name="star" id="star4"><label for="star4">
+								<input type="radio" name="star4" id="star4"><label for="star4">
 								</label>
-								<input type="radio" name="star" id="star5"><label for="star5">
+								<input type="radio" name="star5" id="star5"><label for="star5">
 								</label>
 							</div>
 						</label>
