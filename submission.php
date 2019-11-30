@@ -163,11 +163,11 @@ try {
 						</div>
 						<div class="row">
 							<!-- "Gender" dropdown -->
-							<select name="gender">
+							<select class="formValReg" name="gender">
 								<option value="">Select washroom gender...</option>
-								<option value="M">Men's</option>
-								<option value="F">Women's</option>
-								<option value="A">All Genders</option>
+								<option class="men" value="M">Men's</option>
+								<option class="women" value="F">Women's</option>
+								<option class="allGenders" value="A">All Genders</option>
 							</select>
 						</div>
 						<div class="row">
