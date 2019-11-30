@@ -34,13 +34,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 
 		//check longitude
-		if(!(isset($longitude) || $longitude==0){
+		if(!(isset($longitude) || $longitude==0)){
 			$isError=true;
 			echo '<span style="color:red;">A longitude is required</span><br/>';
 		}
 
 		//check latitude
-		if(!(isset($latitude) || $latitude==0){
+		if(!(isset($latitude) || $latitude==0)){
 			$isError=true;
 			echo '<span style="color:red;">A latitude is required</span><br/>';
 		}
