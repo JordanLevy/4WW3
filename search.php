@@ -2,17 +2,10 @@
 
 require_once "config.php";
 
-$searchLongitude = $searchLatitude = "";
-
-
-if(isset($_POST['searchLongitude']) and isset($_POST['searchLatitude'])){
-	//get input from fields
+if(isset($_POST['searchLongitude']) and isset($_POST['searchLatitude']))
 	$searchLongitude = $_POST['searchLongitude'];
 	$searchLatitude = $_POST['searchLatitude'];
-
 	echo $searchLongitude . " " . $searchLatitude;
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -74,8 +67,8 @@ if(isset($_POST['searchLongitude']) and isset($_POST['searchLatitude'])){
 					<!-- "Building name" search bar -->
 					<label class="inputLabel">Building name:
 						<input class="form-control" type="text" placeholder="Search" aria-label="Search">
-						<input class="form-control" type="text" id="searchLongitude">
-						<input class="form-control" type="text" id="searchLatitude">
+						<input class="form-control" type="text" id="searchLongitude" name="searchLongitude">
+						<input class="form-control" type="text" id="searchLatitude" name="searchLatitude">
 					</label>
 				</div>
 				<!-- "Rating" section -->
