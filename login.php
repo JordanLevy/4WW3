@@ -35,8 +35,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 		if(!$isError) {
 			//search for user in database
-			$query = "SELECT id, username, password FROM users WHERE username='" . $username . "'";
-			$result = sqlsrv_query($conn, $query);
+			$params = array($username);
+			$query = "SELECT id, username, password FROM users WHERE username=?";
+			$result = sqlsrv_query($conn, $query, $params);
 			//if the search didn't work
 			if( $result === false ) {
 				echo "ERROR<br>";

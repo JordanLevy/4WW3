@@ -13,12 +13,13 @@ if(isset($_POST['submit'])){
 	$star = $_POST['star'];
 	$searchTerms = $_POST['searchTerms'];
 
-	//check checkboxes
+	//if they didn't select a washroom gender
 	if(!isset($menCheckbox) and !isset($womenCheckbox) and !isset($allGendersCheckbox)){
 		$isError=true;
 		echo '<span style="color:red;">Please choose a washroom gender to search for</span><br/>';
 	}
 
+	//set values so they can be passed to the url
 	if(isset($menCheckbox)){
 		$menCheckbox=1;
 	}else{
@@ -37,6 +38,7 @@ if(isset($_POST['submit'])){
 		$allGendersCheckbox=0;
 	}
 
+	//if there were no validation errors
     if(!$isError){
     	//redirect with parameters in url
     	header("location:results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox );
