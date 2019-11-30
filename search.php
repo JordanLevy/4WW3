@@ -42,10 +42,10 @@ if(isset($_POST['submit'])){
     if(!$isError){
     	//redirect with parameters in url
     	//header("location:results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox );
-    	$searchUrl = "results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox
+    	$searchUrl = "results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox;
     	echo "<script type='text/javascript'>
     	getLocation('$searchUrl');
-    	</script>"
+    	</script>";
 	}
 }
 
