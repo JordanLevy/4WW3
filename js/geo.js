@@ -1,16 +1,22 @@
 //handles geolocation
 
 dest="";
+searchMethod=0;
 
 //gets the longitude and latitude of the device
-function getLocation(d) {
+function getLocation(d, s) {
 	dest=d;
+	searchMethod=s;
 	if (navigator.geolocation) {
 		if(d == 'None') {
 			navigator.geolocation.getCurrentPosition(setLatLongCoords, currLocError);
 		}
 		else {
-			navigator.geolocation.getCurrentPosition(showPosition, searchError);
+			if(s==0){
+				navigator.geolocation.getCurrentPosition(byLoc, searchError);
+			} else{
+				navigator.geolocation.getCurrentPosition(byCrit, searchError);
+			}
 		}
 	} else {
 		alert("Unable to search using location.")
@@ -18,7 +24,14 @@ function getLocation(d) {
 }
 
 //display the location and redirect to dest
-function showPosition(position) {
+function byLoc(position) {
+	//document.getElementById('searchLatitude').value = position.coords.latitude
+	//document.getElementById('searchLongitude').value = position.coords.longitude;
+	document.location = dest + "?long=" + position.coords.longitude + "&lat=" + position.coords.latitude;
+}
+
+//redirect to dest to search by criteria
+function byCrit(position) {
 	//document.getElementById('searchLatitude').value = position.coords.latitude
 	//document.getElementById('searchLongitude').value = position.coords.longitude;
 	document.location = dest + "?long=" + position.coords.longitude + "&lat=" + position.coords.latitude;

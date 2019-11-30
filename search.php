@@ -43,86 +43,83 @@
 		</nav>
 
 		<div class="wrapper container">
-			<!-- bootstrap row -->
-			<div class="row">
-				<!-- bootstrap column of width 12 -->
-				<div class="col-md-12">
-					<!-- header text -->
-					<h3>McMaster Restroom Finder</h3>
-				</div>
-			</div>
-			<div class="row">
-				<!-- "Building name" search bar button -->
-				<div class="col-sm-4">
-					<!-- "Building name" search bar -->
-					<label class="inputLabel">Building name:
-						<input class="form-control" type="text" placeholder="Search" aria-label="Search">
-					</label>
-				</div>
-				<!-- "Rating" section -->
-				<div class="col-sm-4">
-					<!-- Rating stars selector -->
-					<label class="inputLabel">Rating:
-						<div class="rating">
-							<input type="radio" name="star" id="star1"><label for="star1">
-							</label>
-							<input type="radio" name="star" id="star2"><label for="star2">
-							</label>
-							<input type="radio" name="star" id="star3"><label for="star3">
-							</label>
-							<input type="radio" name="star" id="star4"><label for="star4">
-							</label>
-							<input type="radio" name="star" id="star5"><label for="star5">
-							</label>
-						</div>
-					</label>
-				</div>
-				<div class="col-sm-4">
-					<!-- "Washroom gender" section -->
-					<label class="inputLabel">Looking for a(n):
-						<!-- "Men's washroom" checkbox -->
-						<div class="men">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="men">
-								<label class="form-check-label men" for="men">
-									Men's washroom
-								</label>
-							</div>
-						</div>
-						<!-- "Women's washroom" checkbox -->
-						<div class="women">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="women">
-								<label class="form-check-label women" for="women">
-									Women's washroom
-								</label>
-							</div>
-						</div>
-						<!-- "All Genders washroom" checkbox -->
-						<div class="allGenders">
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="allGenders">
-								<label class="form-check-label allGenders" for="allGenders">
-									All Genders washroom
-								</label>
-							</div>
-						</div>
-					</label>
-				</div>
-			</div>
-			<div class="row">
-				<!-- Search button -->
-				<div class="col-md-6">
-					<div class="search">
-						<button type="button" class="btn btn-primary btn-block" onclick="getLocation('results_sample.php')">Search by Location</button>
+			<form action="#" method="post">
+				<!-- bootstrap row -->
+				<div class="row">
+					<!-- bootstrap column of width 12 -->
+					<div class="col-md-12">
+						<!-- header text -->
+						<h3>McMaster Restroom Finder</h3>
 					</div>
 				</div>
-				<div class="col-md-6">
-					<div class="search">
-						<button type="button" class="btn btn-primary btn-block" onclick="window.location.href='results_sample.php'">Search by Criteria</button>
+				<div class="row">
+					<!-- "Building name" search bar button -->
+					<div class="col-sm-4">
+						<!-- "Building name" search bar -->
+						<label class="inputLabel">Building name:
+							<input class="form-control" type="text" placeholder="Search" aria-label="Search">
+						</label>
+					</div>
+					<!-- "Rating" section -->
+					<div class="col-sm-4">
+						<!-- Rating stars selector -->
+						<label class="inputLabel">Rating:
+							<div class="rating">
+								<input type="radio" name="star1" id="star1"><label for="star1">
+								</label>
+								<input type="radio" name="star2" id="star2"><label for="star2">
+								</label>
+								<input type="radio" name="star3" id="star3"><label for="star3">
+								</label>
+								<input type="radio" name="star4" id="star4"><label for="star4">
+								</label>
+								<input type="radio" name="star5" id="star5"><label for="star5">
+								</label>
+							</div>
+						</label>
+					</div>
+					<div class="col-sm-4">
+						<!-- "Washroom gender" section -->
+						<label class="inputLabel">Looking for a(n):
+							<!-- "Men's washroom" checkbox -->
+							<div class="men">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="men" name="menCheckbox">
+									<label class="form-check-label men" for="men">
+										Men's washroom
+									</label>
+								</div>
+							</div>
+							<!-- "Women's washroom" checkbox -->
+							<div class="women">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="women" name="womenCheckbox">
+									<label class="form-check-label women" for="women">
+										Women's washroom
+									</label>
+								</div>
+							</div>
+							<!-- "All Genders washroom" checkbox -->
+							<div class="allGenders">
+								<div class="form-check">
+									<input class="form-check-input" type="checkbox" value="" id="allGenders" name="allGendersCheckbox">
+									<label class="form-check-label allGenders" for="allGenders">
+										All Genders washroom
+									</label>
+								</div>
+							</div>
+						</label>
 					</div>
 				</div>
-			</div>
+				<div class="row">
+					<!-- Search button -->
+					<div class="col-md-6">
+						<div class="search">
+							<button type="button" name="submit" class="btn btn-primary btn-block">Search</button>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 		<!-- footer -->
 		<footer>
