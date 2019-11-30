@@ -13,12 +13,6 @@ if(isset($_POST['submit'])){
 	$star = $_POST['star'];
 	$searchTerms = $_POST['searchTerms'];
 
-	//if they didn't select a washroom gender
-	if(!isset($menCheckbox) and !isset($womenCheckbox) and !isset($allGendersCheckbox)){
-		$isError=true;
-		echo '<span style="color:red;">Please choose a washroom gender to search for</span><br/>';
-	}
-
 	//set values so they can be passed to the url
 	if(isset($menCheckbox)){
 		$menCheckbox=1;
@@ -154,7 +148,7 @@ function currLocError() {
 					<div class="col-sm-4">
 						<!-- "Building name" search bar -->
 						<label class="inputLabel">Building name:
-							<input class="form-control" type="text" name="searchTerms" placeholder="Search" aria-label="Search">
+							<input class="form-control" type="text" name="searchTerms" placeholder="e.g. BSB B134" aria-label="Search">
 						</label>
 					</div>
 					<!-- "Rating" section -->

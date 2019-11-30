@@ -5,15 +5,25 @@ require_once "config.php";
 $isError = false;
 
 //validate url params
-if(!is_numeric($_GET['rating']) or $_GET['men'] == '0' and $_GET['women'] == '0' and $_GET['allGenders'] == '0'){
+if(!is_numeric($_GET['rating'])){
 	$isError=true;
 	echo '<span style="color:red;">Invalid url</span><br/>';
 }
-$isError = true;
+
 if(!$isError){
+	$g = ""
+	if($_GET['men']=='1'){
+		$g .= "M";
+	}
+	if($_GET['women']=='1'){
+		$g .= "F";
+	}
+	if($_GET['allGenders']=='1'){
+		$g .= "A";
+	}
 	//search for user in database
-	$params = array($username);
-	$query = "SELECT id, username, password FROM objects WHERE username = ?";
+	$params = array($_GET['long'], $_GET['lat'], $_GET['terms'], $_GET['rating'], $g);
+	$query = "SELECT id, building, roomNum, longitude, latitude, numReviews, rating, gender, sqrt(square(?-longitude) + square(?-latitude)) as distance, (if(concat(building, ' ', roomNum) like ?, 500, 0) + if(rating == ?, 50, 0) + if(gender in ?, 80, 0) - distance*100) as searchScore FROM objects ORDER BY searchScore";
 	$result = sqlsrv_query($conn, $query, $params);
 	//if the search didn't work
 	if( $result === false ) {
@@ -27,23 +37,11 @@ if(!$isError){
 
 	//if it's zero rows
 	if(sqlsrv_has_rows($result) != 1){
-		   echo "Incorrect username or password";
+		   echo "0 rows";
 	}else{
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
-			//if the password is correct
-			if(password_verify($password, $row['password']))
-			{
-				//start the session
-				session_start();
-				$_SESSION["loggedin"] = true;
-				$_SESSION["id"] = $row['id'];
-				$_SESSION["username"] = $username;
-				//redirect
-				header("location:welcome.php");
-			} else {
-				echo "Incorrect username or password";
-			}
+			echo $row;
 		}
 	}
 }
