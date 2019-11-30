@@ -1,7 +1,10 @@
 //handles geolocation
 
+dest="";
+
 //gets the longitude and latitude of the device
 function getLocation(d) {
+	dest=d;
 	if (navigator.geolocation) {
 		if(d == 'None') {
 			navigator.geolocation.getCurrentPosition(setLatLongCoords, currLocError);
@@ -18,6 +21,7 @@ function getLocation(d) {
 function showPosition(position) {
 	document.getElementById('searchLatitude').value = position.coords.latitude
 	document.getElementById('searchLongitude').value = position.coords.longitude;
+	document.location = dest;
 }
 
 //sets the latitude and longitude text boxes

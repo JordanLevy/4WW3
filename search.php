@@ -1,12 +1,3 @@
-<?php
-
-require_once "config.php";
-
-	$searchLongitude = $_POST['searchLongitude'];
-	$searchLatitude = $_POST['searchLatitude'];
-	echo $searchLongitude . " " . $searchLatitude;
-?>
-
 <!DOCTYPE html>
 <html>
 	<head>
