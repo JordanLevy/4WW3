@@ -11,7 +11,7 @@ if(!is_numeric($_GET['rating'])){
 }
 
 if(!$isError){
-	$g = ""
+	$g = "";
 	if($_GET['men']=='1'){
 		$g .= "M";
 	}
