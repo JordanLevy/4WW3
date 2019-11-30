@@ -50,11 +50,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 			//if it's zero rows
 			if(sqlsrv_has_rows($result) != 1){
-			       echo "0 rows";
+			       echo "Incorrect username or password";
 			}else{
 				//get the query results
 			    while($row = sqlsrv_fetch_array($result)){
-			    	echo $password;
 			    	//if the password is correct
 			    	if(password_verify($password, $row['password']))
 			    	{
@@ -64,7 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                         $_SESSION["id"] = $row['id'];
                         $_SESSION["username"] = $username;
                         //redirect
-                        //header("location:welcome.php");
+                        header("location:welcome.php");
 			   		} else {
 			   			echo "Incorrect username or password";
 			   		}
