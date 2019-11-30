@@ -2,7 +2,52 @@
 
 require_once "config.php";
 
-	var_dump($_GET);
+$isError = false;
+
+//validate url params
+if(!is_numeric($rating) or ($_GET['men'] == '0' and $_GET['women'] == '0' and $_GET['allGenders'] == '0'){
+	$isError=true;
+	echo '<span style="color:red;">Invalid url</span><br/>';
+}
+
+if(!$isError) {
+	//search for user in database
+	$params = array($username);
+	$query = "SELECT id, building, roomNum FROM objects WHERE username = ?";
+	$result = sqlsrv_query($conn, $query, $params);
+	//if the search didn't work
+	if( $result === false ) {
+		echo "ERROR<br>";
+		$errors=sqlsrv_errors();
+		echo "<br>";
+		print_r($errors);
+		echo "<br>";
+		die();
+	}
+
+	//if it's zero rows
+	if(sqlsrv_has_rows($result) != 1){
+		   echo "Incorrect username or password";
+	}else{
+		//get the query results
+		while($row = sqlsrv_fetch_array($result)){
+			//if the password is correct
+			if(password_verify($password, $row['password']))
+			{
+				//start the session
+				session_start();
+				$_SESSION["loggedin"] = true;
+				$_SESSION["id"] = $row['id'];
+				$_SESSION["username"] = $username;
+				//redirect
+				header("location:welcome.php");
+			} else {
+				echo "Incorrect username or password";
+			}
+		}
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -64,11 +109,11 @@ require_once "config.php";
 					<!-- live map -->
 					<div id="GoogleMap1"></div>
 				</div>
-  				<div class="col-6">
-  					<div class="searchResults">
-  						<!-- search results table -->
-	  					<table class="table table-striped table-dark">
-	  						<!-- table headers -->
+				<div class="col-6">
+					<div class="searchResults">
+						<!-- search results table -->
+						<table class="table table-striped table-dark">
+							<!-- table headers -->
 							<thead>
 								<tr>
 									<th>Room #</th>
@@ -98,7 +143,7 @@ require_once "config.php";
 							</tbody>
 						</table>
 					</div>
-  				</div>
+				</div>
 			</div>
 		</div>
 		<!-- footer -->
