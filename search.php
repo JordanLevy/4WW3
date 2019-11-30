@@ -184,7 +184,7 @@ if(isset($_POST['submit'])){
 					<!-- Search button -->
 					<div class="col-md-12">
 						<div class="search">
-							<button type="button" name="submit" class="btn btn-primary btn-block">Search</button>
+							<button type="submit" name="submit" class="btn btn-primary btn-block">Search</button>
 						</div>
 					</div>
 				</div>
