@@ -17,13 +17,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$gender=$_POST['gender'];
 
 		//check building
-		if(!isset($building)){
+		if(empty($building)){
 			$isError=true;
 			echo '<span style="color:red;">A building is required</span><br/>';
 		}
 
 		//check room number
-		if(!isset($roomNum)){
+		if(empty($roomNum)){
 			$isError=true;
 			echo '<span style="color:red;">A room number is required</span><br/>';
 		} else {
@@ -34,19 +34,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 
 		//check longitude
-		if(!isset($longitude)){
+		if(!(isset($longitude) || $longitude==0){
 			$isError=true;
 			echo '<span style="color:red;">A longitude is required</span><br/>';
 		}
 
 		//check latitude
-		if(!isset($latitude)){
+		if(!(isset($latitude) || $latitude==0){
 			$isError=true;
 			echo '<span style="color:red;">A latitude is required</span><br/>';
 		}
 
 		//check description
-		if(!isset($description)){
+		if(empty($description)){
 			$isError=true;
 			echo '<span style="color:red;">A description is required</span><br/>';
 		}
