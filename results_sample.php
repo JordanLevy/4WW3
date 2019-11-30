@@ -5,7 +5,7 @@ require_once "config.php";
 $isError = false;
 
 //validate url params
-if(!is_numeric($rating) or $_GET['men'] == '0' and $_GET['women'] == '0' and $_GET['allGenders'] == '0'){
+if(!is_numeric($_GET['rating']) or $_GET['men'] == '0' and $_GET['women'] == '0' and $_GET['allGenders'] == '0'){
 	$isError=true;
 	echo '<span style="color:red;">Invalid url</span><br/>';
 }
