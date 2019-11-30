@@ -34,19 +34,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 
 		//check longitude
-		if(!isset($longitude)){
-			$longitude=0;
-		}
-		if($longitude==0){
+		if(!is_numeric($longitude)){
 			$isError=true;
 			echo '<span style="color:red;">A longitude is required</span><br/>';
 		}
 
 		//check latitude
-		if(!isset($latitude)){
-			$latitude=0;
-		}
-		if($latitude==0){
+		if(!is_numeric($latitude)){
 			$isError=true;
 			echo '<span style="color:red;">A latitude is required</span><br/>';
 		}
@@ -159,11 +153,11 @@ try {
 							<div class="col-md-8">
 								<div class="row">
 									<!-- "Longitude" textbox -->
-									<input type="number" class="form-control formValReg" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="Longitude" value="<?php echo isset($_POST['longitude']) ? htmlspecialchars($_POST['longitude']) : '0' ?>">
+									<input type="number" class="form-control formValReg" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="Longitude" value="<?php echo isset($_POST['longitude']) ? htmlspecialchars($_POST['longitude']) : '' ?>">
 								</div>
 								<div class="row">
 									<!-- "Latitude" textbox -->
-									<input type="number" class="form-control formValReg" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="Latitude" value="<?php echo isset($_POST['latitude']) ? htmlspecialchars($_POST['latitude']) : '0' ?>">
+									<input type="number" class="form-control formValReg" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="Latitude" value="<?php echo isset($_POST['latitude']) ? htmlspecialchars($_POST['latitude']) : '' ?>">
 								</div>
 							</div>
 							<div class="col-md-4">
