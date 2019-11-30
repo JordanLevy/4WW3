@@ -67,6 +67,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				print_r($errors);
 				echo "<br>";
 			    die();
+			}else{
+				$building = $roomNum = $longitude = $latitude = $description = $gender = "";
 			}
 		}
 
@@ -151,11 +153,11 @@ try {
 							<div class="col-md-8">
 								<div class="row">
 									<!-- "Longitude" textbox -->
-									<input type="number" class="form-control formValReg" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="Longitude" value="<?php echo isset($_POST['longitude']) ? htmlspecialchars($_POST['longitude']) : '' ?>">
+									<input type="number" class="form-control formValReg" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="Longitude" value="<?php echo isset($_POST['longitude']) ? htmlspecialchars($_POST['longitude']) : '0' ?>">
 								</div>
 								<div class="row">
 									<!-- "Latitude" textbox -->
-									<input type="number" class="form-control formValReg" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="Latitude" value="<?php echo isset($_POST['latitude']) ? htmlspecialchars($_POST['latitude']) : '' ?>">
+									<input type="number" class="form-control formValReg" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="Latitude" value="<?php echo isset($_POST['latitude']) ? htmlspecialchars($_POST['latitude']) : '0' ?>">
 								</div>
 							</div>
 							<div class="col-md-4">
