@@ -141,21 +141,21 @@ try {
 					<div class="col-md-6">
 						<div class="row">
 							<!-- "Building" textbox -->
-							<input type="text" class="form-control formValReg" id="building" name="building" placeholder="Building">
+							<input type="text" class="form-control formValReg" id="building" name="building" placeholder="Building" value="<?php echo isset($_POST['building']) ? htmlspecialchars($_POST['building']) : '' ?>">
 						</div>
 						<div class="row">
 							<!-- "Room #" textbox -->
-							<input type="text" class="form-control formValReg" id="roomNum" name="roomNum" placeholder="Room #">
+							<input type="text" class="form-control formValReg" id="roomNum" name="roomNum" placeholder="Room #" value="<?php echo isset($_POST['roomNum']) ? htmlspecialchars($_POST['roomNum']) : '' ?>">
 						</div>
 						<div class="row">
 							<div class="col-md-8">
 								<div class="row">
 									<!-- "Longitude" textbox -->
-									<input type="number" class="form-control formValReg" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="Longitude">
+									<input type="number" class="form-control formValReg" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="Longitude" value="<?php echo isset($_POST['longitude']) ? htmlspecialchars($_POST['longitude']) : '' ?>">
 								</div>
 								<div class="row">
 									<!-- "Latitude" textbox -->
-									<input type="number" class="form-control formValReg" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="Latitude">
+									<input type="number" class="form-control formValReg" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="Latitude" value="<?php echo isset($_POST['latitude']) ? htmlspecialchars($_POST['latitude']) : '' ?>">
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -165,11 +165,11 @@ try {
 						</div>
 						<div class="row">
 							<!-- "Description" textarea -->
-							<textarea class="form-control formValReg" id="description" name="description" placeholder="Description"></textarea>
+							<textarea class="form-control formValReg" id="description" name="description" placeholder="Description" value="<?php echo isset($_POST['description']) ? htmlspecialchars($_POST['description']) : '' ?>"></textarea>
 						</div>
 						<div class="row">
 							<!-- "Gender" dropdown -->
-							<select class="formValReg" name="gender">
+							<select class="formValReg" name="gender" value="<?php echo isset($_POST['gender']) ? htmlspecialchars($_POST['gender']) : '' ?>">
 								<option value="">Select washroom gender...</option>
 								<option class="men" value="M">Men's</option>
 								<option class="women" value="F">Women's</option>
