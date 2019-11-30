@@ -2,7 +2,7 @@
 
 require_once "config.php";
 
-$building = $roomNum = $longitude = $latitude = $description = "";
+$building = $roomNum = $longitude = $latitude = $description = $gender = "";
 $isError = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -14,6 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$longitude=$_POST['longitude'];
 		$latitude=$_POST['latitude'];
 		$description=$_POST['description'];
+		$gender=$_POST['gender'];
 
 		//check building
 		if(empty($building)){
@@ -48,6 +49,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		if(empty($description)){
 			$isError=true;
 			echo '<span style="color:red;">A description is required</span><br/>';
+		}
+
+		if(!isset($_POST['gender'])){
+			$isError=true;
+			echo '<span style="color:red;">You must select the washroom\'s gender</span><br/>';
 		}
 
 		if(!$isError) {
