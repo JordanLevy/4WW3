@@ -51,14 +51,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			echo '<span style="color:red;">A description is required</span><br/>';
 		}
 
-		if(!isset($_POST['gender'])){
+		if(empty($gender)){
 			$isError=true;
 			echo '<span style="color:red;">You must select the washroom\'s gender</span><br/>';
 		}
 
 		if(!$isError) {
-			$params = array($building, $roomNum, $longitude, $latitude, $description);
-			$query="INSERT INTO objects (building, roomNum, longitude, latitude, description) VALUES (?, ?, ?, ?, ?)";
+			$params = array($building, $roomNum, $longitude, $latitude, $description, 0, 0, $gender);
+			$query="INSERT INTO objects (building, roomNum, longitude, latitude, description, numReviews, rating, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			$result = sqlsrv_query($conn, $query, $params);
 			if( $result === false ) {
 				echo "ERROR<br>";
