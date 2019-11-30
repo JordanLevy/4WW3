@@ -5,15 +5,15 @@ require_once "config.php";
 $isError = false;
 
 //validate url params
-if(!is_numeric($rating) or ($_GET['men'] == '0' and $_GET['women'] == '0' and $_GET['allGenders'] == '0'){
+if(!is_numeric($rating) or $_GET['men'] == '0' and $_GET['women'] == '0' and $_GET['allGenders'] == '0'){
 	$isError=true;
 	echo '<span style="color:red;">Invalid url</span><br/>';
 }
-
-if(!$isError) {
+$isError = true;
+if(!$isError){
 	//search for user in database
 	$params = array($username);
-	$query = "SELECT id, building, roomNum FROM objects WHERE username = ?";
+	$query = "SELECT id, username, password FROM objects WHERE username = ?";
 	$result = sqlsrv_query($conn, $query, $params);
 	//if the search didn't work
 	if( $result === false ) {
