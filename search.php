@@ -74,8 +74,8 @@ if(isset($_POST['searchLongitude']) and isset($_POST['searchLatitude'])){
 					<!-- "Building name" search bar -->
 					<label class="inputLabel">Building name:
 						<input class="form-control" type="text" placeholder="Search" aria-label="Search">
-						<input class="form-control" type="text" id="searchLongitude" hidden>
-						<input class="form-control" type="text" id="searchLatitude" hidden>
+						<input class="form-control" type="text" id="searchLongitude">
+						<input class="form-control" type="text" id="searchLatitude">
 					</label>
 				</div>
 				<!-- "Rating" section -->
