@@ -2,7 +2,6 @@
 
 require_once "config.php";
 
-if(isset($_POST['searchLongitude']) and isset($_POST['searchLatitude']))
 	$searchLongitude = $_POST['searchLongitude'];
 	$searchLatitude = $_POST['searchLatitude'];
 	echo $searchLongitude . " " . $searchLatitude;
