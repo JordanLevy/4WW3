@@ -13,56 +13,34 @@ if(isset($_POST['submit'])){
 	$star = $_POST['star'];
 	$searchTerms = $_POST['searchTerms'];
 
-	echo $menCheckbox . "</br>";
-	echo $star;
-
-	/*//check username
-	if(empty($username)){
+	//check checkboxes
+	if(!isset($menCheckbox) and !isset($womenCheckbox) and !isset($allGendersCheckbox)){
 		$isError=true;
-		echo '<span style="color:red;">A username is required</span><br/>';
-	}
-	//check password
-	if(empty($password)){
-		$isError=true;
-		echo '<span style="color:red;">A password is required</span><br/>';
+		echo '<span style="color:red;">Please choose a washroom gender to search for</span><br/>';
 	}
 
-	if(!$isError) {
-		//search for user in database
-		$query = "SELECT id, username, password FROM users WHERE username='" . $username . "'";
-		$result = sqlsrv_query($conn, $query);
-		//if the search didn't work
-		if( $result === false ) {
-			echo "ERROR<br>";
-			$errors=sqlsrv_errors();
-			echo "<br>";
-			print_r($errors);
-			echo "<br>";
-		    die();
-		}
+	if(isset($menCheckbox)){
+		$menCheckbox=1;
+	}else{
+		$menCheckbox=0;
+	}
 
-		//if it's zero rows
-		if(sqlsrv_has_rows($result) != 1){
-		       echo "Incorrect username or password";
-		}else{
-			//get the query results
-		    while($row = sqlsrv_fetch_array($result)){
-		    	//if the password is correct
-		    	if(password_verify($password, $row['password']))
-		    	{
-		    		//start the session
-		    		session_start();
-		       		$_SESSION["loggedin"] = true;
-                    $_SESSION["id"] = $row['id'];
-                    $_SESSION["username"] = $username;
-                    //redirect
-                    header("location:welcome.php");
-		   		} else {
-		   			echo "Incorrect username or password";
-		   		}
-		    }
-		}
-	}*/
+	if(isset($womenCheckbox)){
+		$womenCheckbox=1;
+	}else{
+		$womenCheckbox=0;
+	}
+
+	if(isset($allGendersCheckbox)){
+		$allGendersCheckbox=1;
+	}else{
+		$allGendersCheckbox=0;
+	}
+
+    if(!$isError){
+    	//redirect with parameters in url
+    	header("location:results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox );
+	}
 }
 
 ?>
