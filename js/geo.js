@@ -4,6 +4,7 @@ dest="";
 
 //gets the longitude and latitude of the device
 function getLocation(d) {
+	console.log(d);
 	dest=d;
 	if (navigator.geolocation) {
 		if(d == 'None') {
