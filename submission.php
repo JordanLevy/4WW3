@@ -168,6 +168,7 @@ try {
 								<option value="M">Men's</option>
 								<option value="F">Women's</option>
 								<option value="A">All Genders</option>
+							</select>
 						</div>
 						<div class="row">
 							<!-- "Submit" button -->
