@@ -141,21 +141,21 @@ try {
 					<div class="col-md-6">
 						<div class="row">
 							<!-- "Building" textbox -->
-							<input type="text" class="form-control formValReg" id="building" name="building" placeholder="Building" required>
+							<input type="text" class="form-control formValReg" id="building" name="building" placeholder="Building">
 						</div>
 						<div class="row">
 							<!-- "Room #" textbox -->
-							<input type="text" class="form-control formValReg" id="roomNum" name="roomNum" placeholder="Room #" required>
+							<input type="text" class="form-control formValReg" id="roomNum" name="roomNum" placeholder="Room #">
 						</div>
 						<div class="row">
 							<div class="col-md-8">
 								<div class="row">
 									<!-- "Longitude" textbox -->
-									<input type="number" class="form-control formValReg" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="Longitude" required>
+									<input type="number" class="form-control formValReg" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="Longitude">
 								</div>
 								<div class="row">
 									<!-- "Latitude" textbox -->
-									<input type="number" class="form-control formValReg" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="Latitude" required>
+									<input type="number" class="form-control formValReg" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="Latitude">
 								</div>
 							</div>
 							<div class="col-md-4">
@@ -165,7 +165,7 @@ try {
 						</div>
 						<div class="row">
 							<!-- "Description" textarea -->
-							<textarea class="form-control formValReg" id="description" name="description" placeholder="Description" required></textarea>
+							<textarea class="form-control formValReg" id="description" name="description" placeholder="Description"></textarea>
 						</div>
 						<div class="row">
 							<!-- "Gender" dropdown -->
