@@ -1,11 +1,7 @@
 //handles geolocation
 
-//dest is the page to redirect to after the geolocation is retrieved
-dest = "";
-
 //gets the longitude and latitude of the device
 function getLocation(d) {
-	dest = d;
 	if (navigator.geolocation) {
 		if(d == 'None') {
 			navigator.geolocation.getCurrentPosition(setLatLongCoords, currLocError);
@@ -20,9 +16,8 @@ function getLocation(d) {
 
 //display the location and redirect to dest
 function showPosition(position) {
-	alert("Searching for McMaster restrooms near coordinates:\nLatitude: " + position.coords.latitude +
-	"\nLongitude: " + position.coords.longitude);
-	window.location.href=dest;
+	document.getElementById('searchLatitude').value = position.coords.latitude
+	document.getElementById('searchLongitude').value = position.coords.longitude;
 }
 
 //sets the latitude and longitude text boxes

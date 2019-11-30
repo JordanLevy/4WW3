@@ -1,3 +1,20 @@
+<?php
+
+require_once "config.php";
+
+$searchLongitude = $searchLatitude = "";
+
+
+if(isset($_POST['searchLongitude']) and isset($_POST['searchLatitude'])){
+	//get input from fields
+	$searchLongitude = $_POST['searchLongitude'];
+	$searchLatitude = $_POST['searchLatitude'];
+
+	echo $searchLongitude . " " . $searchLatitude;
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -57,6 +74,8 @@
 					<!-- "Building name" search bar -->
 					<label class="inputLabel">Building name:
 						<input class="form-control" type="text" placeholder="Search" aria-label="Search">
+						<input class="form-control" type="text" id="searchLongitude" hidden>
+						<input class="form-control" type="text" id="searchLatitude" hidden>
 					</label>
 				</div>
 				<!-- "Rating" section -->
