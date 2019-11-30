@@ -41,7 +41,11 @@ if(isset($_POST['submit'])){
 	//if there were no validation errors
     if(!$isError){
     	//redirect with parameters in url
-    	header("location:results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox );
+    	//header("location:results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox );
+    	$searchUrl = "results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox
+    	echo "<script type='text/javascript'>
+    	getLocation('$searchUrl');
+    	</script>"
 	}
 }
 
@@ -159,7 +163,7 @@ if(isset($_POST['submit'])){
 					<!-- Search button -->
 					<div class="col-md-12">
 						<div class="search">
-							<button type="submit" name="submit" onclick="getLocation(<?php "results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox ?>)" class="btn btn-primary btn-block">Search</button>
+							<button type="submit" name="submit" class="btn btn-primary btn-block">Search</button>
 						</div>
 					</div>
 				</div>
