@@ -20,26 +20,26 @@ if(isset($_POST['submit'])){
 	}
 
 	if(isset($menCheckbox)){
-		$menCheckbox='1';
+		$menCheckbox=1;
 	}else{
-		$menCheckbox='0';
+		$menCheckbox=0;
 	}
 
 	if(isset($womenCheckbox)){
-		$womenCheckbox='1';
+		$womenCheckbox=1;
 	}else{
-		$womenCheckbox='0';
+		$womenCheckbox=0;
 	}
 
 	if(isset($allGendersCheckbox)){
-		$allGendersCheckbox='1';
+		$allGendersCheckbox=1;
 	}else{
-		$allGendersCheckbox='0';
+		$allGendersCheckbox=0;
 	}
 
     if(!$isError){
     	//redirect with parameters in url
-    	header("location:results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox );
+    	header("location:results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox );
 	}
 }
 
