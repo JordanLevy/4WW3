@@ -1,3 +1,6 @@
+<!-- link custom js file to use geolocation -->
+<script src="js/geo.js"></script>
+
 <?php
 
 require_once "config.php";
@@ -207,7 +210,5 @@ if(isset($_POST['submit'])){
 		<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 		<!-- link bootstrap javascript -->
 		<script src="js/bootstrap.min.js"></script>
-		<!-- link custom js file to use geolocation -->
-		<script src="js/geo.js"></script>
 	</body>
 </html>
