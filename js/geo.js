@@ -11,7 +11,7 @@ function getLocation(d) {
 			navigator.geolocation.getCurrentPosition(setLatLongCoords, currLocError);
 		}
 		else {
-				navigator.geolocation.getCurrentPosition(byCrit, searchError);
+				navigator.geolocation.getCurrentPosition(byLoc, searchError);
 		}
 	} else {
 		alert("Unable to search using location.")
