@@ -192,3 +192,8 @@ footer {
 	width: 95%;
 	height: 90%;
 }
+
+.modal-body {
+	color: white;
+	background: #262626 !important;
+}
