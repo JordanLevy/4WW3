@@ -54,7 +54,7 @@ function getLocation(d) {
 				navigator.geolocation.getCurrentPosition(byLoc, searchError);
 		}
 	} else {
-		alert(\"Unable to search using location.\")
+		document.location = dest + \"&long=na&lat=na\";
 	}
 }
 
@@ -156,6 +156,7 @@ function currLocError() {
 						<!-- Rating stars selector -->
 						<label class="inputLabel">Rating:
 							<select name="star">
+								<option value="0">-----</option>
 								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 								<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
 								<option value="3">&#9733;&#9733;&#9733;</option>

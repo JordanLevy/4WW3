@@ -11,6 +11,9 @@ if(!is_numeric($_GET['rating'])){
 }
 
 if(!$isError){
+	$usingTerms = ($_GET['terms'] != '');
+	$usingRating = ($_GET['rating'] != '0');
+	$usingLocation = ($_GET['long'] != 'na' and $_GET['lat'] != 'na');
 	$g = "";
 	if($_GET['men']=='1'){
 		$g .= "M";
@@ -22,8 +25,35 @@ if(!$isError){
 		$g .= "A";
 	}
 	//search for user in database
-	$params = array($_GET['long'], $_GET['lat'], $_GET['terms'], $_GET['rating'], $g);
-	$query = "SELECT id, building, roomNum, longitude, latitude, numReviews, rating, gender, sqrt(square(?-longitude) + square(?-latitude)) as distance, (if(concat(building, ' ', roomNum) like ?, 500, 0) + if(rating == ?, 50, 0) + if(gender in ?, 80, 0) - distance*100) as searchScore FROM objects ORDER BY searchScore";
+	$params = array();
+	$query = "SELECT id, building, roomNum, longitude, latitude, numReviews, rating, gender"
+	//if we're using location, define a calculated column for distance from the current geolocation
+	if($usingLocation){
+		$query .= ", sqrt(square(?-longitude) + square(?-latitude)) as distance"
+		array_push($params, $_GET['long'], $_GET['lat']);
+	}
+	$query .= " FROM objects";
+	if($usingTerms){
+		$query .= " WHERE concat(building, ' ', roomNum) LIKE ?";
+		array_push($params, $_GET['terms']);
+		//if we're searching by terms and by rating, add an "or rating" operator in between the statements
+		if($usingRating){
+			$query .= " OR rating = ?";
+			array_push($params, $_GET['rating']);
+		}
+	}else{
+		//if we're not searching by terms but we're searching by rating, add the "where rating" statement
+		if($usingRating){
+			$query .= " WHERE rating = ?";
+			array_push($params, $_GET['rating']);
+		}
+	}
+	//if we have distance from geolocation, order by it
+	if($usingLocation){
+		$query .= "ORDER BY distance";
+	}
+
+
 	$result = sqlsrv_query($conn, $query, $params);
 	//if the search didn't work
 	if( $result === false ) {
