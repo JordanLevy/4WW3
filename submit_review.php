@@ -21,4 +21,16 @@
 		echo "<br>";
 	    die();
 	}
+
+	$params = array($row[0], $bathroomId);
+	$query="UPDATE objects SET rating = ? WHERE id = ?";
+	$result = sqlsrv_query($conn, $query, $params);
+	if( $result === false ) {
+		echo "ERROR<br>";
+		$errors=sqlsrv_errors();
+		echo "<br>";
+		print_r($errors);
+		echo "<br>";
+	    die();
+	}
 ?>
