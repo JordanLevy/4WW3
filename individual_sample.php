@@ -346,8 +346,13 @@ if(!$isError){
 
 		        console.log("postData", postData);
 		        console.log("formURL", formURL);
+
+
+		        // append this bathroom's id into postData array
+
+
 		        $.ajax({
-		            url: formURL,
+		            url: "/submit_review.php",
 		            type: "POST",
 		            data: postData,
 		            success: function(data, textStatus, jqXHR) {
