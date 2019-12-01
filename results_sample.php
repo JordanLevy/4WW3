@@ -52,7 +52,6 @@ if(!$isError){
 	if($usingLocation){
 		$query .= " ORDER BY distance";
 	}
-	$query .= " LIMIT 3";
 	$result = sqlsrv_query($conn, $query, $params);
 	//if the search didn't work
 	if( $result === false ) {
