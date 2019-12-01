@@ -34,7 +34,8 @@ if(!$isError){
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
 			$title = $row['building'] . " " . $row['roomNum'];
-			echo $title;
+			$gender = $row['gender'];
+			$description = $row['description'];
 		}
 	}
 }
@@ -107,7 +108,7 @@ if(!$isError){
 					<div class="row">
 						<div class="col-md-12">
 							<!-- washroom gender text -->
-							<p class="women">Women's washroom</p>
+							<p class="<?php if($gender=='M'){ echo 'men'; }else if($gender=='F'){ echo 'women'; }else{ echo 'allGenders'; } ?>"><?php if($gender=='M'){ echo "Men's washroom"; }else if($gender=='F'){ echo "Women's washroom"; }else{ echo "All Genders washroom"; } ?></p>
 						</div>
 					</div>
 					<div class="row">
