@@ -17,8 +17,6 @@ if(!$isError){
 	//search for user in database
 	$params = array($_GET['id']);
 	$query = "SELECT id, building, roomNum, longitude, latitude, description, numReviews, rating, gender FROM objects WHERE id=?";
-	echo $query . "<br/>";
-	print_r($params);
 	$result = sqlsrv_query($conn, $query, $params);
 	//if the search didn't work
 	if( $result === false ) {

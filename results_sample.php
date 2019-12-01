@@ -167,21 +167,21 @@ if(!$isError){
 							<tbody>
 								<!-- table row 1 -->
 								<tr>
-									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[0] ?>"><?php echo (isset($tblBuilding[0]))?$tblBuilding[0]:'';?></a></td>
+									<td><a href="individual_sample.php?<?php echo 'id=' . $tblID[0] ?>"><?php echo (isset($tblBuilding[0]))?$tblBuilding[0]:'';?></a></td>
 									<td><?php echo (isset($tblGender[0]))?$tblGender[0]:'';?></td>
 									<td><?php echo (isset($tblRating[0]))?$tblRating[0]:'';?></td>
 									<td><?php echo (isset($tblDistance[0]))?$tblDistance[0]:'';?></td>
 								</tr>
 								<!-- table row 2 -->
 								<tr>
-									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[1] ?>"><?php echo (isset($tblBuilding[1]))?$tblBuilding[1]:'';?></a></td>
+									<td><a href="individual_sample.php?<?php echo 'id=' . $tblID[1] ?>"><?php echo (isset($tblBuilding[1]))?$tblBuilding[1]:'';?></a></td>
 									<td><?php echo (isset($tblGender[1]))?$tblGender[1]:'';?></td>
 									<td><?php echo (isset($tblRating[1]))?$tblRating[1]:'';?></td>
 									<td><?php echo (isset($tblDistance[1]))?$tblDistance[1]:'';?></td>
 								</tr>
 								<!-- table row 3 -->
 								<tr>
-									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[2] ?>"><?php echo (isset($tblBuilding[2]))?$tblBuilding[2]:'';?></a></td>
+									<td><a href="individual_sample.php?<?php echo 'id=' . $tblID[2] ?>"><?php echo (isset($tblBuilding[2]))?$tblBuilding[2]:'';?></a></td>
 									<td><?php echo (isset($tblGender[2]))?$tblGender[2]:'';?></td>
 									<td><?php echo (isset($tblRating[2]))?$tblRating[2]:'';?></td>
 									<td><?php echo (isset($tblDistance[2]))?$tblDistance[2]:'';?></td>
@@ -197,7 +197,7 @@ if(!$isError){
 			<div class="row text-center">
 				<!-- footer link to homepage -->
 				<div class="col-md-4">
-					<a href="search.html">McMaster Restroom Finder</a>
+					<a href="search.php">McMaster Restroom Finder</a>
 				</div>
 				<!-- footer copyright -->
 				<div class="col-md-4">
