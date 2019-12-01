@@ -7,9 +7,6 @@
 	$reviewText = $_POST['reviewText'];
 	$bathroomId = $_POST['bathroomId'];
 
-	// print_r($_POST);
-	echo "reviewStar is " . $reviewStar . ". reviewText is " . $reviewText . ". Session id is " . $_SESSION["id"] . ". Bathroom id is " . $bathroomId;
-
 	$params = array($bathroomId, $_SESSION["id"], $reviewStar, $reviewText);
 	$query="INSERT INTO reviews (objectID, userID, rating, description) VALUES (?, ?, ?, ?)";
 	$result = sqlsrv_query($conn, $query, $params);
@@ -21,7 +18,7 @@
 		echo "<br>";
 	    die();
 	}
-
+	$avgRating = 0;
 	//calculate the average rating
 	$params = array($bathroomId);
 	$query = "SELECT avg(Cast(rating as Float)) FROM reviews WHERE objectID=?";
@@ -44,6 +41,8 @@
 			$avgRating = $row[0];
 		}
 	}
+
+	echo $avgRating;
 
 	$params = array($avgRating, $bathroomId);
 	$query="UPDATE objects SET rating = ? WHERE id = ?";
