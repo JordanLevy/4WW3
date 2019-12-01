@@ -66,7 +66,7 @@ if(!$isError){
 			}
 			$reviewHTML .= '<div class="row">
 				<div class="col-md-12">
-					<label for="desc' . $i . '">' . $row['username'] . $starString . ' ' . $row['created_at']->format('Y-m-d H:i:s') . '</label>
+					<label for="desc' . $i . '">' . $row['username'] . $starString . ' ' . $row['created_at']->format('Y-m-d h:i A') . '</label>
     					<textarea class="form-control" id="desc' . $i . '" rows="3" disabled>' . $row['description'] . '</textarea>
 						</div>
 					</div>';
