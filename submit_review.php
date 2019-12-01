@@ -21,4 +21,39 @@
 		echo "<br>";
 	    die();
 	}
+
+	//calculate the average rating
+	$params = array($_GET['id']);
+	$query = "SELECT avg(Cast(rating as Float)) FROM reviews WHERE objectID=?";
+	$result = sqlsrv_query($conn, $query, $params);
+	//if the search didn't work
+	if( $result === false ) {
+		echo "ERROR<br>";
+		$errors=sqlsrv_errors();
+		echo "<br>";
+		print_r($errors);
+		echo "<br>";
+		die();
+	}
+	//if it's zero rows
+	if(sqlsrv_has_rows($result) != 1){
+		   echo "0 rows";
+	}else{
+		//get the query results
+		while($row = sqlsrv_fetch_array($result)){
+			$n = $row[0]
+		}
+	}
+
+	$params = array($n, $bathroomId);
+	$query="UPDATE objects SET rating = ? WHERE id = ?";
+	$result = sqlsrv_query($conn, $query, $params);
+	if( $result === false ) {
+		echo "ERROR<br>";
+		$errors=sqlsrv_errors();
+		echo "<br>";
+		print_r($errors);
+		echo "<br>";
+	    die();
+	}
 ?>
