@@ -266,7 +266,7 @@ if(!$isError){
 										<div class="modal-header">
 											<h3>A title for my modal</h3>
 										</div>
-										<div class="modal-body" style="background-color:black;">
+										<div class="modal-body">
 											<form action="" method="post">
 												<!-- Rating stars selector -->
 												<label class="inputLabel">Rating:
