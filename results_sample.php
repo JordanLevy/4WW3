@@ -26,10 +26,10 @@ if(!$isError){
 	}
 	//search for user in database
 	$params = array();
-	$query = "SELECT id, building, roomNum, longitude, latitude, numReviews, rating, gender"
+	$query = "SELECT id, building, roomNum, longitude, latitude, numReviews, rating, gender";
 	//if we're using location, define a calculated column for distance from the current geolocation
 	if($usingLocation){
-		$query .= ", sqrt(square(?-longitude) + square(?-latitude)) as distance"
+		$query .= ", sqrt(square(?-longitude) + square(?-latitude)) as distance";
 		array_push($params, $_GET['long'], $_GET['lat']);
 	}
 	$query .= " FROM objects";
