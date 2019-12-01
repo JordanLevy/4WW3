@@ -40,7 +40,7 @@ if(!$isError){
 		}
 	}
 
-	//search for user in database
+	//search for reviews in database
 	$params = array($_GET['id']);
 	$query = "SELECT users.username, reviews.rating, reviews.description, reviews.created_at FROM reviews INNER JOIN users ON users.id = reviews.userID WHERE reviews.objectID=?";
 	$result = sqlsrv_query($conn, $query, $params);
@@ -71,6 +71,29 @@ if(!$isError){
 						</div>
 					</div>';
 			$i++;
+		}
+	}
+
+	//search for user in database
+	$params = array($_GET['id']);
+	$query = "SELECT avg(rating) FROM reviews WHERE objectID=?";
+	$result = sqlsrv_query($conn, $query, $params);
+	//if the search didn't work
+	if( $result === false ) {
+		echo "ERROR<br>";
+		$errors=sqlsrv_errors();
+		echo "<br>";
+		print_r($errors);
+		echo "<br>";
+		die();
+	}
+	//if it's zero rows
+	if(sqlsrv_has_rows($result) != 1){
+		   echo "0 rows";
+	}else{
+		//get the query results
+		while($row = sqlsrv_fetch_array($result)){
+			print_r($row);
 		}
 	}
 
@@ -165,7 +188,7 @@ if(!$isError){
 					<div class="row">
 						<div class="col-md-12">
 							<!-- average rating -->
-							<label>Average Rating: 4.3 stars</label>
+							<label>Average Rating: <?php echo $avgRating; ?> stars</label>
 						</div>
 					</div>
 					<!-- ratings bar graph -->
@@ -268,16 +291,6 @@ if(!$isError){
 
 					<?php echo $reviewHTML; ?>
 
-					<div class="row">
-						<div class="col-md-4">
-							<div class="moreReviews">
-								<!-- "See More Reviews" button -->
-								<button type="button" class="btn btn-primary btn-block">See More Reviews</button>
-							</div>
-						</div>
-						<div class="col-md-8">
-						</div>
-					</div>
 					<div class="row">
 						<div class="col-md-4">
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">
