@@ -75,19 +75,19 @@ if(!$isError){
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
 			print_r($row);
-			$tblID[i] = $row['id'];
-			$tblBuilding[i] = $row['building'] . " " . $row['roomNum'];
+			$tblID[$i] = $row['id'];
+			$tblBuilding[$i] = $row['building'] . " " . $row['roomNum'];
 
 			if($row['gender']=='M'){
-				$tblGender[i] = "Men's";
+				$tblGender[$i] = "Men's";
 			}else if($row['gender']=='F'){
-				$tblGender[i] = "Women's";
+				$tblGender[$i] = "Women's";
 			}else{
-				$tblGender[i] = "All Genders";
+				$tblGender[$i] = "All Genders";
 			}
 
-			$tblRating[i] = $row['rating'];
-			$tblDistance[i] = $row['distance'];
+			$tblRating[$i] = $row['rating'];
+			$tblDistance[$i] = $row['distance'];
 
 			$i++;
 		}
@@ -171,11 +171,6 @@ if(!$isError){
 							<tbody>
 								<!-- table row 1 -->
 								<tr>
-									<td><a href="individual_sample.html"><?php print_r($tblBuilding) . "<br>" . print_r($tblGender);?></a></td>
-									<td><a href="individual_sample.html"><?php print_r($tblRating) . "<br>" . print_r($tblDistance);?></a></td>
-									<td><a href="individual_sample.html"><?php print_r($tblID);?></a></td>
-
-
 									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[0] ?>"><?php echo (isset($tblBuilding[0]))?$tblBuilding[0]:'';?></a></td>
 									<td><?php echo (isset($tblGender[0]))?$tblGender[0]:'';?></td>
 									<td><?php echo (isset($tblRating[0]))?$tblRating[0]:'';?></td>
