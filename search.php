@@ -115,7 +115,7 @@ function currLocError() {
 				<a class="navbar-brand" href="search.php">McMaster Restroom Finder</a>
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<!-- navbar item -->
-					<li class="nav-item">
+					<li class="nav-item active">
 						<!-- "Search Form" link in navbar -->
 						<a class="nav-link" href="search.php">Search Form</a>
 					</li>
@@ -125,11 +125,7 @@ function currLocError() {
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href="<?php session_start(); if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'logout.php'; }else{ echo 'login.php'; } ?>"><?php session_start(); if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'Log Out'; }else{ echo 'Log In'; } ?></a>
-					</li>
-					<li class="nav-item">
-						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href=""><?php session_start(); print_r($_SESSION); ?></a>
+						<a class="nav-link" href="<?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'logout.php'; }else{ echo 'login.php'; } ?>"><?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'Log Out'; }else{ echo 'Log In'; } ?></a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->

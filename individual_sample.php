@@ -42,10 +42,6 @@ session_start();
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href=""><?php print_r($_SESSION); ?></a>
-					</li>
-					<li class="nav-item">
-						<!-- "User Registration Page" link in navbar -->
 						<a class="nav-link" href="registration.php">Register</a>
 					</li>
 				</ul>
