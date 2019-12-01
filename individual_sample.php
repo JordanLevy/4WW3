@@ -4,7 +4,7 @@ session_start();
 
 require_once "config.php";
 
-$title = $gender = $avgRating = $description
+$title = $gender = $avgRating = $description = '';
 $isError = false;
 
 //validate url params
