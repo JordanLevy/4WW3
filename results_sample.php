@@ -62,15 +62,33 @@ if(!$isError){
 		echo "<br>";
 		die();
 	}
-
-	$id1='3';
+	$tblID = array('', '', '');
+	$tblBuilding = array('', '', '');
+	$tblGender = array('', '', '');
+	$tblRating = array('', '', '');
+	$tblDistance = array('', '', '');
+	$i=0;
 	//if it's zero rows
 	if(sqlsrv_has_rows($result) != 1){
 		   echo "0 rows";
 	}else{
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
-			print_r($row);
+			$tblID[i] = $row['id'];
+			$tblBuilding[i] = $row['building'] . " " . $row['roomNum'];
+
+			if($row['gender']=='M'){
+				$tblGender[i] = "Men's";
+			}else if($row['gender']=='F'){
+				$tblGender[i] = "Women's";
+			}else{
+				$tblGender[i] = "All Genders";
+			}
+
+			$tblRating[i] = $row['rating'];
+			$tblDistance[i] = $row['distance'];
+
+			$i++;
 		}
 	}
 }
@@ -143,7 +161,8 @@ if(!$isError){
 							<!-- table headers -->
 							<thead>
 								<tr>
-									<th>Room #</th>
+									<th>Building/Room #</th>
+									<th>Gender</th>
 									<th>Rating</th>
 									<th>Distance</th>
 								</tr>
@@ -151,21 +170,24 @@ if(!$isError){
 							<tbody>
 								<!-- table row 1 -->
 								<tr>
-									<td><a href="individual_sample.html?<?php echo 'id=' . $id1 ?>">BSB B134</a></td>
-									<td>5</td>
-									<td>0.3km</td>
+									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[0] ?>"><?php echo $tblBuilding[0] ?></a></td>
+									<td><?php echo $tblGender[0] ?></td>
+									<td><?php echo $tblRating[0] ?> stars</td>
+									<td><?php echo $tblDistance[0] ?>km</td>
 								</tr>
 								<!-- table row 2 -->
 								<tr>
-									<td><a href="individual_sample.html">ITB 123</a></td>
-									<td>5</td>
-									<td>2km</td>
+									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[1] ?>"><?php echo $tblBuilding[1] ?></a></td>
+									<td><?php echo $tblGender[1] ?></td>
+									<td><?php echo $tblRating[1] ?> stars</td>
+									<td><?php echo $tblDistance[1] ?>km</td>
 								</tr>
 								<!-- table row 3 -->
 								<tr>
-									<td><a href="individual_sample.html">MDCL 1101</a></td>
-									<td>4</td>
-									<td>2.1km</td>
+									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[2] ?>"><?php echo $tblBuilding[2] ?></a></td>
+									<td><?php echo $tblGender[2] ?></td>
+									<td><?php echo $tblRating[2] ?> stars</td>
+									<td><?php echo $tblDistance[2] ?>km</td>
 								</tr>
 							</tbody>
 						</table>
