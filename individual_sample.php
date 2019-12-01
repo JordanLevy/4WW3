@@ -2,6 +2,42 @@
 
 session_start();
 
+require_once "config.php";
+
+$title = $gender = $avgRating = $description
+$isError = false;
+
+//validate url params
+if(!is_numeric($_GET['id'])){
+	$isError=true;
+	echo '<span style="color:red;">Invalid url</span><br/>';
+}
+
+if(!$isError){
+	//search for user in database
+	$params = array($_GET['id']);
+	$query = "SELECT id, building, roomNum, longitude, latitude, description, numReviews, rating, gender FROM objects WHERE id=?";
+	$result = sqlsrv_query($conn, $query, $params);
+	//if the search didn't work
+	if( $result === false ) {
+		echo "ERROR<br>";
+		$errors=sqlsrv_errors();
+		echo "<br>";
+		print_r($errors);
+		echo "<br>";
+		die();
+	}
+	//if it's zero rows
+	if(sqlsrv_has_rows($result) != 1){
+		   echo "0 rows";
+	}else{
+		//get the query results
+		while($row = sqlsrv_fetch_array($result)){
+			$title = $row['building'] . " " . $row['roomNum'];
+		}
+	}
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +90,7 @@ session_start();
 				<!-- bootstrap column of width 12 -->
 				<div class="col-md-12">
 					<!-- header text -->
-					<h3>BSB B134</h3>
+					<h3><?php echo $title; ?></h3>
 				</div>
 			</div>
 			<div class="row">

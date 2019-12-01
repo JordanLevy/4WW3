@@ -4,7 +4,7 @@ session_start();
 
 require_once "config.php";
 
-//$tblID = array('', '', '');
+$tblID = array('', '', '');
 $tblBuilding = array('', '', '');
 $tblGender = array('', '', '');
 $tblRating = array('', '', '');
