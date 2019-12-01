@@ -34,6 +34,7 @@ if(!$isError){
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
 			$title = $row['building'] . " " . $row['roomNum'];
+			echo $title;
 		}
 	}
 }
