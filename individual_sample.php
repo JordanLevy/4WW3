@@ -114,7 +114,7 @@ if(!$isError){
 					<div class="row">
 						<div class="col-md-12">
 							<!-- object description text -->
-    						<textarea class="form-control" rows="3" disabled>This bathroom has 4 stalls and 2 sinks, as well as 1 paper towel dispenser and 2 soap dispensers.</textarea>
+    						<textarea class="form-control" rows="3" disabled><?php echo $description; ?></textarea>
 						</div>
 					</div>
 					<div class="row">
