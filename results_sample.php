@@ -71,7 +71,6 @@ if(!$isError){
 	}else{
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
-			print_r($row);
 			$tblID[$i] = $row['id'];
 			$tblBuilding[$i] = $row['building'] . " " . $row['roomNum'];
 
