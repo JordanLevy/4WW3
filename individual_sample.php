@@ -265,7 +265,11 @@ if(!$isError){
 							<div class="modal fade" id="mymodal">
 								<div class="modal-dialog">
 									<div class="modal-content">
-										<form action="#" method="post" id="review_form">
+										<?php
+											//if the user is logged in, show the UI to write a review. Otherwise, ask them to sign in.
+											if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+												echo '
+												<form action="#" method="post" id="review_form">
 													<div class="modal-header" style="background: #262626;">
 														<h3>Write a Review of ' . $title . '</h3>
 													</div>
@@ -286,33 +290,7 @@ if(!$isError){
 														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 														<button type="submit" class="btn btn-primary" name="submit" id="submitForm" data-dismiss="modal">Submit</button>
 													</div>
-										</form>
-										<!--<?php
-											/*//if the user is logged in, show the UI to write a review. Otherwise, ask them to sign in.
-											if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-												echo '
-												<form action="#" method="post">
-													<div class="modal-header" style="background: #262626;">
-														<h3>Write a Review of ' . $title . '</h3>
-													</div>
-													<div class="modal-body" style="background: #262626;">
-															<!-- Rating stars selector -->
-															<label class="inputLabel">Rating:
-																<select name="reviewStar">
-																	<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-																	<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
-																	<option value="3" selected="selected">&#9733;&#9733;&#9733;</option>
-																	<option value="2">&#9733;&#9733;</option>
-																	<option value="1">&#9733;</option>
-																</select>
-															</label>
-															<textarea class="form-control" type="text" name="reviewText" placeholder="Type your review here..."></textarea>
-													</div>
-													<div class="modal-footer" style="background: #262626;">
-														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-														<button type="submit" class="btn btn-primary" name="submit" data-dismiss="modal">Submit</button>
-													</div>
-												</form>';
+											</form>';
 											} else{
 												echo '<div class="modal-header" style="background: #262626;">
 														<h3>Write a Review of ' . $title . '</h3>
@@ -323,7 +301,7 @@ if(!$isError){
 													<div class="modal-footer" style="background: #262626;">
 														<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
 													</div>';
-											}*/
+											}
 
 										?>-->
 									</div>
