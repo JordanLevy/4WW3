@@ -71,6 +71,7 @@ if(isset($_POST['submit'])){
 		<link rel="stylesheet" href="css/index.css">
 		<!-- set page title -->
 		<title>McMaster Restroom Finder</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<!-- navbar header -->
@@ -281,7 +282,7 @@ if(isset($_POST['submit'])){
 							<div class="modal fade" id="mymodal">
 								<div class="modal-dialog">
 									<div class="modal-content">
-										<form action="#" method="post">
+										<form action="#" method="post" id="review_form">
 													<div class="modal-header" style="background: #262626;">
 														<h3>Write a Review of ' . $title . '</h3>
 													</div>
@@ -300,9 +301,9 @@ if(isset($_POST['submit'])){
 													</div>
 													<div class="modal-footer" style="background: #262626;">
 														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-														<button type="submit" class="btn btn-primary" name="submit" data-dismiss="modal">Submit</button>
+														<button type="submit" class="btn btn-primary" name="submit" id="submitForm" data-dismiss="modal">Submit</button>
 													</div>
-												</form>
+										</form>
 										<!--<?php
 											/*//if the user is logged in, show the UI to write a review. Otherwise, ask them to sign in.
 											if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
@@ -352,6 +353,38 @@ if(isset($_POST['submit'])){
 				</div>
 			</div>
 		</div>
+
+		<script>
+		/* must apply only after HTML has loaded */
+		$(document).ready(function () {
+		    $("#review_form").on("submit", function(e) {
+		        var postData = $(this).serializeArray();
+		        var formURL = $(this).attr("action");
+
+		        console.log("postData", postData);
+		        console.log("formURL", formURL);
+		    //     $.ajax({
+		    //         url: formURL,
+		    //         type: "POST",
+		    //         data: postData,
+		    //         success: function(data, textStatus, jqXHR) {
+		    //             $('#contact_dialog .modal-header .modal-title').html("Result");
+		    //             $('#contact_dialog .modal-body').html(data);
+		    //             $("#submitForm").remove();
+		    //         },
+		    //         error: function(jqXHR, status, error) {
+		    //             console.log(status + ": " + error);
+		    //         }
+		    //     });
+		    //    e.preventDefault();
+		    });
+		     
+		    $("#submitForm").on('click', function() {
+		        $("#review_form").submit();
+		    });
+		});
+		</script>
+
 		<!-- footer -->
 		<footer>
 			<div class="row text-center">
