@@ -192,9 +192,3 @@ footer {
 	width: 95%;
 	height: 90%;
 }
-
-.modal {
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  background: #262626; /* Fallback color */
-}

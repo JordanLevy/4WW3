@@ -263,10 +263,10 @@ if(!$isError){
 							<div class="modal fade" id="mymodal">
 								<div class="modal-dialog">
 									<div class="modal-content">
-										<div class="modal-header">
+										<div class="modal-header" style="background: #262626;">
 											<h3>A title for my modal</h3>
 										</div>
-										<div class="modal-body">
+										<div class="modal-body" style="background: #262626;">
 											<form action="" method="post">
 												<!-- Rating stars selector -->
 												<label class="inputLabel">Rating:
@@ -281,7 +281,7 @@ if(!$isError){
 												<input class="form-control" type="text" name="reviewText" placeholder="Type your review here...">
 											</form>
 										</div>
-										<div class="modal-footer">
+										<div class="modal-footer" style="background: #262626;">
 											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 										</div>
 									</div>
