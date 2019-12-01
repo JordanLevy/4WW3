@@ -264,26 +264,30 @@ if(!$isError){
 							<div class="modal fade" id="mymodal">
 								<div class="modal-dialog">
 									<div class="modal-content">
-										<?php
-
-											print_r($_POST);
-											if(isset($_POST['submit'])){
-												$reviewStar = $_POST['reviewStar'];
-												$reviewText = $_POST['reviewText'];
-
-												$params = array($_GET['id'], $_SESSION["id"], $reviewStar, $reviewText);
-												$query="INSERT INTO reviews (objectID, userID, rating, description) VALUES (?, ?, ?, ?)";
-												$result = sqlsrv_query($conn, $query, $params);
-												if( $result === false ) {
-													echo "ERROR<br>";
-													$errors=sqlsrv_errors();
-													echo "<br>";
-													print_r($errors);
-													echo "<br>";
-												    die();
-												}
-											}
-											//if the user is logged in, show the UI to write a review. Otherwise, ask them to sign in.
+										<form action="#" method="post">
+													<div class="modal-header" style="background: #262626;">
+														<h3>Write a Review of ' . $title . '</h3>
+													</div>
+													<div class="modal-body" style="background: #262626;">
+															<!-- Rating stars selector -->
+															<label class="inputLabel">Rating:
+																<select name="reviewStar">
+																	<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+																	<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+																	<option value="3" selected="selected">&#9733;&#9733;&#9733;</option>
+																	<option value="2">&#9733;&#9733;</option>
+																	<option value="1">&#9733;</option>
+																</select>
+															</label>
+															<textarea class="form-control" type="text" name="reviewText" placeholder="Type your review here..."></textarea>
+													</div>
+													<div class="modal-footer" style="background: #262626;">
+														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+														<button type="submit" class="btn btn-primary" name="submit" data-dismiss="modal">Submit</button>
+													</div>
+												</form>
+										<!--<?php
+											/*//if the user is logged in, show the UI to write a review. Otherwise, ask them to sign in.
 											if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 												echo '
 												<form action="#" method="post">
@@ -320,7 +324,25 @@ if(!$isError){
 													</div>';
 											}
 
-										?>
+											print_r($_POST);
+											if(isset($_POST['submit'])){
+												$reviewStar = $_POST['reviewStar'];
+												$reviewText = $_POST['reviewText'];
+
+												$params = array($_GET['id'], $_SESSION["id"], $reviewStar, $reviewText);
+												$query="INSERT INTO reviews (objectID, userID, rating, description) VALUES (?, ?, ?, ?)";
+												$result = sqlsrv_query($conn, $query, $params);
+												if( $result === false ) {
+													echo "ERROR<br>";
+													$errors=sqlsrv_errors();
+													echo "<br>";
+													print_r($errors);
+													echo "<br>";
+												    die();
+												}
+											}*/
+
+										?>-->
 									</div>
 								</div>
 							</div>
