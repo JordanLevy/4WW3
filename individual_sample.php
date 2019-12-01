@@ -367,9 +367,9 @@ print_r($_POST);
 		            type: "POST",
 		            data: postData,
 		            success: function(data, textStatus, jqXHR) {
-		                $('#contact_dialog .modal-header .modal-title').html("Result");
-		                $('#contact_dialog .modal-body').html(data);
-		                $("#submitForm").remove();
+		            	console.log("data returned is: " + data);
+		            	console.log("textStatus is: " + textStatus);
+		            	console.log("jqXHR is: " + jqXHR);
 		            },
 		            error: function(jqXHR, status, error) {
 		                console.log(status + ": " + error);
