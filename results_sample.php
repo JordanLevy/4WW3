@@ -171,24 +171,24 @@ if(!$isError){
 							<tbody>
 								<!-- table row 1 -->
 								<tr>
-									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[0] ?>"><?php echo $tblBuilding[0] ?></a></td>
-									<td><?php echo $tblGender[0] ?></td>
-									<td><?php echo $tblRating[0] ?> stars</td>
-									<td><?php echo $tblDistance[0] ?>km</td>
+									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[0] ?>"><?php echo $tblBuilding[0]; ?></a></td>
+									<td><?php echo $tblGender[0]; ?></td>
+									<td><?php echo $tblRating[0]; ?> stars</td>
+									<td><?php echo $tblDistance[0]; ?>km</td>
 								</tr>
 								<!-- table row 2 -->
 								<tr>
-									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[1] ?>"><?php echo $tblBuilding[1] ?></a></td>
-									<td><?php echo $tblGender[1] ?></td>
-									<td><?php echo $tblRating[1] ?> stars</td>
-									<td><?php echo $tblDistance[1] ?>km</td>
+									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[1] ?>"><?php echo $tblBuilding[1]; ?></a></td>
+									<td><?php echo $tblGender[1]; ?></td>
+									<td><?php echo $tblRating[1]; ?> stars</td>
+									<td><?php echo $tblDistance[1]; ?>km</td>
 								</tr>
 								<!-- table row 3 -->
 								<tr>
-									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[2] ?>"><?php echo $tblBuilding[2] ?></a></td>
-									<td><?php echo $tblGender[2] ?></td>
-									<td><?php echo $tblRating[2] ?> stars</td>
-									<td><?php echo $tblDistance[2] ?>km</td>
+									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[2] ?>"><?php echo $tblBuilding[2]; ?></a></td>
+									<td><?php echo $tblGender[2]; ?></td>
+									<td><?php echo $tblRating[2]; ?> stars</td>
+									<td><?php echo $tblDistance[2]; ?>km</td>
 								</tr>
 							</tbody>
 						</table>
