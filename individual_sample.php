@@ -361,12 +361,19 @@ if(!$isError){
 
 
 		        // append this bathroom's id into postData array
-		        var bathroomId = "<?php echo $_GET['id']; ?>"; 
+		        var bathroomId = "<?php echo $_GET['id']; ?>";
+		        var avgRating = "<?php echo $avgRating; ?>";
+
 				postData.push({
 				    name:   "bathroomId",
 				    value: bathroomId
 				});
 
+				postData.push({
+				    name:   "avgRating",
+				    value: avgRating
+				});
+				
 		        console.log("postData", postData);
 
 		        $.ajax({

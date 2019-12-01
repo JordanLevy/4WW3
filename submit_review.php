@@ -6,6 +6,7 @@
 	$reviewStar = $_POST['reviewStar'];
 	$reviewText = $_POST['reviewText'];
 	$bathroomId = $_POST['bathroomId'];
+	$avgRating = $_POST['avgRating'];
 
 	// print_r($_POST);
 	echo "reviewStar is " . $reviewStar . ". reviewText is " . $reviewText . ". Session id is " . $_SESSION["id"] . ". Bathroom id is " . $bathroomId;
@@ -22,7 +23,7 @@
 	    die();
 	}
 
-	$params = array($row[0], $bathroomId);
+	$params = array($avgRating, $bathroomId);
 	$query="UPDATE objects SET rating = ? WHERE id = ?";
 	$result = sqlsrv_query($conn, $query, $params);
 	if( $result === false ) {
