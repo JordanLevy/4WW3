@@ -289,7 +289,7 @@ if(!$isError){
 										</div>
 										<div class="modal-footer" style="background: #262626;">
 											<?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-											<button type="submit" class="btn btn-primary" name="submit" data-dismiss="modal">Submit</button>';} else { echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>'}?>
+											<button type="submit" class="btn btn-primary" name="submit" data-dismiss="modal">Submit</button>';} else { echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>';}?>
 										</div>
 									</div>
 								</div>
