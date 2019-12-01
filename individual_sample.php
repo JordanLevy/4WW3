@@ -263,34 +263,45 @@ if(!$isError){
 							<div class="modal fade" id="mymodal">
 								<div class="modal-dialog">
 									<div class="modal-content">
-										<div class="modal-header" style="background: #262626;">
-											<h3>Write a Review of <?php echo $title; ?></h3>
-											<p><?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ echo htmlspecialchars($_SESSION["username"]); } else {
-												echo "You must be <a href='login.php'>logged in</a> to write a review.";
-											} ?></p>
-										</div>
-										<div class="modal-body" style="background: #262626;">
-											<form action="" method="post">
-												<?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) { echo '
-												<!-- Rating stars selector -->
-												<label class="inputLabel">Rating:
-													<select name="reviewStar">
-														<option value="0">-----</option>
-														<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-														<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
-														<option value="3">&#9733;&#9733;&#9733;</option>
-														<option value="2">&#9733;&#9733;</option>
-														<option value="1">&#9733;</option>
-													</select>
-												</label>
-												<textarea class="form-control" rows="3" name="reviewText" placeholder="Type your review here..."></textarea>'; }
-												?>
-											</form>
-										</div>
-										<div class="modal-footer" style="background: #262626;">
-											<?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-											<button type="submit" class="btn btn-primary" name="submit" data-dismiss="modal">Submit</button>';} else { echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>';}?>
-										</div>
+										<?php
+											//if the user is logged in, show the UI to write a review. Otherwise, ask them to sign in.
+											if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+												echo '<div class="modal-header" style="background: #262626;">
+														<h3>Write a Review of <?php echo $title; ?></h3>
+													</div>
+													<div class="modal-body" style="background: #262626;">
+														<form action="" method="post">
+															<!-- Rating stars selector -->
+															<label class="inputLabel">Rating:
+																<select name="reviewStar">
+																	<option value="0">-----</option>
+																	<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+																	<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+																	<option value="3">&#9733;&#9733;&#9733;</option>
+																	<option value="2">&#9733;&#9733;</option>
+																	<option value="1">&#9733;</option>
+																</select>
+															</label>
+															<textarea class="form-control" type="text" name="reviewText" placeholder="Type your review here..."></textarea>
+														</form>
+													</div>
+													<div class="modal-footer" style="background: #262626;">
+														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+														<button type="submit" class="btn btn-primary" name="submit" data-dismiss="modal">Submit</button>
+													</div>';
+											} else{
+												echo '<div class="modal-header" style="background: #262626;">
+														<h3>Write a Review of <?php echo $title; ?></h3>
+													</div>
+													<div class="modal-body" style="background: #262626;">
+														<p>You must be <a href=\'login.php\'>logged in</a> to write a review.</p>
+													</div>
+													<div class="modal-footer" style="background: #262626;">
+														<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
+													</div>';
+											}
+
+										?>
 									</div>
 								</div>
 							</div>
