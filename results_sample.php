@@ -151,7 +151,7 @@ if(!$isError){
 							<tbody>
 								<!-- table row 1 -->
 								<tr>
-									<td><a href="individual_sample.html?<?php echo 'id=$id1' ?>">BSB B134</a></td>
+									<td><a href="individual_sample.html?<?php echo 'id=' . $id1 ?>">BSB B134</a></td>
 									<td>5</td>
 									<td>0.3km</td>
 								</tr>
