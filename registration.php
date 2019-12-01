@@ -105,7 +105,7 @@ try {
 		<title>Register an Account</title>
 	</head>
 	<body>
-				<!-- navbar header -->
+		<!-- navbar header -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
 				<!-- navbar collapse icon -->
@@ -126,7 +126,11 @@ try {
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href="<?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'logout.php'; }else{ echo 'login.php'; } ?>"><?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'Log Out'; }else{ echo 'Log In'; } ?></a>
+						<a class="nav-link" href="<?php session_start(); if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'logout.php'; }else{ echo 'login.php'; } ?>"><?php session_start(); if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'Log Out'; }else{ echo 'Log In'; } ?></a>
+					</li>
+					<li class="nav-item">
+						<!-- "User Registration Page" link in navbar -->
+						<a class="nav-link" href=""><?php session_start(); print_r($_SESSION); ?></a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
