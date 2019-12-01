@@ -52,7 +52,7 @@ if(!$isError){
 	if($usingLocation){
 		$query .= " ORDER BY distance";
 	}
-
+	$query .= " LIMIT 3";
 	$result = sqlsrv_query($conn, $query, $params);
 	//if the search didn't work
 	if( $result === false ) {
@@ -64,6 +64,7 @@ if(!$isError){
 		die();
 	}
 
+	$id1='3';
 	//if it's zero rows
 	if(sqlsrv_has_rows($result) != 1){
 		   echo "0 rows";
@@ -151,7 +152,7 @@ if(!$isError){
 							<tbody>
 								<!-- table row 1 -->
 								<tr>
-									<td><a href="individual_sample.html">BSB B134</a></td>
+									<td><a href="individual_sample.html?<?php id=$id1 ?>">BSB B134</a></td>
 									<td>5</td>
 									<td>0.3km</td>
 								</tr>
