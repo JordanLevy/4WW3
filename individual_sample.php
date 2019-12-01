@@ -261,7 +261,7 @@ if(!$isError){
 								<!-- "Write a Review" button -->
 								<button type="button" class="btn btn-primary btn-block">Write a Review</button>
 								<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
+  aria-hidden="false">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
