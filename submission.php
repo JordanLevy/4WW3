@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "config.php";
 
 $building = $roomNum = $longitude = $latitude = $description = $gender = "";

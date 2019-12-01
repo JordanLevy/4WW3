@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once "config.php";
 
 $menCheckbox = $womenCheckbox = $allGendersCheckbox = $star = $searchTerms = "";
