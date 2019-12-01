@@ -258,19 +258,24 @@ if(!$isError){
 					<div class="row">
 						<div class="col-md-4">
 							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">
-								Click me
+								Write a Review
 							</button>
 							<div class="modal fade" id="mymodal">
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<div class="modal-header" style="background: #262626;">
-											<h3>A title for my modal</h3>
+											<h3>Write a Review of <?php echo $title; ?></h3>
+											<p><?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ echo htmlspecialchars($_SESSION["username"]); } else {
+												echo "You must be <a href='login.php'>logged in</a> to write a review.";
+											} ?></p>
 										</div>
 										<div class="modal-body" style="background: #262626;">
 											<form action="" method="post">
+												<?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) { echo '
 												<!-- Rating stars selector -->
 												<label class="inputLabel">Rating:
 													<select name="reviewStar">
+														<option value="0">-----</option>
 														<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 														<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
 														<option value="3">&#9733;&#9733;&#9733;</option>
@@ -278,25 +283,16 @@ if(!$isError){
 														<option value="1">&#9733;</option>
 													</select>
 												</label>
-												<input class="form-control" type="text" name="reviewText" placeholder="Type your review here...">
+												<input class="form-control" type="text" name="reviewText" placeholder="Type your review here...">'; }
+												?>
 											</form>
 										</div>
 										<div class="modal-footer" style="background: #262626;">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											<?php if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){ echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+											<button type="submit" class="btn btn-primary" name="submit" data-dismiss="modal">Submit</button>';} else { echo '<button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>'}?>
 										</div>
 									</div>
 								</div>
-							</div>
-
-
-
-
-
-
-
-							<div class="writeReview">
-								<!-- "Write a Review" button -->
-								<button type="button" class="btn btn-primary btn-block">Write a Review</button>
 							</div>
 						</div>
 						<div class="col-md-8">
