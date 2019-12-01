@@ -2,6 +2,11 @@
 
 require_once "config.php";
 
+$tblID = array('', '', '');
+$tblBuilding = array('', '', '');
+$tblGender = array('', '', '');
+$tblRating = array('', '', '');
+$tblDistance = array('', '', '');
 $isError = false;
 
 //validate url params
@@ -62,11 +67,6 @@ if(!$isError){
 		echo "<br>";
 		die();
 	}
-	$tblID = array('', '', '');
-	$tblBuilding = array('', '', '');
-	$tblGender = array('', '', '');
-	$tblRating = array('', '', '');
-	$tblDistance = array('', '', '');
 	$i=0;
 	//if it's zero rows
 	if(sqlsrv_has_rows($result) != 1){
@@ -74,6 +74,7 @@ if(!$isError){
 	}else{
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
+			print_r($row);
 			$tblID[i] = $row['id'];
 			$tblBuilding[i] = $row['building'] . " " . $row['roomNum'];
 
