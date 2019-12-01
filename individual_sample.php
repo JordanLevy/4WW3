@@ -42,6 +42,7 @@ if(!$isError){
 }
 
 if(isset($_POST['submit'])){
+	echo "test";
 	$reviewStar = $_POST['reviewStar'];
 	$reviewText = $_POST['reviewText'];
 
