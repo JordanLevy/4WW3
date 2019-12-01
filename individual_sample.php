@@ -349,7 +349,11 @@ if(!$isError){
 
 
 		        // append this bathroom's id into postData array
-
+		        var bathroomId = "<?php echo $_GET['id']; ?>"; 
+				postData.push({
+				    key:   "bathroomId",
+				    value: bathroomId
+				});
 
 		        $.ajax({
 		            url: "/submit_review.php",

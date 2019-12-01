@@ -4,6 +4,7 @@
 
 	$reviewStar = $_POST['reviewStar'];
 	$reviewText = $_POST['reviewText'];
+	$bathroomId = $_POST['bathroomId'];
 
 	// $params = array($_GET['id'], $_SESSION["id"], $reviewStar, $reviewText);
 	// $query="INSERT INTO reviews (objectID, userID, rating, description) VALUES (?, ?, ?, ?)";
@@ -17,5 +18,5 @@
 	//     die();
 	// }
 	// print_r($_POST);
-	echo "reviewStar is " . $reviewStar . ". reviewText is " . $reviewText . ". Session id is " . $_SESSION["id"];
+	echo "reviewStar is " . $reviewStar . ". reviewText is " . $reviewText . ". Session id is " . $_SESSION["id"] . ". Bathroom id is " . $bathroomId;
 ?>
