@@ -47,7 +47,7 @@ if(!$isError){
 		//if we're searching by terms and by rating, add an "or rating" operator in between the statements
 	}
 	if($usingRating){
-		$query .= " OR rating = ?";
+		$query .= " OR floor(rating) = ?";
 		array_push($params, $_GET['rating']);
 	}
 	//if we have distance from geolocation, order by it
