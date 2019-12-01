@@ -53,7 +53,7 @@ if(!$isError){
 		$query .= "ORDER BY distance";
 	}
 
-
+	echo $query;
 	$result = sqlsrv_query($conn, $query, $params);
 	//if the search didn't work
 	if( $result === false ) {
