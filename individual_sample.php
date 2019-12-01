@@ -188,7 +188,7 @@ if(!$isError){
 					<div class="row">
 						<div class="col-md-12">
 							<!-- average rating -->
-							<label>Average Rating: <?php echo $avgRating; ?> stars</label>
+							<label>Average Rating: <?php echo round($avgRating, 1); ?> stars</label>
 						</div>
 					</div>
 					<!-- ratings bar graph -->
