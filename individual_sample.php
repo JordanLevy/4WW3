@@ -74,9 +74,9 @@ if(!$isError){
 		}
 	}
 
-	//search for user in database
+	//calculate the average rating
 	$params = array($_GET['id']);
-	$query = "SELECT avg(rating) FROM reviews WHERE objectID=?";
+	$query = "SELECT avg(Cast(rating as Float)) FROM reviews WHERE objectID=?";
 	$result = sqlsrv_query($conn, $query, $params);
 	//if the search didn't work
 	if( $result === false ) {
