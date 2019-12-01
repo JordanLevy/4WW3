@@ -257,48 +257,48 @@ if(!$isError){
 					</div>
 					<div class="row">
 						<div class="col-md-4">
+							<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mymodal">
+								Click me
+							</button>
+							<div class="modal fade" id="mymodal">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h3>A title for my modal</h3>
+										</div>
+										<div class="modal-body">
+											<form action="" method="post">
+												<!-- Rating stars selector -->
+												<label class="inputLabel">Rating:
+													<select name="reviewStar">
+														<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+														<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+														<option value="3">&#9733;&#9733;&#9733;</option>
+														<option value="2">&#9733;&#9733;</option>
+														<option value="1">&#9733;</option>
+													</select>
+												</label>
+												<input class="form-control" type="text" name="reviewText" placeholder="Type your review here...">
+											</form>
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+
+
 							<div class="writeReview">
 								<!-- "Write a Review" button -->
 								<button type="button" class="btn btn-primary btn-block">Write a Review</button>
-								<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="false">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="fas fa-envelope prefix grey-text"></i>
-          <input type="email" id="defaultForm-email" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
-        </div>
-
-        <div class="md-form mb-4">
-          <i class="fas fa-lock prefix grey-text"></i>
-          <input type="password" id="defaultForm-pass" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-        </div>
-
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-default">Login</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="text-center">
-  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Launch
-    Modal Login Form</a>
-</div>
 							</div>
-
 						</div>
-
 						<div class="col-md-8">
 						</div>
 					</div>
