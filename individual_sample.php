@@ -62,13 +62,13 @@ if(!$isError){
 		while($row = sqlsrv_fetch_array($result)){
 			print_r($row);
 			$starString = '';
-			for ($x = 0; $x < $row['reviews.rating']; $x++) {
+			for ($x = 0; $x < $row['rating']; $x++) {
     			$starString .= "&#9733; ";
 			}
 			$reviewHTML .= '<div class="row">
 				<div class="col-md-12">
-					<label for="desc' . $i . '">' . $row['users.username'] . $starString . '</label>
-    					<textarea class="form-control" id="desc' . $i . '" rows="3" disabled>' . $row['reviews.description'] . '</textarea>
+					<label for="desc' . $i . '">' . $row['username'] . $starString . '</label>
+    					<textarea class="form-control" id="desc' . $i . '" rows="3" disabled>' . $row['description'] . '</textarea>
 						</div>
 					</div>';
 			$i++;
