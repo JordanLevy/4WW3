@@ -102,7 +102,7 @@ function currLocError() {
 		<title>McMaster Restroom Finder</title>
 	</head>
 	<body>
-		<!-- navbar header -->
+				<!-- navbar header -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
 				<!-- navbar collapse icon -->
@@ -113,7 +113,7 @@ function currLocError() {
 				<a class="navbar-brand" href="search.php">McMaster Restroom Finder</a>
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<!-- navbar item -->
-					<li class="nav-item active">
+					<li class="nav-item">
 						<!-- "Search Form" link in navbar -->
 						<a class="nav-link" href="search.php">Search Form</a>
 					</li>
@@ -123,7 +123,7 @@ function currLocError() {
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href="login.php">Log In</a>
+						<a class="nav-link" href="<?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'logout.php'; }else{ echo 'login.php'; } ?>"><?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'Log Out'; }else{ echo 'Log In'; } ?></a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->

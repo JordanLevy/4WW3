@@ -88,7 +88,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		<title>Log In</title>
 	</head>
 	<body>
-		<!-- navbar header -->
+				<!-- navbar header -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
 				<!-- navbar collapse icon -->
@@ -107,13 +107,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 						<!-- "Object Submission Page" link in navbar -->
 						<a class="nav-link" href="submission.php">Submit a Restroom</a>
 					</li>
-					<li class="nav-item active">
-						<!-- "Login Page" link in navbar -->
-						<a class="nav-link" href="login.php">Log In</a>
-					</li>
 					<li class="nav-item">
-						<!-- "Log Out Page" link in navbar -->
-						<a class="nav-link" href="logout.php">Log Out</a>
+						<!-- "User Registration Page" link in navbar -->
+						<a class="nav-link" href="<?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'logout.php'; }else{ echo 'login.php'; } ?>"><?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'Log Out'; }else{ echo 'Log In'; } ?></a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->

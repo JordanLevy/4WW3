@@ -115,13 +115,13 @@ try {
 						<!-- "Search Form" link in navbar -->
 						<a class="nav-link" href="search.php">Search Form</a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 						<!-- "Object Submission Page" link in navbar -->
 						<a class="nav-link" href="submission.php">Submit a Restroom</a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href="login.php">Log In</a>
+						<a class="nav-link" href="<?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'logout.php'; }else{ echo 'login.php'; } ?>"><?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'Log Out'; }else{ echo 'Log In'; } ?></a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->

@@ -111,7 +111,7 @@ if(!$isError){
 		<script src="js/maps.js"></script>
 	</head>
 	<body>
-		<!-- navbar header -->
+				<!-- navbar header -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
 				<!-- navbar collapse icon -->
@@ -119,24 +119,24 @@ if(!$isError){
 			</button>
 			<div class="collapse navbar-collapse" id="navHeader">
 				<!-- navbar brand that links to homepage -->
-				<a class="navbar-brand" href="search.html">McMaster Restroom Finder</a>
+				<a class="navbar-brand" href="search.php">McMaster Restroom Finder</a>
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<!-- navbar item -->
 					<li class="nav-item">
 						<!-- "Search Form" link in navbar -->
-						<a class="nav-link" href="search.html">Search Form</a>
+						<a class="nav-link" href="search.php">Search Form</a>
 					</li>
 					<li class="nav-item">
 						<!-- "Object Submission Page" link in navbar -->
-						<a class="nav-link" href="submission.html">Submit a Restroom</a>
+						<a class="nav-link" href="submission.php">Submit a Restroom</a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href="">Log In</a>
+						<a class="nav-link" href="<?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'logout.php'; }else{ echo 'login.php'; } ?>"><?php if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true){ echo 'Log Out'; }else{ echo 'Log In'; } ?></a>
 					</li>
 					<li class="nav-item">
 						<!-- "User Registration Page" link in navbar -->
-						<a class="nav-link" href="registration.html">Register</a>
+						<a class="nav-link" href="registration.php">Register</a>
 					</li>
 				</ul>
 			</div>
