@@ -267,7 +267,7 @@ if(!$isError){
 											//if the user is logged in, show the UI to write a review. Otherwise, ask them to sign in.
 											if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 												echo '<div class="modal-header" style="background: #262626;">
-														<h3>Write a Review of $title</h3>
+														<h3>Write a Review of ' . $title . '</h3>
 													</div>
 													<div class="modal-body" style="background: #262626;">
 														<form action="" method="post">
@@ -291,7 +291,7 @@ if(!$isError){
 													</div>';
 											} else{
 												echo '<div class="modal-header" style="background: #262626;">
-														<h3>Write a Review of $title</h3>
+														<h3>Write a Review of ' . $title . '</h3>
 													</div>
 													<div class="modal-body" style="background: #262626;">
 														<p>You must be <a href=\'login.php\'>logged in</a> to write a review.</p>
