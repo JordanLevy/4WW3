@@ -39,7 +39,44 @@ if(!$isError){
 			$description = $row['description'];
 		}
 	}
+
+	//search for user in database
+	$params = array($_GET['id']);
+	$query = "SELECT users.username, reviews.rating, reviews.description, reviews.created_at FROM reviews INNER JOIN users ON users.id = reviews.userID WHERE reviews.objectID=?";
+	$result = sqlsrv_query($conn, $query, $params);
+	//if the search didn't work
+	if( $result === false ) {
+		echo "ERROR<br>";
+		$errors=sqlsrv_errors();
+		echo "<br>";
+		print_r($errors);
+		echo "<br>";
+		die();
+	}
+	$i = 0;
+	//if it's zero rows
+	if(sqlsrv_has_rows($result) != 1){
+		   echo "0 rows";
+	}else{
+		//get the query results
+		while($row = sqlsrv_fetch_array($result)){
+			$starString = ''
+			for ($x = 0; $x < $row['reviews.rating']; $x++) {
+    			$starString .= "&#9733; ";
+			}
+			$reviewHTML .= '<div class="row">
+				<div class="col-md-12">
+					<label for="desc' . $i . '">' . $row['users.username'] . $starString . '</label>
+    					<textarea class="form-control" id="desc' . $i . '" rows="3" disabled>' . $row['reviews.description'] . '</textarea>
+						</div>
+					</div>';
+			$i++;
+		}
+	}
+
 }
+
+
 
 ?>
 
@@ -229,24 +266,8 @@ if(!$isError){
 					<!-- "Reviews" subheading text -->
 					<h3>Reviews</h3>
 
-					<!-- individual review -->
-					<div class="row">
-						<div class="col-md-12">
-							<!-- username and rating -->
-							<label for="desc1">abc123 &#9733; &#9733; &#9733; &#9733; &#9733;</label>
-							<!-- review text -->
-    						<textarea class="form-control" id="desc1" rows="3" disabled>This bathroom is my go-to! Nice soap dispensers, clean, and it's easy to get to between classes.</textarea>
-						</div>
-					</div>
-					<!-- individual review -->
-					<div class="row">
-						<div class="col-md-12">
-							<!-- username and rating -->
-							<label for="desc2">iop342 &#9733; &#9733;</label>
-							<!-- review text -->
-    						<textarea class="form-control" id="desc2" rows="3" disabled>Smells great, but it's always crowded. The lock on my stall was broken.</textarea>
-						</div>
-					</div>
+					<?php echo $reviewHTML; ?>
+
 					<div class="row">
 						<div class="col-md-4">
 							<div class="moreReviews">
@@ -343,6 +364,7 @@ if(!$isError){
 		            	console.log("data returned is: " + data);
 		            	console.log("textStatus is: " + textStatus);
 		            	console.log("jqXHR is: " + jqXHR);
+		            	alert("Your review has been submitted.");
 		            },
 		            error: function(jqXHR, status, error) {
 		                console.log(status + ": " + error);
