@@ -171,7 +171,11 @@ if(!$isError){
 							<tbody>
 								<!-- table row 1 -->
 								<tr>
-									<td><a href="individual_sample.html"><?php echo $tblBuilding . "<br>" . $tblGender;?></a></td>
+									<td><a href="individual_sample.html"><?php print_r($tblBuilding) . "<br>" . print_r($tblGender);?></a></td>
+									<td><a href="individual_sample.html"><?php print_r($tblRating) . "<br>" . print_r($tblDistance);?></a></td>
+									<td><a href="individual_sample.html"><?php print_r($tblID);?></a></td>
+
+
 									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[0] ?>"><?php echo (isset($tblBuilding[0]))?$tblBuilding[0]:'';?></a></td>
 									<td><?php echo (isset($tblGender[0]))?$tblGender[0]:'';?></td>
 									<td><?php echo (isset($tblRating[0]))?$tblRating[0]:'';?></td>
