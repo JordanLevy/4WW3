@@ -40,23 +40,6 @@ if(!$isError){
 		}
 	}
 }
-print_r($_POST);
-if(isset($_POST['submit'])){
-	$reviewStar = $_POST['reviewStar'];
-	$reviewText = $_POST['reviewText'];
-
-	$params = array($_GET['id'], $_SESSION["id"], $reviewStar, $reviewText);
-	$query="INSERT INTO reviews (objectID, userID, rating, description) VALUES (?, ?, ?, ?)";
-	$result = sqlsrv_query($conn, $query, $params);
-	if( $result === false ) {
-		echo "ERROR<br>";
-		$errors=sqlsrv_errors();
-		echo "<br>";
-		print_r($errors);
-		echo "<br>";
-	    die();
-	}
-}
 
 ?>
 
@@ -282,6 +265,24 @@ if(isset($_POST['submit'])){
 								<div class="modal-dialog">
 									<div class="modal-content">
 										<?php
+
+											print_r($_POST);
+											if(isset($_POST['submit'])){
+												$reviewStar = $_POST['reviewStar'];
+												$reviewText = $_POST['reviewText'];
+
+												$params = array($_GET['id'], $_SESSION["id"], $reviewStar, $reviewText);
+												$query="INSERT INTO reviews (objectID, userID, rating, description) VALUES (?, ?, ?, ?)";
+												$result = sqlsrv_query($conn, $query, $params);
+												if( $result === false ) {
+													echo "ERROR<br>";
+													$errors=sqlsrv_errors();
+													echo "<br>";
+													print_r($errors);
+													echo "<br>";
+												    die();
+												}
+											}
 											//if the user is logged in, show the UI to write a review. Otherwise, ask them to sign in.
 											if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 												echo '
