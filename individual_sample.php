@@ -60,6 +60,7 @@ if(!$isError){
 	}else{
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
+			print_r($row);
 			$starString = '';
 			for ($x = 0; $x < $row['reviews.rating']; $x++) {
     			$starString .= "&#9733; ";
