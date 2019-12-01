@@ -39,21 +39,16 @@ if(!$isError){
 		$query .= ", sqrt(square(?-longitude) + square(?-latitude)) as distance";
 		array_push($params, $_GET['long'], $_GET['lat']);
 	}
-	$query .= " FROM objects";
+	$query .= " FROM objects WHERE ? like concat('%', gender, '%')";
+	array_push($params, $g);
 	if($usingTerms){
-		$query .= " WHERE concat(building, ' ', roomNum) LIKE ?";
-		array_push($params, $_GET['terms']);
+		$query .= " OR concat(building, ' ', roomNum) LIKE ?";
+		array_push($params, "%" . $_GET['terms'] . "%");
 		//if we're searching by terms and by rating, add an "or rating" operator in between the statements
-		if($usingRating){
-			$query .= " OR rating = ?";
-			array_push($params, $_GET['rating']);
-		}
-	}else{
-		//if we're not searching by terms but we're searching by rating, add the "where rating" statement
-		if($usingRating){
-			$query .= " WHERE rating = ?";
-			array_push($params, $_GET['rating']);
-		}
+	}
+	if($usingRating){
+		$query .= " OR rating = ?";
+		array_push($params, $_GET['rating']);
 	}
 	//if we have distance from geolocation, order by it
 	if($usingLocation){
