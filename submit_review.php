@@ -44,7 +44,7 @@
 
 	echo $avgRating;
 
-	$params = array($avgRating, 1, $bathroomId);
+	$params = array($avgRating, $bathroomId);
 	$query="UPDATE objects SET rating = ? WHERE id = ?";
 	$result = sqlsrv_query($conn, $query, $params);
 	if( $result === false ) {
