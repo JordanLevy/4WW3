@@ -283,7 +283,7 @@ if(!$isError){
 														<option value="1">&#9733;</option>
 													</select>
 												</label>
-												<input class="form-control" type="text" name="reviewText" placeholder="Type your review here...">'; }
+												<textarea class="form-control" rows="3" name="reviewText" placeholder="Type your review here..."></textarea>'; }
 												?>
 											</form>
 										</div>
