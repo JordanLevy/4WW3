@@ -5,6 +5,7 @@ session_start();
 require_once "config.php";
 
 $title = $gender = $avgRating = $description = '';
+$reviewStar = $reviewText = '';
 $isError = false;
 
 //validate url params
@@ -37,6 +38,23 @@ if(!$isError){
 			$gender = $row['gender'];
 			$description = $row['description'];
 		}
+	}
+}
+
+if(isset($_POST['submit'])){
+	$reviewStar = $_POST['reviewStar'];
+	$reviewText = $_POST['reviewText'];
+
+	$params = array($_GET['id'], $_SESSION["id"], $reviewStar, $reviewText);
+	$query="INSERT INTO reviews (objectID, userID, rating, description) VALUES (?, ?, ?, ?)";
+	$result = sqlsrv_query($conn, $query, $params);
+	if( $result === false ) {
+		echo "ERROR<br>";
+		$errors=sqlsrv_errors();
+		echo "<br>";
+		print_r($errors);
+		echo "<br>";
+	    die();
 	}
 }
 
@@ -274,10 +292,9 @@ if(!$isError){
 															<!-- Rating stars selector -->
 															<label class="inputLabel">Rating:
 																<select name="reviewStar">
-																	<option value="0">-----</option>
 																	<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
 																	<option value="4">&#9733;&#9733;&#9733;&#9733;</option>
-																	<option value="3">&#9733;&#9733;&#9733;</option>
+																	<option value="3" selected="selected">&#9733;&#9733;&#9733;</option>
 																	<option value="2">&#9733;&#9733;</option>
 																	<option value="1">&#9733;</option>
 																</select>
