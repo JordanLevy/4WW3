@@ -40,9 +40,7 @@ if(!$isError){
 		}
 	}
 }
-
 if(isset($_POST['submit'])){
-	print_r($_POST);
 	$reviewStar = $_POST['reviewStar'];
 	$reviewText = $_POST['reviewText'];
 
@@ -58,6 +56,7 @@ if(isset($_POST['submit'])){
 	    die();
 	}
 }
+print_r($_POST);
 ?>
 
 <!DOCTYPE html>
@@ -363,20 +362,20 @@ if(isset($_POST['submit'])){
 
 		        console.log("postData", postData);
 		        console.log("formURL", formURL);
-		    //     $.ajax({
-		    //         url: formURL,
-		    //         type: "POST",
-		    //         data: postData,
-		    //         success: function(data, textStatus, jqXHR) {
-		    //             $('#contact_dialog .modal-header .modal-title').html("Result");
-		    //             $('#contact_dialog .modal-body').html(data);
-		    //             $("#submitForm").remove();
-		    //         },
-		    //         error: function(jqXHR, status, error) {
-		    //             console.log(status + ": " + error);
-		    //         }
-		    //     });
-		    //    e.preventDefault();
+		        $.ajax({
+		            url: formURL,
+		            type: "POST",
+		            data: postData,
+		            success: function(data, textStatus, jqXHR) {
+		                $('#contact_dialog .modal-header .modal-title').html("Result");
+		                $('#contact_dialog .modal-body').html(data);
+		                $("#submitForm").remove();
+		            },
+		            error: function(jqXHR, status, error) {
+		                console.log(status + ": " + error);
+		            }
+		        });
+		       e.preventDefault();
 		    });
 		     
 		    $("#submitForm").on('click', function() {
