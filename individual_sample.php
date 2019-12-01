@@ -285,11 +285,12 @@ if(isset($_POST['submit'])){
 										<?php
 											//if the user is logged in, show the UI to write a review. Otherwise, ask them to sign in.
 											if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-												echo '<div class="modal-header" style="background: #262626;">
+												echo '
+												<form action="" method="post">
+													<div class="modal-header" style="background: #262626;">
 														<h3>Write a Review of ' . $title . '</h3>
 													</div>
 													<div class="modal-body" style="background: #262626;">
-														<form action="" method="post">
 															<!-- Rating stars selector -->
 															<label class="inputLabel">Rating:
 																<select name="reviewStar">
@@ -301,12 +302,12 @@ if(isset($_POST['submit'])){
 																</select>
 															</label>
 															<textarea class="form-control" type="text" name="reviewText" placeholder="Type your review here..."></textarea>
-														</form>
 													</div>
 													<div class="modal-footer" style="background: #262626;">
 														<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
 														<button type="submit" class="btn btn-primary" name="submit" data-dismiss="modal">Submit</button>
-													</div>';
+													</div>
+												</form>';
 											} else{
 												echo '<div class="modal-header" style="background: #262626;">
 														<h3>Write a Review of ' . $title . '</h3>
