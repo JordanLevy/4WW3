@@ -2,7 +2,7 @@
 
 require_once "config.php";
 
-$tblID = array('', '', '');
+//$tblID = array('', '', '');
 $tblBuilding = array('', '', '');
 $tblGender = array('', '', '');
 $tblRating = array('', '', '');
@@ -171,6 +171,7 @@ if(!$isError){
 							<tbody>
 								<!-- table row 1 -->
 								<tr>
+									<td><a href="individual_sample.html"><?php echo $tblBuilding . "<br>" . $tblGender;?></a></td>
 									<td><a href="individual_sample.html?<?php echo 'id=' . $tblID[0] ?>"><?php echo (isset($tblBuilding[0]))?$tblBuilding[0]:'';?></a></td>
 									<td><?php echo (isset($tblGender[0]))?$tblGender[0]:'';?></td>
 									<td><?php echo (isset($tblRating[0]))?$tblRating[0]:'';?></td>
