@@ -167,24 +167,24 @@ if(!$isError){
 							<tbody>
 								<!-- table row 1 -->
 								<tr>
-									<td><a href="individual_sample.php?<?php echo 'id=' . $tblID[0] ?>"><?php echo (isset($tblBuilding[0]))?$tblBuilding[0]:'';?></a></td>
-									<td><?php echo (isset($tblBuilding[0]))?$tblGender[0]:'';?></td>
-									<td><?php echo (isset($tblBuilding[0]))?round($tblRating[0], 1):'';?></td>
-									<td><?php echo (isset($tblBuilding[0]))?round($tblDistance[0], 1):'';?></td>
+									<td><a href="individual_sample.php?<?php echo 'id=' . $tblID[0] ?>"><?php echo (!empty($tblBuilding[0]))?$tblBuilding[0]:'';?></a></td>
+									<td><?php echo (!empty($tblBuilding[0]))?$tblGender[0]:'';?></td>
+									<td><?php echo (!empty($tblBuilding[0]))?round($tblRating[0], 1):'';?></td>
+									<td><?php echo (!empty($tblBuilding[0]))?round($tblDistance[0], 1):'';?></td>
 								</tr>
 								<!-- table row 2 -->
 								<tr>
 									<td><a href="individual_sample.php?<?php echo 'id=' . $tblID[1] ?>"><?php echo (isset($tblBuilding[1]))?$tblBuilding[1]:'';?></a></td>
-									<td><?php echo (isset($tblBuilding[1]))?$tblGender[1]:'';?></td>
-									<td><?php echo (isset($tblBuilding[1]))?round($tblRating[1], 1):'';?></td>
-									<td><?php echo (isset($tblBuilding[1]))?round($tblDistance[1], 1):'';?></td>
+									<td><?php echo (!empty($tblBuilding[1]))?$tblGender[1]:'';?></td>
+									<td><?php echo (!empty($tblBuilding[1]))?round($tblRating[1], 1):'';?></td>
+									<td><?php echo (!empty($tblBuilding[1]))?round($tblDistance[1], 1):'';?></td>
 								</tr>
 								<!-- table row 3 -->
 								<tr>
 									<td><a href="individual_sample.php?<?php echo 'id=' . $tblID[2] ?>"><?php echo (isset($tblBuilding[2]))?$tblBuilding[2]:'';?></a></td>
-									<td><?php echo (isset($tblBuilding[2]))?$tblGender[2]:'';?></td>
-									<td><?php echo (isset($tblBuilding[2]))?round($tblRating[2], 1):'';?></td>
-									<td><?php echo (isset($tblBuilding[2]))?round($tblDistance[2], 1):'';?></td>
+									<td><?php echo (!empty($tblBuilding[2]))?$tblGender[2]:'';?></td>
+									<td><?php echo (!empty($tblBuilding[2]))?round($tblRating[2], 1):'';?></td>
+									<td><?php echo (!empty($tblBuilding[2]))?round($tblDistance[2], 1):'';?></td>
 								</tr>
 							</tbody>
 						</table>
