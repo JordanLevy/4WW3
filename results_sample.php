@@ -88,10 +88,10 @@ if(!$isError){
 			# map data
 			array_push($mapData, array(
 			"placeName" => $row['building'] . " " . $row['roomNum'],
-			"LatLng" => array(
+			"LatLng" => array(array(
 					"lat" => $row['latitude'],
 					"lng" => $row['longitude'],
-				)
+				))
 			));	
 
 			//if it's zero rows
@@ -161,6 +161,7 @@ if(!$isError){
 			// 	}
 			// ];
 			var markers = mapData;
+			console.log("markers: ", markers);
 
 			//when the page loads, initialize the map
 			window.onload = function () {
