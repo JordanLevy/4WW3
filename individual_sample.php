@@ -507,7 +507,5 @@ if(!$isError){
 		<script src="js/bootstrap.min.js"></script>
 		<!-- link Google Maps API -->
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM8lbhIZ94WtCL8mPV0161-qIMTOr4Aus"></script>
-		<!-- link custom js file to populate Google Maps div -->
-		<script src="js/mapsInd.js"></script>
 	</body>
 </html>
