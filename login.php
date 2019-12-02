@@ -9,6 +9,7 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
     exit;
 }
 
+//include config to connect to database
 require_once "config.php";
 
 $username = $password = "";
@@ -16,6 +17,7 @@ $isError = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+	//if the login button is pressed
 	if(isset($_POST['login'])){
 		//get input from fields
 		$username = $_POST['username'];
@@ -48,7 +50,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			    die();
 			}
 
-			//if it's zero rows
+			//if the query returned nothing
 			if(sqlsrv_has_rows($result) != 1){
 			       echo "Incorrect username or password";
 			}else{

@@ -2,6 +2,7 @@
 
 session_start();
 
+//include config to connect to database
 require_once "config.php";
 
 $username = $password = $confirmPassword = $email = $dateOfBirth = "";
@@ -9,6 +10,7 @@ $isError = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+	//if the submit button was pressed
 	if(isset($_POST['submit'])){
 
 		$username=$_POST['username'];
@@ -66,6 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 
 		if(!$isError) {
+			//insert the new user into the database
 			$params = array($username, $password, $email, $notifications, $dateOfBirth);
 			$query="INSERT INTO users (username, password, email, notifications, dateOfBirth) VALUES (?, ?, ?, ?, ?)";
 			$result = sqlsrv_query($conn, $query, $params);
@@ -83,7 +86,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 }
 
 
-// try to close the db connection at the end 
+// try to close the database connection at the end 
 try {
 	sqlsrv_close($conn);
 } catch (Exception $e) {

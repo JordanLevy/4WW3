@@ -2,20 +2,21 @@
 
 session_start();
 
+//include config to connect to database
 require_once "config.php";
 
 $title = $gender = $avgRating = $description = '';
 $reviewStar = $reviewText = '';
 $isError = false;
 
-//validate url params
+//if the id we got from the url isn't a number, give an error
 if(!is_numeric($_GET['id'])){
 	$isError=true;
 	echo '<span style="color:red;">Invalid url</span><br/>';
 }
 
 if(!$isError){
-	//search for user in database
+	//search for this bathroom in database by its id
 	$params = array($_GET['id']);
 	$query = "SELECT id, building, roomNum, longitude, latitude, description, numReviews, rating, gender FROM objects WHERE id=?";
 	$result = sqlsrv_query($conn, $query, $params);
@@ -28,9 +29,9 @@ if(!$isError){
 		echo "<br>";
 		die();
 	}
-	//if it's zero rows
+	//if the query returned nothing
 	if(sqlsrv_has_rows($result) != 1){
-		   echo "0 rows";
+		   echo "Nothing returned from search";
 	}else{
 		$mapData = array();
 		//get the query results
@@ -39,7 +40,7 @@ if(!$isError){
 			$gender = $row['gender'];
 			$description = $row['description'];
 
-			# map data
+			//add places to the map
 			array_push($mapData, array(
 			"placeName" => $row['building'] . " " . $row['roomNum'],
 			"LatLng" => array(array(
@@ -65,9 +66,8 @@ if(!$isError){
 		die();
 	}
 	$i = 0;
-	//if it's zero rows
+	//if there are no reviews
 	if(sqlsrv_has_rows($result) != 1){
-		   echo "0 rows";
 	}else{
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
@@ -75,6 +75,7 @@ if(!$isError){
 			for ($x = 0; $x < $row['rating']; $x++) {
     			$starString .= " &#9733;";
 			}
+			//append the html code for a review to the variable
 			$reviewHTML .= '<div class="row">
 				<div class="col-md-12">
 					<label for="desc' . $i . '">' . $row['username'] . $starString . ' ' . $row['created_at']->format('Y-m-d h:i A') . '</label>
@@ -98,9 +99,9 @@ if(!$isError){
 		echo "<br>";
 		die();
 	}
-	//if it's zero rows
+	//if the query returned nothing
 	if(sqlsrv_has_rows($result) != 1){
-		   echo "0 rows";
+		   echo "Rating could not be retrieved";
 	}else{
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
@@ -108,9 +109,6 @@ if(!$isError){
 		}
 	}
 }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -263,97 +261,6 @@ if(!$isError){
 						<div class="col-md-12">
 							<!-- average rating -->
 							<label>Average Rating: <?php echo round($avgRating, 1); ?> stars</label>
-						</div>
-					</div>
-					<!-- ratings bar graph -->
-					<!-- 5 star -->
-					<div class="row">
-						<div class="col-md-3">
-							<!-- 5 star label -->
-							<label>5 star</label>
-						</div>
-						<div class="col-md-9">
-							<label>
-								<!-- 5 star bar -->
-								<svg width="150" height="20">
-										<rect x="0" y="0" rx="5" ry="5" width="150" height="20"
-										style="fill:#03fc39;opacity:0.7" />
-								</svg>
-								150
-							</label>
-						</div>
-					</div>
-					<!-- 4 star -->
-					<div class="row">
-						<div class="col-md-3">
-							<!-- 4 star label -->
-							<label>4 star</label>
-						</div>
-						<div class="col-md-9">
-							<label>
-								<!-- 4 star bar  -->
-								<svg width="150" height="20">
-										<rect x="0" y="0" rx="5" ry="5" width="100" height="20"
-										style="fill:#0345fc;opacity:0.7" />
-								</svg>
-								100
-							</label>
-						</div>
-					</div>
-					<!-- 3 star -->
-					<div class="row">
-						<div class="col-md-3">
-							<!-- 3 star label -->
-							<label>3 star</label>
-						</div>
-						<div class="col-md-9">
-							<label>
-								<!-- 3 star bar -->
-								<svg width="150" height="20">
-										<rect x="0" y="0" rx="5" ry="5" width="30" height="20"
-										style="fill:#03fcfc;opacity:0.7" />
-								</svg>
-								30
-							</label>
-						</div>
-					</div>
-					<!-- 2 star -->
-					<div class="row">
-						<div class="col-md-3">
-							<!-- 2 star label -->
-							<label>2 star</label>
-						</div>
-						<div class="col-md-9">
-							<label>
-								<!-- 2 star bar -->
-								<svg width="150" height="20">
-										<rect x="0" y="0" rx="5" ry="5" width="15" height="20"
-										style="fill:#fca903;opacity:0.7" />
-								</svg>
-								15
-							</label>
-						</div>
-					</div>
-					<!-- 1 star -->
-					<div class="row">
-						<div class="col-md-3">
-							<!-- 1 star label -->
-							<label>1 star</label>
-						</div>
-						<div class="col-md-9">
-							<label>
-								<!-- 1 star bar -->
-								<svg width="150" height="20">
-										<rect x="0" y="0" rx="5" ry="5" width="2" height="20"
-										style="fill:#fc0303;opacity:0.7" />
-								</svg>
-								2
-							</label>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-12">
-							<img src="BSB_B134.png" alt="Bathroom door" width="60%" class="objImg">
 						</div>
 					</div>
 				</div>

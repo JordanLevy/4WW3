@@ -2,11 +2,13 @@
 
 session_start();
 
+//include config to connect to database
 require_once "config.php";
 
 $menCheckbox = $womenCheckbox = $allGendersCheckbox = $star = $searchTerms = "";
 $isError = false;
 
+//if the search button is pressed
 if(isset($_POST['submit'])){
 	//get input from fields
 	$menCheckbox = $_POST['menCheckbox'];

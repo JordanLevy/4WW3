@@ -2,8 +2,10 @@
 
 session_start();
 
+//include config to connect to database
 require_once "config.php";
 
+//arrays to store values to be used in the results table
 $tblID = array('', '', '');
 $tblBuilding = array('', '', '');
 $tblGender = array('', '', '');
@@ -11,13 +13,14 @@ $tblRating = array('', '', '');
 $tblDistance = array('', '', '');
 $isError = false;
 
-//validate url params
+//if the rating in the url isn't a number, give an error
 if(!is_numeric($_GET['rating'])){
 	$isError=true;
 	echo '<span style="color:red;">Invalid url</span><br/>';
 }
 
 if(!$isError){
+	//build the sql search query depending on whether the user inputted search terms, chose a rating, or has location enabled
 	$usingTerms = ($_GET['terms'] != '');
 	$usingRating = ($_GET['rating'] != '0');
 	$usingLocation = ($_GET['long'] != 'na' and $_GET['lat'] != 'na');
@@ -31,7 +34,6 @@ if(!$isError){
 	if($_GET['allGenders']=='1'){
 		$g .= "A";
 	}
-	//search for user in database
 	$params = array();
 	$query = "SELECT id, building, roomNum, longitude, latitude, numReviews, rating, gender";
 	//if we're using location, define a calculated column for distance from the current geolocation
@@ -44,7 +46,6 @@ if(!$isError){
 	if($usingTerms){
 		$query .= " OR concat(building, ' ', roomNum) LIKE ?";
 		array_push($params, "%" . $_GET['terms'] . "%");
-		//if we're searching by terms and by rating, add an "or rating" operator in between the statements
 	}
 	if($usingRating){
 		$query .= " OR floor(rating) = ?";
@@ -69,8 +70,8 @@ if(!$isError){
 	if(sqlsrv_has_rows($result) != 1){
 		   echo "0 rows";
 	}else{
-		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
+			//set the variables to fill in the search results table
 			$tblID[$i] = $row['id'];
 			$tblBuilding[$i] = $row['building'] . " " . $row['roomNum'];
 
@@ -85,16 +86,14 @@ if(!$isError){
 			$tblRating[$i] = $row['rating'];
 			$tblDistance[$i] = $row['distance'];
 
-			# map data
+			//add places to the map
 			array_push($mapData, array(
 			"placeName" => $row['building'] . " " . $row['roomNum'],
 			"LatLng" => array(array(
 					"lat" => $row['latitude'],
 					"lng" => $row['longitude'],
 				))
-			));	
-
-			//if it's zero rows
+			));
 
 			$i++;
 		}
@@ -134,29 +133,6 @@ if(!$isError){
 				lat: 43.2609,
 				lng: -79.9192
 			};
-			//list of coordinates of search results
-			// var markers = [{
-			// 		placeName: "BSB B134",
-			// 		LatLng: [{
-			// 			lat: 43.262041,
-			// 			lng: -79.920158
-			// 		}]
-			// 	},
-			// 	{
-			// 		placeName: "ITB 123",
-			// 		LatLng: [{
-			// 			lat: 43.258917,
-			// 			lng: -79.920859
-			// 		}]
-			// 	},
-			// 	{
-			// 		placeName: "MDCL 1101",
-			// 		LatLng: [{
-			// 			lat: 43.261183,
-			// 			lng: -79.916812
-			// 		}]
-			// 	}
-			// ];
 			var markers = mapData;
 			console.log("markers: ", markers);
 

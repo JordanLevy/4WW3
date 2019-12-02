@@ -1,12 +1,15 @@
 <?php
 
 	session_start();
+
+	//include config to connect to database
 	require_once "config.php";
 
 	$reviewStar = $_POST['reviewStar'];
 	$reviewText = $_POST['reviewText'];
 	$bathroomId = $_POST['bathroomId'];
 
+	//insert a new review into the database
 	$params = array($bathroomId, $_SESSION["id"], $reviewStar, $reviewText);
 	$query="INSERT INTO reviews (objectID, userID, rating, description) VALUES (?, ?, ?, ?)";
 	$result = sqlsrv_query($conn, $query, $params);
@@ -19,7 +22,8 @@
 	    die();
 	}
 	$avgRating = 0;
-	//calculate the average rating
+
+	//recalculate the average rating
 	$params = array($bathroomId);
 	$query = "SELECT avg(Cast(rating as Float)) FROM reviews WHERE objectID=?";
 	$result = sqlsrv_query($conn, $query, $params);
@@ -42,8 +46,7 @@
 		}
 	}
 
-	echo $avgRating;
-
+	//store the new average rating in the database
 	$params = array($avgRating, $bathroomId);
 	$query="UPDATE objects SET rating = ? WHERE id = ?";
 	$result = sqlsrv_query($conn, $query, $params);

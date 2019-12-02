@@ -2,6 +2,7 @@
 
 session_start();
 
+//include config to connect to database
 require_once "config.php";
 
 $building = $roomNum = $longitude = $latitude = $description = $gender = "";
@@ -9,6 +10,7 @@ $isError = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 
+	//if the submit button is pressed
 	if(isset($_POST['submit'])){
 
 		$building=$_POST['building'];
@@ -59,6 +61,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		}
 
 		if(!$isError) {
+			//insert the new object into the database
 			$params = array($building, $roomNum, $longitude, $latitude, $description, 0, 0, $gender);
 			$query="INSERT INTO objects (building, roomNum, longitude, latitude, description, numReviews, rating, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 			$result = sqlsrv_query($conn, $query, $params);
