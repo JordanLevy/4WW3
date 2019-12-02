@@ -127,8 +127,11 @@ if(!$isError){
 			console.log("hellooo!!!!");
 			var mapData_s = <?php echo $mapData_s; ?>;
 			console.log("map data s is: ",  mapData_s);
-			var mapData = JSON.parse( mapData_s );
-			console.log("map data is: ",  mapData);
+			console.log("map data[0]",  mapData_s[0]);
+			console.log("map data[0][placeName]",  mapData_s[0]['placeName']);
+			console.log("map data[0][LatLng][lat]",  mapData_s[0]['pLatLng']['lat']);
+			// var mapData = JSON.parse(mapData_s);
+			// console.log("map data is: ",  mapData);
 
 			// //map object
 			// var map;
