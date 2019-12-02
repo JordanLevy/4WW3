@@ -20,63 +20,70 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 		$description=$_POST['description'];
 		$gender=$_POST['gender'];
 
-		//check building
-		if(empty($building)){
-			$isError=true;
-			echo '<span style="color:red;">A building is required</span><br/>';
-		}
-
-		//check room number
-		if(empty($roomNum)){
-			$isError=true;
-			echo '<span style="color:red;">A room number is required</span><br/>';
-		} else {
-			if(!preg_match('/[A-Za-z0-9]+/', $roomNum)) {
+		if(!(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true)){
+			echo "You must be logged in to submit a restroom.";
+		}else{
+			//check building
+			if(empty($building)){
 				$isError=true;
-				echo '<span style="color:red;">Room number: any length, can contain only numbers and letters</span><br/>';
+				echo '<span style="color:red;">A building is required</span><br/>';
 			}
-		}
 
-		//check longitude
-		if(!is_numeric($longitude)){
-			$isError=true;
-			echo '<span style="color:red;">A longitude is required</span><br/>';
-		}
-
-		//check latitude
-		if(!is_numeric($latitude)){
-			$isError=true;
-			echo '<span style="color:red;">A latitude is required</span><br/>';
-		}
-
-		//check description
-		if(empty($description)){
-			$isError=true;
-			echo '<span style="color:red;">A description is required</span><br/>';
-		}
-
-		if(empty($gender)){
-			$isError=true;
-			echo '<span style="color:red;">You must select the washroom\'s gender</span><br/>';
-		}
-
-		if(!$isError) {
-			//insert the new object into the database
-			$params = array($building, $roomNum, $longitude, $latitude, $description, 0, 0, $gender);
-			$query="INSERT INTO objects (building, roomNum, longitude, latitude, description, numReviews, rating, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-			$result = sqlsrv_query($conn, $query, $params);
-			if( $result === false ) {
-				echo "ERROR<br>";
-				$errors=sqlsrv_errors();
-				echo "<br>";
-				print_r($errors);
-				echo "<br>";
-			    die();
-			}else{
-				$building = $roomNum = $longitude = $latitude = $description = $gender = "";
+			//check room number
+			if(empty($roomNum)){
+				$isError=true;
+				echo '<span style="color:red;">A room number is required</span><br/>';
+			} else {
+				if(!preg_match('/[A-Za-z0-9]+/', $roomNum)) {
+					$isError=true;
+					echo '<span style="color:red;">Room number: any length, can contain only numbers and letters</span><br/>';
+				}
 			}
-		}
 
+			//check longitude
+			if(!is_numeric($longitude)){
+				$isError=true;
+				echo '<span style="color:red;">A longitude is required</span><br/>';
+			}
+
+			//check latitude
+			if(!is_numeric($latitude)){
+				$isError=true;
+				echo '<span style="color:red;">A latitude is required</span><br/>';
+			}
+
+			//check description
+			if(empty($description)){
+				$isError=true;
+				echo '<span style="color:red;">A description is required</span><br/>';
+			}
+
+			if(empty($gender)){
+				$isError=true;
+				echo '<span style="color:red;">You must select the washroom\'s gender</span><br/>';
+			}
+
+			if(!$isError) {
+				//insert the new object into the database
+				$params = array($building, $roomNum, $longitude, $latitude, $description, 0, 0, $gender);
+				$query="INSERT INTO objects (building, roomNum, longitude, latitude, description, numReviews, rating, gender) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+				$result = sqlsrv_query($conn, $query, $params);
+				if( $result === false ) {
+					echo "ERROR<br>";
+					$errors=sqlsrv_errors();
+					echo "<br>";
+					print_r($errors);
+					echo "<br>";
+					die();
+				}else{
+					echo '<script type="text/javascript">  
+						alert("Washroom has been submitted.");
+						</script>';
+					$building = $roomNum = $longitude = $latitude = $description = $gender = "";
+				}
+			}
+
+		}
 	}
 }
 

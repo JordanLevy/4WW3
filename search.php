@@ -37,11 +37,11 @@ if(isset($_POST['submit'])){
 	}
 
 	//if there were no validation errors
-    if(!$isError){
-    	//redirect with parameters in url
-    	//header("location:results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox );
-    	$searchUrl = "results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox;
-    	echo "<script type='text/javascript'>
+	if(!$isError){
+		//redirect with parameters in url
+		//header("location:results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox );
+		$searchUrl = "results_sample.php?terms=" . $searchTerms . "&rating=" . $star . "&men=" . $menCheckbox . "&women=" . $womenCheckbox . "&allGenders=" . $allGendersCheckbox;
+		echo "<script type='text/javascript'>
 
 
 dest=\"\";
@@ -86,8 +86,8 @@ function currLocError() {
 }
 
 
-    	getLocation('$searchUrl');
-    	</script>";
+		getLocation('$searchUrl');
+		</script>";
 	}
 }
 

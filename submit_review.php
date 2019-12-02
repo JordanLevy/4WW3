@@ -19,7 +19,7 @@
 		echo "<br>";
 		print_r($errors);
 		echo "<br>";
-	    die();
+		die();
 	}
 	$avgRating = 0;
 
@@ -56,6 +56,6 @@
 		echo "<br>";
 		print_r($errors);
 		echo "<br>";
-	    die();
+		die();
 	}
 ?>

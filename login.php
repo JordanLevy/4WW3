@@ -5,8 +5,8 @@ session_start();
 
 //if the user is already logged in, redirect them
 if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
-    header("location:welcome.php");
-    exit;
+	header("location:welcome.php");
+	exit;
 }
 
 //include config to connect to database
@@ -47,29 +47,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				echo "<br>";
 				print_r($errors);
 				echo "<br>";
-			    die();
+				die();
 			}
 
 			//if the query returned nothing
 			if(sqlsrv_has_rows($result) != 1){
-			       echo "Incorrect username or password";
+				   echo "Incorrect username or password";
 			}else{
 				//get the query results
-			    while($row = sqlsrv_fetch_array($result)){
-			    	//if the password is correct
-			    	if(password_verify($password, $row['password']))
-			    	{
-			    		//start the session
-			    		session_start();
-			       		$_SESSION["loggedin"] = true;
-                        $_SESSION["id"] = $row['id'];
-                        $_SESSION["username"] = $username;
-                        //redirect
-                        header("location:welcome.php");
-			   		} else {
-			   			echo "Incorrect username or password";
-			   		}
-			    }
+				while($row = sqlsrv_fetch_array($result)){
+					//if the password is correct
+					if(password_verify($password, $row['password']))
+					{
+						//start the session
+						session_start();
+						$_SESSION["loggedin"] = true;
+						$_SESSION["id"] = $row['id'];
+						$_SESSION["username"] = $username;
+						//redirect
+						header("location:welcome.php");
+					} else {
+						echo "Incorrect username or password";
+					}
+				}
 			}
 		}
 	}

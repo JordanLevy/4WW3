@@ -73,13 +73,13 @@ if(!$isError){
 		while($row = sqlsrv_fetch_array($result)){
 			$starString = '';
 			for ($x = 0; $x < $row['rating']; $x++) {
-    			$starString .= " &#9733;";
+				$starString .= " &#9733;";
 			}
 			//append the html code for a review to the variable
 			$reviewHTML .= '<div class="row">
 				<div class="col-md-12">
 					<label for="desc' . $i . '">' . $row['username'] . $starString . ' ' . $row['created_at']->format('Y-m-d h:i A') . '</label>
-    					<textarea class="form-control" id="desc' . $i . '" rows="3" disabled>' . $row['description'] . '</textarea>
+						<textarea class="form-control" id="desc' . $i . '" rows="3" disabled>' . $row['description'] . '</textarea>
 						</div>
 					</div>';
 			$i++;
@@ -248,7 +248,7 @@ if(!$isError){
 					<div class="row">
 						<div class="col-md-12">
 							<!-- object description text -->
-    						<textarea class="form-control" rows="3" disabled><?php echo $description; ?></textarea>
+							<textarea class="form-control" rows="3" disabled><?php echo $description; ?></textarea>
 						</div>
 					</div>
 					<div class="row">
@@ -333,44 +333,43 @@ if(!$isError){
 		<script>
 		/* must apply only after HTML has loaded */
 		$(document).ready(function () {
-		    $("#review_form").on("submit", function(e) {
-		        var postData = $(this).serializeArray();
-		        var formURL = $(this).attr("action");
+			$("#review_form").on("submit", function(e) {
+				var postData = $(this).serializeArray();
+				var formURL = $(this).attr("action");
 
-		        console.log("postData", postData);
-		        console.log("formURL", formURL);
+				console.log("postData", postData);
+				console.log("formURL", formURL);
 
 
-		        // append this bathroom's id into postData array
-		        var bathroomId = "<?php echo $_GET['id']; ?>";
+				// append this bathroom's id into postData array
+				var bathroomId = "<?php echo $_GET['id']; ?>";
 
 				postData.push({
-				    name:   "bathroomId",
-				    value: bathroomId
+					name:   "bathroomId",
+					value: bathroomId
 				});
 
-		        console.log("postData", postData);
+				console.log("postData", postData);
 
-		        $.ajax({
-		            url: "/submit_review.php",
-		            type: "POST",
-		            data: postData,
-		            success: function(data, textStatus, jqXHR) {
-		            	console.log("data returned is: " + data);
-		            	console.log("textStatus is: " + textStatus);
-		            	console.log("jqXHR is: " + jqXHR);
-		            	alert("Your review has been submitted.");
-		            },
-		            error: function(jqXHR, status, error) {
-		                console.log(status + ": " + error);
-		            }
-		        });
-		       e.preventDefault();
-		    });
-		     
-		    $("#submitForm").on('click', function() {
-		        $("#review_form").submit();
-		    });
+				$.ajax({
+					url: "/submit_review.php",
+					type: "POST",
+					data: postData,
+					success: function(data, textStatus, jqXHR) {
+						console.log("data returned is: " + data);
+						console.log("textStatus is: " + textStatus);
+						console.log("jqXHR is: " + jqXHR);
+						alert("Your review has been submitted.");
+					},
+					error: function(jqXHR, status, error) {
+						console.log(status + ": " + error);
+					}
+				});
+				e.preventDefault();
+			});
+			$("#submitForm").on('click', function() {
+				$("#review_form").submit();
+			});
 		});
 		</script>
 

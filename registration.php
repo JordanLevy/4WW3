@@ -78,7 +78,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 				echo "<br>";
 				print_r($errors);
 				echo "<br>";
-			    die();
+				die();
+			}else{
+				echo '<script type="text/javascript">  
+						alert("Your account has been created. Please log in.");
+						</script>';
+				//redirect
+				header("location:login.php");
 			}
 		}
 
