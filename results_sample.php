@@ -65,7 +65,7 @@ if(!$isError){
 		die();
 	}
 	$i=0;
-	//if it's zero rows
+	$mapData = array();
 	if(sqlsrv_has_rows($result) != 1){
 		   echo "0 rows";
 	}else{
@@ -85,9 +85,25 @@ if(!$isError){
 			$tblRating[$i] = $row['rating'];
 			$tblDistance[$i] = $row['distance'];
 
+			# map data
+			array_push($mapData, array(
+			"placeName" => $row['building'] . " " . $row['roomNum'],
+			"LatLng" => array(
+					"lat" => $row['latitude'],
+					"lng" => $row['longitude'],
+				)
+			));	
+
+			//if it's zero rows
+
 			$i++;
 		}
 	}
+
+	print_r("mdap data: " . $mapData);
+	$mapData_s = serialize($mapData);
+	print_r("map data s" . $mapData_s);
+	
 }
 
 ?>
