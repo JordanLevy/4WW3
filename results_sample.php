@@ -123,12 +123,12 @@ if(!$isError){
 		<!--<script src="js/maps.js"></script>-->
 	</head>
 	<body>
-		<script type="text/javascript">
+		<script>
 			console.log("hellooo!!!!");
-			// var mapData_s = "<?php // echo $mapData_s; ?>";
-			// console.log("map data s is: ",  mapData_s);
-			// var mapData = JSON.parse( mapData_s );
-			// console.log("map data is: ",  mapData);
+			var mapData_s = <?php echo $mapData_s; ?>;
+			console.log("map data s is: ",  mapData_s);
+			var mapData = JSON.parse( mapData_s );
+			console.log("map data is: ",  mapData);
 
 			// //map object
 			// var map;
