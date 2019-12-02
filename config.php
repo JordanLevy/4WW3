@@ -1,9 +1,7 @@
 <?php
 
-echo "ENV VARIABLE " . getenv("hello");
-
-$connectionInfo = array("UID" => "jordan", "pwd" => "levy2019!", "Database" => "4ww3db", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:4ww3dbserver.database.windows.net,1433";
+$connectionInfo = array("UID" => "jordan", "pwd" => getenv("pwd"), "Database" => "4ww3db", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+$serverName = getenv("serverName");
 $conn=false;
 
 if ($conn == false) {

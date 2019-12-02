@@ -506,6 +506,6 @@ if(!$isError){
 		<!-- link bootstrap javascript -->
 		<script src="js/bootstrap.min.js"></script>
 		<!-- link Google Maps API -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBM8lbhIZ94WtCL8mPV0161-qIMTOr4Aus"></script>
+		<script src="<?php echo getenv("mapsAPIKey"); ?>"></script>
 	</body>
 </html>
