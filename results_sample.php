@@ -100,10 +100,7 @@ if(!$isError){
 		}
 	}
 
-	var_dump("mdap data: " . $mapData);
 	$mapData_s = json_encode($mapData);
-	var_dump("map data s" . $mapData_s);
-	
 }
 
 ?>

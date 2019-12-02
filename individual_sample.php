@@ -32,13 +32,24 @@ if(!$isError){
 	if(sqlsrv_has_rows($result) != 1){
 		   echo "0 rows";
 	}else{
+		$mapData = array();
 		//get the query results
 		while($row = sqlsrv_fetch_array($result)){
 			$title = $row['building'] . " " . $row['roomNum'];
 			$gender = $row['gender'];
 			$description = $row['description'];
+
+			# map data
+			array_push($mapData, array(
+			"placeName" => $row['building'] . " " . $row['roomNum'],
+			"LatLng" => array(array(
+					"lat" => $row['latitude'],
+					"lng" => $row['longitude'],
+				))
+			));	
 		}
 	}
+	$mapData_s = json_encode($mapData);
 
 	//search for reviews in database
 	$params = array($_GET['id']);
@@ -96,7 +107,6 @@ if(!$isError){
 			$avgRating = $row[0];
 		}
 	}
-
 }
 
 
@@ -117,6 +127,70 @@ if(!$isError){
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	</head>
 	<body>
+		<script>
+			console.log("hellooo!!!!");
+			var mapData = <?php echo $mapData_s; ?>;
+			console.log("map data is: ",  mapData);
+
+			//map object
+			var map;
+			//list of marker info tags
+			var markerInfo = [];
+			//coordinates to center the map at
+			var centerCoords = {
+				lat: 43.2609,
+				lng: -79.9192
+			};
+			var markers = mapData;
+			console.log("markers: ", markers);
+
+			//when the page loads, initialize the map
+			window.onload = function () {
+				initMap();
+			};
+
+			//add the info tags for each marker
+			function addMarkerInfo() {
+				for (var i = 0; i < markers.length; i++) {
+					var contentString = '<div id="content" style="background: #2f2f2f;"><h4>' + markers[i].placeName + '</h4></div>';
+
+					const marker = new google.maps.Marker({
+						position: markers[i].LatLng[0],
+						map: map
+					});
+
+					const infowindow = new google.maps.InfoWindow({
+						content: contentString,
+						maxWidth: 200
+					});
+
+					marker.addListener('click', function () {
+						closeOtherInfo();
+						infowindow.open(marker.get('map'), marker);
+						markerInfo[0] = infowindow;
+					});
+				}
+			}
+
+			//close all other tags
+			function closeOtherInfo() {
+				if (markerInfo.length > 0) {
+					markerInfo[0].set("marker", null);
+					markerInfo[0].close();
+					markerInfo.length = 0;
+				}
+			}
+
+			//initialize the map
+			function initMap() {
+				map = new google.maps.Map(document.getElementById('GoogleMap1'), {
+					zoom: 15,
+					center: centerCoords
+				});
+				addMarkerInfo();
+			}
+		</script>
+
 		<!-- navbar header -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navHeader" aria-controls="navHeader" aria-expanded="false" aria-label="Toggle navigation">
