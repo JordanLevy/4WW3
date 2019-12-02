@@ -171,7 +171,7 @@ if(!$isError){
 			//add the info tags for each marker
 			function addMarkerInfo() {
 				for (var i = 0; i < markers.length; i++) {
-					var contentString = '<div id="content"><h2>' + markers[i].placeName + '</h2></div>';
+					var contentString = '<div id="content" style="background: #2f2f2f;"><h4>' + markers[i].placeName + '</h4></div>';
 
 					const marker = new google.maps.Marker({
 						position: markers[i].LatLng[0],
