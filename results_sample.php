@@ -125,24 +125,19 @@ if(!$isError){
 	<body>
 		<script>
 			console.log("hellooo!!!!");
-			var mapData_s = <?php echo $mapData_s; ?>;
-			console.log("map data s is: ",  mapData_s);
-			console.log("map data[0]",  mapData_s[0]);
-			console.log("map data[0][placeName]",  mapData_s[0]['placeName']);
-			console.log("map data[0][LatLng][lat]",  mapData_s[0]['pLatLng']['lat']);
-			// var mapData = JSON.parse(mapData_s);
-			// console.log("map data is: ",  mapData);
+			var mapData = <?php echo $mapData_s; ?>;
+			console.log("map data is: ",  mapData);
 
-			// //map object
-			// var map;
-			// //list of marker info tags
-			// var markerInfo = [];
-			// //coordinates to center the map at
-			// var centerCoords = {
-			// 	lat: 43.2609,
-			// 	lng: -79.9192
-			// };
-			// //list of coordinates of search results
+			//map object
+			var map;
+			//list of marker info tags
+			var markerInfo = [];
+			//coordinates to center the map at
+			var centerCoords = {
+				lat: 43.2609,
+				lng: -79.9192
+			};
+			//list of coordinates of search results
 			// var markers = [{
 			// 		placeName: "BSB B134",
 			// 		LatLng: [{
@@ -165,52 +160,53 @@ if(!$isError){
 			// 		}]
 			// 	}
 			// ];
+			var markers = mapData;
 
-			// //when the page loads, initialize the map
-			// window.onload = function () {
-			// 	initMap();
-			// };
+			//when the page loads, initialize the map
+			window.onload = function () {
+				initMap();
+			};
 
-			// //add the info tags for each marker
-			// function addMarkerInfo() {
-			// 	for (var i = 0; i < markers.length; i++) {
-			// 		var contentString = '<div id="content"><h2>' + markers[i].placeName + '</h2></div>';
+			//add the info tags for each marker
+			function addMarkerInfo() {
+				for (var i = 0; i < markers.length; i++) {
+					var contentString = '<div id="content"><h2>' + markers[i].placeName + '</h2></div>';
 
-			// 		const marker = new google.maps.Marker({
-			// 			position: markers[i].LatLng[0],
-			// 			map: map
-			// 		});
+					const marker = new google.maps.Marker({
+						position: markers[i].LatLng[0],
+						map: map
+					});
 
-			// 		const infowindow = new google.maps.InfoWindow({
-			// 			content: contentString,
-			// 			maxWidth: 200
-			// 		});
+					const infowindow = new google.maps.InfoWindow({
+						content: contentString,
+						maxWidth: 200
+					});
 
-			// 		marker.addListener('click', function () {
-			// 			closeOtherInfo();
-			// 			infowindow.open(marker.get('map'), marker);
-			// 			markerInfo[0] = infowindow;
-			// 		});
-			// 	}
-			// }
+					marker.addListener('click', function () {
+						closeOtherInfo();
+						infowindow.open(marker.get('map'), marker);
+						markerInfo[0] = infowindow;
+					});
+				}
+			}
 
-			// //close all other tags
-			// function closeOtherInfo() {
-			// 	if (markerInfo.length > 0) {
-			// 		markerInfo[0].set("marker", null);
-			// 		markerInfo[0].close();
-			// 		markerInfo.length = 0;
-			// 	}
-			// }
+			//close all other tags
+			function closeOtherInfo() {
+				if (markerInfo.length > 0) {
+					markerInfo[0].set("marker", null);
+					markerInfo[0].close();
+					markerInfo.length = 0;
+				}
+			}
 
-			// //initialize the map
-			// function initMap() {
-			// 	map = new google.maps.Map(document.getElementById('GoogleMap1'), {
-			// 		zoom: 15,
-			// 		center: centerCoords
-			// 	});
-			// 	addMarkerInfo();
-			// }
+			//initialize the map
+			function initMap() {
+				map = new google.maps.Map(document.getElementById('GoogleMap1'), {
+					zoom: 15,
+					center: centerCoords
+				});
+				addMarkerInfo();
+			}
 		</script>
 		<!-- navbar header -->
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
