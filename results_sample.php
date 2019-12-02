@@ -101,7 +101,7 @@ if(!$isError){
 	}
 
 	print_r("mdap data: " . $mapData);
-	$mapData_s = serialize($mapData);
+	$mapData_s = json_encode($mapData);
 	print_r("map data s" . $mapData_s);
 	
 }
@@ -126,7 +126,9 @@ if(!$isError){
 		<script type="text/javascript">
 		var mapData_s = "<?php echo $mapData_s; ?>";
 		console.log("map data s is: ",  mapData_s);
-		
+		var mapData = JSON.parse( mapData_s );
+		console.log("map data is: ",  mapData);
+
 		//map object
 		var map;
 		//list of marker info tags
